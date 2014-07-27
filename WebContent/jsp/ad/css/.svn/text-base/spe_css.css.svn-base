@@ -1,0 +1,163 @@
+*{
+	margin:0;
+	padding:0;}
+body{
+	color:#333;
+	font:12px/1.5 "microsoft yahei";}	
+ul,li,dd,dt{
+	list-style:none;}
+em{
+	font-style:normal;}
+a{
+	color:#333;
+	text-decoration:none;}
+a:hover{
+	color:#f82500;
+	text-decoration:none;}
+img{
+	border:0;}	
+.marcen{
+	margin:0 auto;}
+.clear{
+	clear:both;
+	height:0;
+	overflow:hidden;}
+.font18{
+	font-size:18px;}
+.fontbold{
+	font-weight:bold;}
+.color_red{
+	color:#d51938}
+.englist{
+	font-family:Tahoma, Geneva, sans-serif;}
+.englist_one{
+	font-family:Arial, Helvetica, sans-serif;}
+.spe_czg,.spe_czg_hover{
+	width:278px;
+	height:278px;
+	position:relative;
+	border:1px solid #b7b7b7;
+	box-shadow:#e0e0e0 0px 0px 8px;
+	-moz-box-shadow:#e0e0e0 0px 0px 8px;
+	-webkit-box-shadow:#e0e0e0 0px 0px 8px;
+	margin:20px auto;
+	background:#fff}
+.yqf_close{
+	width:19px;
+	height:19px;
+	position:absolute;}
+.yqf_close a{
+	width:19px;
+	height:19px;
+	display:block;
+	cursor:pointer;
+	background:url(../images/spe.gif) no-repeat left -62px;}
+.spe_p{
+	width:254px;
+	height:28px;
+	line-height:25px;
+	padding-left:10px;
+	background:#528ff5;
+	color:#FFF;
+	position:relative;}
+.spe_p a{
+	position:absolute;
+	width:14px;
+	height:14px;
+	background:url(../images/spe.gif) no-repeat left -112px;
+	right:8px;
+	top:5px;
+	display:block;}
+.spe_main{
+	padding-top:10px;
+	background:#fff;}
+.spe_left a,.spe_right a{
+	background:url(../images/spe.gif) no-repeat;
+	cursor:pointer;}
+.spe_left{
+	position:absolute;
+	top:80px;
+	left:0;
+	z-index:99;}
+.spe_czg .spe_left a{
+	display:block;
+	width:25px;
+	height:52px;
+	background-position:left top;}
+.spe_czg_hover .spe_left a{
+	display:block;
+	width:25px;
+	height:52px;
+	background-position:-45px top;}
+.spe_zh{
+	width:278px;
+	height:268px;
+	overflow:hidden;
+	position:relative;}
+.spe_zh ul{
+	width:278px;
+	height:268px;
+	overflow: hidden;
+	 position: absolute; }
+.spe_zh ul li{
+	float:left;
+	width:278px;
+	height:268px;
+	overflow:hidden;
+	position: relative;}
+.spe_zh ul li a{
+	display:block;
+	cursor:pointer;}
+.spe_zh ul li a img{
+	width:258px;
+	height:171px;
+	padding:0 0 0 10px;}
+.spe_right{
+	position:absolute;
+	top:80px;
+	right:0;}
+.spe_czg .spe_right a{
+	display:block;
+	width:22px;
+	height:42px;
+	background-position:-22px top;}
+.spe_czg_hover .spe_right a{
+	display:block;
+	width:22px;
+	height:42px;
+	background-position:-67px top;}
+.spe_bottom{
+	clear:both;}
+.spe_b_p{
+	width:258px;
+	display:block;
+	height:43px;
+	font-size:14px;
+	line-height:20px;
+	overflow:hidden;
+	text-indent:40px;
+	padding:10px 0 0;
+	margin:0 auto;
+	background:url(../images/spe.gif) no-repeat -35px -50px;}
+.spe_xia{
+	width:258px;
+	height:44px;
+	padding:0 10px;
+	position:relative;
+	line-height:44px;
+	background:#fff1d1;}
+.spe_xia .money{
+	font-size:32px;
+	font-weight:bold;
+	color:#d51938;
+	font-family:Arial;}
+.spe_xia .delect{
+	color:#b38655;
+	padding:0 0 0 5px;
+	text-decoration:line-through;}
+.spe_xia .buy{
+	position:absolute;
+	top:5px;
+	right:10px;}
+.spe_xia .num{
+	color:#339900;}

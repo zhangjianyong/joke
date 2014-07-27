@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/egou/!svn/ver/43739/egou.fx/fx/v20130315/src/com/emar/egou/partner/alipay/util/httpClient
+END
+HttpResultType.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/egou/!svn/ver/43739/egou.fx/fx/v20130315/src/com/emar/egou/partner/alipay/util/httpClient/HttpResultType.java
+END
+HttpProtocolHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/egou/!svn/ver/43739/egou.fx/fx/v20130315/src/com/emar/egou/partner/alipay/util/httpClient/HttpProtocolHandler.java
+END
+HttpResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/egou/!svn/ver/43739/egou.fx/fx/v20130315/src/com/emar/egou/partner/alipay/util/httpClient/HttpResponse.java
+END
+HttpRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/egou/!svn/ver/43739/egou.fx/fx/v20130315/src/com/emar/egou/partner/alipay/util/httpClient/HttpRequest.java
+END

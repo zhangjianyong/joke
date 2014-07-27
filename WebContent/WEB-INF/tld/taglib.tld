@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<tag>
+		<name>extention</name>
+		<tagclass>com.doumiao.joke.taglib.ExtentionTag</tagclass>
+		<bodycontent>empty</bodycontent>
+		<attribute>
+			<name>eid</name> <!-- 属性名字 -->
+			<type>int</type>  <!-- 属性类型 -->
+			<requried>true</requried> <!-- 是否必须 -->
+			<rtexprvale>false</rtexprvale> <!-- 表示是否可以使用JSP表达式 -->
+		</attribute>
+		<attribute>
+			<name>var</name> <!-- 属性名字 -->
+			<type>String</type>  <!-- 属性类型 -->
+			<requried>true</requried> <!-- 是否必须 -->
+			<rtexprvale>false</rtexprvale> <!-- 表示是否可以使用JSP表达式 -->
+		</attribute>
+	</tag>
+</taglib> 

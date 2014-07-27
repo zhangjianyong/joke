@@ -1,0 +1,137 @@
+*{
+	margin:0;
+	padding:0;}
+body{
+	color:#333;
+	font:12px/1.5 "microsoft yahei";}	
+ul,li,dd,dt{
+	list-style:none;}
+em{
+	font-style:normal;}
+a{
+	color:#333;
+	text-decoration:none;}
+a:hover{
+	color:#f82500;
+	text-decoration:none;}
+img{
+	border:0;}	
+.marcen{
+	margin:0 auto;}
+.clear{
+	clear:both;
+	height:0;
+	overflow:hidden;}
+.font18{
+	font-size:18px;}
+.fontbold{
+	font-weight:bold;}
+.color_red{
+	color:#d51938}
+.englist{
+	font-family:Tahoma, Geneva, sans-serif;}
+.englist_one{
+	font-family:Arial, Helvetica, sans-serif;}
+.spe_qd{
+	width:978px;
+	height:258px;
+	margin:0 auto;
+	background:#fff;
+	border:1px solid #eee;}
+.spe_qd_p{
+	width:958px;
+	height:48px;
+	line-height:48px;
+	font-size:16px;
+	border-bottom:1px solid #edefee;
+	margin:0 auto;}
+.spe_main{
+	height:185px;
+	position:relative;}
+.spe_qd_left a,.spe_qd_right a{
+	background:url(../images/spe.gif) no-repeat;
+	cursor:pointer;
+	position:absolute;
+	width:22px;
+	height:42px;
+	display:block;
+	z-index:99999;
+	top:72px;}
+.spe_qd_left a{
+	background-position:left top;
+	left:10px;}
+.spe_qd_left a:hover{
+	background-position:-45px top;
+	left:10px;}
+.spe_qd_right a{
+	background-position:-22px top;
+	right:10px;}
+.spe_qd_right a:hover{
+	background-position:-67px top;
+	right:10px;}
+.spe_qd_zh{
+	float:left;
+	display:inline;
+	width:970px;
+	height:190px;
+	overflow: hidden;
+	margin:10px 0 0 5px;
+	position: relative;}
+.spe_qd_zh ul{
+	float:left;
+	width:970px;
+	padding-top:10px;
+	height:190px;
+	overflow: hidden;
+	position: absolute;}
+.spe_qd_zh ul li{
+	width:180px;
+	float:left;
+	overflow:hidden;
+	display:inline;
+	margin:0 7px;
+	height:190px;
+	position: relative;}
+.spe_qd_zh ul li a img{
+	width:180px;
+	height:125px;}
+.spe_qd_bottom{
+	width:180px;}
+.spe_b_p{
+	width:180px;
+	display:block;
+	height:25px;
+	font-size:14px;
+	line-height:25px;
+	overflow:hidden;}
+.spe_xia{
+	width:180px;
+	height:30px;
+	position:relative;
+	line-height:30px;}
+.spe_xia .money{
+	font-size:20px;
+	font-weight:bold;
+	color:#d51938;
+	font-family:Arial;}
+.spe_xia .delect{
+	color:#b38655;
+	padding:0 0 0 5px;
+	text-decoration:line-through;}
+.spe_xia .buy{
+	position:absolute;
+	top:0;
+	right:10px;}
+.spe_xia .num{
+	color:#339900;}
+.yqf_close{
+	width:19px;
+	height:19px;
+	position:absolute;
+	}
+.yqf_close a{
+	width:19px;
+	height:19px;
+	display:block;
+	cursor:pointer;
+	background:url(../images/spe.gif) no-repeat left -62px;}
