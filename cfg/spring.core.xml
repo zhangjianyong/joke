@@ -46,8 +46,8 @@
 	<bean id="config" class="java.util.HashMap">
 			<constructor-arg>
 				<map>
-					<entry key="domain" value=".zhenyoua.com" />
-					<entry key="website" value="http://www.zhenyoua.com/" />
+					<entry key="domain" value=".yixiaoqianjin.com" />
+					<entry key="website" value="http://www.yixiaoqianjin.com/" />
 					<entry key="charset" value="utf-8" />
 					<entry key="cookie_key" value="L5KnZ3YEC54=" />
 				</map>

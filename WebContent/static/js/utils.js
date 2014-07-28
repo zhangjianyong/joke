@@ -1,8 +1,8 @@
 (function(w, j, f, un) {
 	var m = {
 		charset : "utf-8",
-		domain : ".zhenyoua.com",
-		website : "http://www.zhenyoua.com/"
+		domain : ".yixiaoqianjin.com",
+		website : "http://www.yixiaoqianjin.com/"
 	};
 	w[f] = w[f] || {};
 	f = w[f];
