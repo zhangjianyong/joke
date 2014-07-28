@@ -5,7 +5,7 @@
 	<form>
 		<input id="go_url" type="hidden" value="/"></input>
 	</form>
-	<div id="nouser"  class="i_top"><a href="/qqbind" class="qq">QQ登录</a><a href="/sinabind" class="weibo">微博登录</a></div>
+	<div id="nouser"  class="i_top"><a href="/qqbind" class="qq">QQ登录</a></div>
 	<div id="haveuser" class="i_top" style="display:none">
 		您好！<span id="username"></span><a href="javascript:void(0);" onclick="loginout();">退出</a>
 		<em class="margin_left10">目前拥有<em class="color_red englist_one"  id="top_score">--</em>金</em>
