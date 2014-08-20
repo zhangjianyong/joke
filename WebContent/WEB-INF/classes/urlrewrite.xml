@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlrewrite decode-using="utf-8">
+	
+	<!-- 首页为图片类第一页 -->
+	<rule> 
+        <from>^/$</from> 
+        <to type="forward">/list?t=pic</to> 
+    </rule>
+	<!-- 以/结尾的所有链接,均去掉/ -->
+    <rule> 
+        <from>^/(.*[^/])/+$</from>
+        <to type="redirect">/$1</to> 
+    </rule>
+    <!-- 识别的类型有pic|text|ashamed.第二个参数为页数 -->
+    <rule> 
+        <from>^/(pic|text|ashamed)/([\d]*)$</from>
+        <to type="forward">/list?t=$1&amp;p=$2</to>
+    </rule>
+    <!-- 参数中只有类型时,默认为第一页 -->
+    <rule> 
+        <from>^/(pic|text|ashamed)$</from>
+        <to type="forward">/list?t=$1</to> 
+    </rule>
+    <!-- 顶沉操作的链接配置 -->
+    <rule> 
+        <from>^/(up|down)/([\d]*)$</from>
+        <to type="forward">/updown?t=$1&amp;a=$2</to> 
+    </rule>
+    <!-- 详情链接配置 -->
+    <rule> 
+        <from>^/article/([\d]*)$</from>
+        <to type="forward">/article?id=$1</to> 
+    </rule>
+    <!-- 详情邀请链接配置 -->
+    <rule> 
+        <from>^/article/([\d]*)/([\d]*)$</from>
+        <to type="forward">/article?id=$1&amp;inviter=$2</to> 
+    </rule>
+</urlrewrite>

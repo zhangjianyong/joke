@@ -1,5 +1,8 @@
 package com.doumiao.joke.web.lottery;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,9 +11,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,17 +24,18 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.enums.Account;
 import com.doumiao.joke.enums.AccountLogStatus;
 import com.doumiao.joke.enums.WealthType;
+import com.doumiao.joke.lang.HttpClientHelper;
 import com.doumiao.joke.lang.SerialNumberGenerator;
+import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
-import com.doumiao.joke.web.DBUtils;
 
 @Controller
 public class Draw {
 
 	private static final Log log = LogFactory.getLog(Draw.class);
 	@Resource
-	private DBUtils dbUtils;
+	private JdbcTemplate jdbcTemplate;
 
 	@Resource
 	ObjectMapper objectMapper;
@@ -40,16 +46,39 @@ public class Draw {
 		return "/lottery/draw";
 	}
 
-	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequestMapping(value = "/lottery/draw/go")
 	public Result go(HttpServletRequest request, HttpServletResponse response,
 			@LoginMember Member m) {
 		int uid = m.getId();
 		String group = "1";
+		int drawCountPerDay = Integer.parseInt(StringUtils.defaultIfBlank(
+				Config.get("draw_count_per_day"), "3"));
+		int scoreUsePerDraw = Integer.parseInt(StringUtils.defaultIfBlank(
+				Config.get("score_use_per_draw"), "5"));
 		try {
-			List<Map<String, Object>> options = dbUtils
-					.getTemplate()
+			// 验证是否有抽奖资格
+			Calendar c = Calendar.getInstance();
+			c.set(Calendar.HOUR_OF_DAY, 0);
+			c.set(Calendar.MINUTE, 0);
+			c.set(Calendar.SECOND, 0);
+			c.clear(Calendar.MILLISECOND);
+			Date today = c.getTime();
+			c.add(Calendar.DAY_OF_MONTH, 1);
+			Date tomorrow = c.getTime();
+			int drawTimesToday = jdbcTemplate
+					.queryForInt(
+							"select count(1) from uc_account_log where member_id = ? "
+									+ "and wealth_type = ? and account = ? and unix_timestamp(create_time) >= ? and unix_timestamp(create_time) < ?",
+							uid, WealthType.DRAW.name(), Account.S1.name(),
+							today.getTime() / 1000, tomorrow.getTime() / 1000);
+			if (drawTimesToday >= drawCountPerDay) {
+				return new Result(true, "draw_full", "每天可抽奖" + drawCountPerDay
+						+ "次", null);
+			}
+
+			// 读取奖品及中奖率
+			List<Map<String, Object>> options = jdbcTemplate
 					.queryForList(
 							"select * from uc_lottery_draw where `group` = ? and chance >= 0",
 							group);
@@ -79,17 +108,19 @@ public class Draw {
 			if (defaultChanceCount > 1 || chanceSum > 100) {
 				log.error("default chance must less than 1. chance sum must less than 100. draw group:"
 						+ group);
-				return new Result(false, "draw_error", "抽奖失败", "");
+				return new Result(false, "draw_error", "抽奖失败,奖励设置不正确", null);
 			}
 			if (defaultChanceCount == 0 && chanceSum < 100) {
 				log.error("must have default chance,when chance sum less than 100. draw group:"
 						+ group);
-				return new Result(false, "draw_error", "抽奖失败", "");
+				return new Result(false, "draw_error", "抽奖失败,奖励设置不正确", null);
 			}
 			if (defaultChanceCount == 1) {
 				defaultChance[0] = end;
 				defaultChance[1] = 100.0f;
 			}
+
+			// 开始抽奖
 			double result = Math.random() * 100;
 			int awardId = 0;
 			for (int i = 0; i < chance_array.length; i++) {
@@ -100,22 +131,45 @@ public class Draw {
 				}
 			}
 			Map<String, Object> award = awards.get(awardId);
-			Map<String, Integer> a = objectMapper.readValue(
-					(String) award.get("content"), Map.class);
-			int wealth = a.get("coin");
+			int wealth = Integer.parseInt((String) award.get("value"));
+
+			// 生成中奖流水
 			String[] serialNumber = SerialNumberGenerator.generate(2);
-			dbUtils.sendScore(uid, Account.S1, WealthType.DRAW, -5,
-					AccountLogStatus.VALID, serialNumber[0], serialNumber[1], "",
-					"00000000");
+			List<Map<String, Object>> logs = new ArrayList<Map<String, Object>>(
+					2);
+			Map<String, Object> l = new HashMap<String, Object>(1);
+			l.put("u", uid);
+			l.put("a", Account.S1);
+			l.put("t", WealthType.DRAW);
+			l.put("w", -scoreUsePerDraw);
+			l.put("s", AccountLogStatus.PAY.name());
+			l.put("sn", serialNumber[0]);
+			l.put("ssn", serialNumber[1]);
+			l.put("r", "");
+			l.put("o", "system");
+			logs.add(l);
 			if (wealth != 0) {
-				dbUtils.sendScore(uid, Account.S2, WealthType.DRAW, wealth,
-						AccountLogStatus.VALID, serialNumber[0], serialNumber[2], "",
-						"00000000");
+				Map<String, Object> _l = new HashMap<String, Object>(1);
+				_l.put("u", uid);
+				_l.put("a", Account.S2);
+				_l.put("t", WealthType.DRAW);
+				_l.put("w", wealth);
+				_l.put("s", AccountLogStatus.PAY.name());
+				_l.put("sn", serialNumber[0]);
+				_l.put("ssn", serialNumber[2]);
+				_l.put("r", "");
+				_l.put("o", "system");
+				logs.add(_l);
 			}
-			return new Result(true, "draw_success", "抽奖成功", award);
+
+			// 调取后台接口发放奖品
+			Map<String, String> params = new HashMap<String, String>(1);
+			params.put("json", objectMapper.writeValueAsString(logs));
+			HttpClientHelper.controlPlatPost("/pay", params);
+			return new Result(true, "success", "抽奖成功", award);
 		} catch (Exception e) {
 			log.error(e, e);
-			return new Result(false, "draw_error", "抽奖失败", "");
+			return new Result(false, "faild", "系统错误,请联系管理员", null);
 		}
 	}
 }

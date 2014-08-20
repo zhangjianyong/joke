@@ -1,10 +1,10 @@
 package com.doumiao.joke.annotation;
 import java.lang.annotation.Annotation;
-import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -14,13 +14,11 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import com.doumiao.joke.coder.DESCoder;
 import com.doumiao.joke.lang.CookieUtils;
+import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 
 public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolver {
 
-	@Resource
-	private Map<String, String> config;
-	
 	@Resource
 	private ObjectMapper objectMapper;
 	
@@ -40,8 +38,10 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
                 HttpServletRequest request = (HttpServletRequest)webRequest.getNativeRequest();
                 String loginuser_b64 = CookieUtils.readCookie(request, "loginuser");
         		Member loginUser = null;
-        		String charset = config.get("charset");
-        		String key = config.get("cookie_key");
+    			String charset = StringUtils.defaultIfBlank(
+    					Config.get("system_charset"), "utf-8");
+    			String key = StringUtils.defaultIfBlank(
+    					Config.get("system_cookie_key"), "L5KnZ3YEC54=");
         		if (loginuser_b64 != null) {
         			try {
         				byte[] loginuser_c = DESCoder.decryptBASE64(loginuser_b64

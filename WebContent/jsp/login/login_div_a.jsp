@@ -16,6 +16,6 @@
 <div id="logindiv" class="layer_login_nr">
     <p class="font20">欢迎加入一笑千金 </p>
     <p class="font14 color_66">一笑千金里收录了最全最搞笑的笑话专辑，看笑话还能抽奖...</p>
-    <p class="layer_login_qq"><a href="/qqbind?t=${param.t }" target='_blank'></a></p>
+    <p class="layer_login_qq"><a href="${control }/qqbind?t=${param.t }" target='_blank'></a></p>
     <p class="font16">请使用QQ账号登录 </p>
 </div>

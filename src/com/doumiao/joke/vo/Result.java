@@ -4,18 +4,18 @@ public class Result {
 	private String msg;
 	private String code;
 	private Object content;
-	private boolean result;
+	private boolean success;
 
 	public Result() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Result(boolean result, String code, String msg, Object content) {
+	public Result(boolean success, String code, String msg, Object content) {
 		super();
 		this.msg = msg;
 		this.code = code;
 		this.content = content;
-		this.result = result;
+		this.success = success;
 	}
 
 	public String getMsg() {
@@ -42,12 +42,12 @@ public class Result {
 		this.content = content;
 	}
 
-	public boolean isResult() {
-		return result;
+	public boolean isSuccess() {
+		return success;
 	}
 
-	public void setResult(boolean result) {
-		this.result = result;
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 
 }

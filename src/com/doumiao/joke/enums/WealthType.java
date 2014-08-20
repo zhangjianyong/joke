@@ -1,5 +1,5 @@
 package com.doumiao.joke.enums;
 
 public enum WealthType {
-	UPDOWN,DRAW;
+	UPDOWN,DRAW,THIRDPLAT_EXCHANGE;
 }

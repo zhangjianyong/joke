@@ -582,11 +582,11 @@ function load (event){
 		async:false,
 		data : event.data.params,
 		success : function(result) {
-			if(result.result==true){
+			if(result.success==true){
 				event.data.showlist(result.content);
 				$("#"+event.data.page_id).pagination(event.data,result.content);
 			}else{
-				J_utils.log(result.code+":"+result.msg);
+				$("#"+event.data.page_id).text(result.msg);
 			}
 		},
 		error : function(xhr, ts, et) {

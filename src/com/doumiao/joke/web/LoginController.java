@@ -1,13 +1,12 @@
 package com.doumiao.joke.web;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -18,13 +17,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doumiao.joke.lang.CookieUtils;
 import com.doumiao.joke.lang.TemplateResponse;
+import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Result;
 
 @Controller
 public class LoginController {
 	private static final Log log = LogFactory.getLog(LoginController.class);
-	@Resource
-	private Map<String, String> config;
 
 	@ResponseBody
 	@RequestMapping(value = "/login")
@@ -37,6 +35,7 @@ public class LoginController {
 			TemplateResponse tr = new TemplateResponse(response, buf);
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/login/"
 					+ page + ".jsp");
+			request.setAttribute("control", Config.get("system_control_url"));
 			tr.setCharacterEncoding("UTF-8");
 			rd.include(request, tr);
 			tr.flushBuffer();
@@ -48,10 +47,11 @@ public class LoginController {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/loginout", method = RequestMethod.POST)
+	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public Result loginOut(HttpServletRequest request,
 			HttpServletResponse response) {
-		String domain = config.get("domain");
+		String domain = StringUtils.defaultIfBlank(Config.get("system_domain"),
+				"yixiaoqianjin.com");
 		CookieUtils.deleteCookie(response, domain, "loginuser");
 		CookieUtils.deleteCookie(response, domain, "user");
 		return new Result(true, "login_out_ok", "退出登录", "");

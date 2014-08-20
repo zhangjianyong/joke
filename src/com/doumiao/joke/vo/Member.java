@@ -2,14 +2,24 @@ package com.doumiao.joke.vo;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 public class Member {
+	
 	private int id;
 	private String name;
+	private String nick;
+	@JsonIgnore
 	private String email;
+	@JsonIgnore
 	private String mobile;
+	@JsonIgnore
 	private String password;
+	@JsonIgnore
 	private int status;
+	@JsonIgnore
 	private String remark;
+	@JsonIgnore
 	private Date createTime;
 
 	public int getId() {
@@ -18,6 +28,14 @@ public class Member {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getNick() {
+		return nick;
+	}
+
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 	public String getName() {

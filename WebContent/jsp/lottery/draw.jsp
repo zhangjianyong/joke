@@ -15,29 +15,29 @@
                 <div class="layer_luck_bg">
                     <div class="layer_luck_list">
                         <ul>
-                            <li class="one1"></li>
-                            <li class="one2"></li>
-                            <li class="one3"></li>
-                            <li class="one4"></li>
-                            <li class="one5"></li>
-                            <li class="one6"></li>
-                            <li class="one7"></li>
+                            <li id="0" class="boder_bg"><span class="one1"></span></li>
+                            <li id="1"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="2"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="3"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="4"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="5"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="15"><span class="one2"></span><span class="one3"></span></li>
                             <li class="li_center">
                                 <p class="word font14">点评五次笑话，可获得一次抽奖机会...<br>
                                 <span id="drawtimes" class="color_red fontbold">你还有<em>--</em>次抽奖机会！</span></p>
                             </li>
-                            <li class="one9"></li>
-                            <li class="one8"></li>
+                            <li id="6"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="14"><span class="one2"></span><span class="one3"></span></li>
                             <li class="li_center li_bottom">
                                 <p class="luck_botton"><a id="draw" href="javascript:void(0);">立即抽奖</a></p>
                             </li>
-                            <li class="one11"></li>
-                            <li class="one9"></li>
-                            <li class="one4"></li>
-                            <li class="one5"></li>
-                            <li class="one2"></li>
-                            <li class="one10"></li>
-                            <li class="one1"></li>
+                            <li id="7"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="13"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="12"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="11"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="10"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="9"><span class="one2"></span><span class="one3"></span></li>
+                            <li id="8"><span class="one1"></span></li>
                         </ul>
                         <div class="clear"></div>
                     </div>

@@ -4,7 +4,7 @@ $(".updown").on("click",function(){
 	var t = $(this);
 	var article = t.attr("data");
 	var data = {};
-	data["t"]=J_utils.Config.website+"detail/"+article;
+	data["t"]=J_utils.Config.website+"article/"+article;
 	if(!J_utils.login("login_div_a",data)){
 		return;
 	}else{

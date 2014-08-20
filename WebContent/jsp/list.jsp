@@ -3,7 +3,6 @@
 <head>
 	<title>一笑千金</title>
 	<%@ include file="jscss.jsp" %>
-	<meta property="qc:admins" content="1540165517611011711162166375" />
 </head>
 <body>
 <%@ include file="top.jsp" %>
@@ -17,15 +16,19 @@
                 <div class="one_nr">神马？你居然还没有注册捧腹？注册的好处多多哦，可以参加捧腹活动赢取大奖，可以在个人中心收集喜爱的笑料，可以发图片发视频……<span class="color_red"><a href="#">快来注册吧！</a></span></div>
             </div><c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" ><c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if><div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
-                <div class="two_name"><a href="/detail/${a.id }?pos=next" target="_blank">${a.title } </a></div>
-                <div class="two_info">${a.summary }<br>
-                <a href="/detail/${a.id }?pos=next" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a>
-                <p class="gaoxiao color_99"><span>搞笑工厂</span><span>冷笑话</span></p>
-                </div>
+                <c:if test="${a.type=='PIC' }"><div class="two_name"><a href="/article/${a.id }?pos=next" target="_blank">${a.title } </a></div>
+	                <div class="two_info"><br>
+	                <a href="/article/${a.id }?pos=next" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
+	            <c:if test="${a.type=='TEXT' }"><div class="two_name"><a href="/article/${a.id }?pos=next" target="_blank">${a.title } </a></div>
+	                <div class="two_info">${a.content }<br></div></c:if>
+	            <c:if test="${a.type=='ASHAMED' }"><div class="two_name"></div>
+	                <div class="two_info">${a.content }<br></div></c:if>
                 <div class="zhichi_bg">
                 	<div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=up" class="color_1 updown up"><span class="one1"></span>${a.up }</a></div>
                     <div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=down" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>
-                    <div class="bshare-custom icon-medium"><a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到新浪微博" class="bshare-sinaminiblog"></a><a title="分享到人人网" class="bshare-renren"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a><a title="分享到网易微博" class="bshare-neteasemb"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><a class="bshareDiv" onclick="javascript:return false;"></a><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                    <div class="bshare_bg">
+                    	<span id="share">分享</span>
+                    </div>
                 </div>
             </div></c:forEach>
             <!-- 分页 -->
@@ -33,7 +36,7 @@
             <jsp:include page="/jsp/page.jsp">
             	<jsp:param value="${count }" name="count"/>
             	<jsp:param value="${page }" name="page"/>
-            	<jsp:param value="/new" name="path"/>
+            	<jsp:param value="/${param.t }" name="path"/>
             	<jsp:param value="/" name="first"/>
             </jsp:include>
             <script type="text/javascript">ad_show('5');</script>
@@ -45,7 +48,7 @@
             <div class="right_name font14 color_66 fontbold">搞笑图片推荐</div>
             <div class="right_list">
             	<ul><c:forEach var="h" items="${hots }">
-                	<li><a href="/detail/${h.id }"><img style="max-width: 90px;min-height:90px;" src="${h.pic }"></a></li>
+                	<li><a href="/article/${h.id }"><img style="max-width: 90px;min-height:90px;" src="${h.content }"></a></li>
                 </c:forEach></ul>
                 <div class="clear"></div>
             </div>
