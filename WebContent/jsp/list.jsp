@@ -3,6 +3,7 @@
 <head>
 	<title>一笑千金</title>
 	<%@ include file="jscss.jsp" %>
+	<meta property="qc:admins" content="1540165517611011711162166375" />
 </head>
 <body>
 <%@ include file="top.jsp" %>
