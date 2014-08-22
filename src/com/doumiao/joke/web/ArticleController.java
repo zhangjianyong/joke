@@ -60,8 +60,8 @@ public class ArticleController {
 		if (inviter > 0) {
 			int hours = Integer.parseInt(StringUtils.defaultIfBlank(
 					Config.get("inviter_cookie_time"), "24"));
-			String website = Config.get("system_website_url");
-			CookieUtils.createCookie(response, website.replace("http://", "").replace("www", ""), "inviter",
+			String domain = Config.get("cookie_domain");
+			CookieUtils.createCookie(response, domain, "inviter",
 					String.valueOf(inviter), "/", hours * 3600, false);
 		}
 
@@ -70,7 +70,7 @@ public class ArticleController {
 				"hots",
 				jdbcTemplate
 						.queryForList(
-								"select * from joke_article where type = ? order by up desc,id desc limit 0, 6",
+								"select id, pic from joke_article where type = ? and is_show = 1 order by up desc,id desc limit 0, 6",
 								ArticleType.PIC.name()));
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
