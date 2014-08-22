@@ -20,7 +20,7 @@ $("#exchange").on("click",function(){
 });
 function checkScore(){
 	$.ajax({
-		url : J_utils.Config.website+"ucenter/interface/score",
+		url : J_utils.Config.website+"uc/i/score",
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,

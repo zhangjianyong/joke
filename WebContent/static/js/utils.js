@@ -484,7 +484,7 @@ String.prototype.setCookie = function(value, expiryDays, domain, path, secure) {
 String.prototype.getCookie = function() {
 	var re = new RegExp('\\b' + this + '\\s*=\\s*([^;]*)', 'i');
 	var match = re.exec(document.cookie);
-	return (match && match.length > 1 ? unescape(match[1]) : '');
+	return (match && match.length > 1 ? unescape(decodeURI(match[1])) : '');
 };
 String.prototype.delCookie = function() {
 	document.cookie = this + "=; expires=Fri, 31 Dec 1999 23:59:59 GMT;";

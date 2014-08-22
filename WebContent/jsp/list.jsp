@@ -3,7 +3,6 @@
 <head>
 	<title>一笑千金</title>
 	<%@ include file="jscss.jsp" %>
-	<meta property="qc:admins" content="1540165517611011711162166375" />
 </head>
 <body>
 <%@ include file="top.jsp" %>
@@ -62,7 +61,7 @@
         <div class="clear"></div>
     </div>
 </div>
-<script src="/static/js/list.js" type="text/javascript"></script>
+<script src="${config.system_resource_url }/static/js/list.js" type="text/javascript"></script>
 <%@ include file="foot.jsp" %>
 </body>
 </html>

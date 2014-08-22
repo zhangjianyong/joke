@@ -74,7 +74,7 @@ public class ArticleController {
 								ArticleType.PIC.name()));
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
-		request.setAttribute("config", Config.config);
+		request.setAttribute("config", Config.getConfig());
 		return "/article";
 	}
 }

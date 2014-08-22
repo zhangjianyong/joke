@@ -1,14 +1,12 @@
-var userC = "user".getCookie();
-if(userC)
-if(userC){
-	var user = eval('(' + JSON.parse(userC) + ')');
-	$("#nouser").hide();
-	$("#username").html(user.id);
-	$("#haveuser").show();
+var user = "user".getCookie();
+if(user){
+	var user = eval('(' + JSON.parse(user) + ')');
+	$(".top_user_name").html(user.nick);
 };
-if(userC){
+var loginuser = "loginuser".getCookie();
+if(loginuser){
 	$.ajax({
-		url : J_utils.Config.website+"ucenter/interface/score",
+		url : J_utils.Config.website+"uc/i/score",
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,
@@ -23,9 +21,6 @@ if(userC){
 			J_utils.log(et);
 		}
 	});
+	$("#nouser").hide();
+	$("#haveuser").show();
 }
-loginout_option.success=function(){
-	 var go_url = $("#go_url").val();
-     go_url = J_task.Config.website+"loginsuccess.action?go_url=" + encodeURIComponent(go_url);
-     window.location.href = go_url;
-};

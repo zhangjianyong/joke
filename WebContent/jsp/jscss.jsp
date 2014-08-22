@@ -4,6 +4,6 @@
 <%@ taglib prefix="st" uri="/WEB-INF/tld/taglib.tld" %>
 <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
 <!-- <script src="/static/js/jquery.js"></script> -->
-<script src="/static/js/jquery.zclip.js"></script>
-<script type="text/javascript" src="/static/js/utils.js" ></script>
-<link type="text/css" rel="stylesheet" href="/static/css/style.css" />
+<script src="${config.system_resource_url }/static/js/jquery.zclip.js"></script>
+<script type="text/javascript" src="${config.system_resource_url }/static/js/utils.js" ></script>
+<link type="text/css" rel="stylesheet" href="${config.system_resource_url }/static/css/style.css" />

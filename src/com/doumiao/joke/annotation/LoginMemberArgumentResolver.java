@@ -40,8 +40,7 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         		Member loginUser = null;
     			String charset = StringUtils.defaultIfBlank(
     					Config.get("system_charset"), "utf-8");
-    			String key = StringUtils.defaultIfBlank(
-    					Config.get("system_cookie_key"), "L5KnZ3YEC54=");
+    			String key = Config.get("system_cookie_key");
         		if (loginuser_b64 != null) {
         			try {
         				byte[] loginuser_c = DESCoder.decryptBASE64(loginuser_b64

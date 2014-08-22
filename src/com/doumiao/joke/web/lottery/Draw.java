@@ -57,6 +57,11 @@ public class Draw {
 		int scoreUsePerDraw = Integer.parseInt(StringUtils.defaultIfBlank(
 				Config.get("score_use_per_draw"), "5"));
 		try {
+			int drawTimesTotal = jdbcTemplate.queryForInt(
+					"select s1 from uc_account where member_id = ?", uid);
+			if(drawTimesTotal<scoreUsePerDraw){
+				return new Result(false, "faild", "你目前没有抽奖机会,点评五次笑话，可获得一次抽奖机会", null);
+			}
 			// 验证是否有抽奖资格
 			Calendar c = Calendar.getInstance();
 			c.set(Calendar.HOUR_OF_DAY, 0);
@@ -73,7 +78,7 @@ public class Draw {
 							uid, WealthType.DRAW.name(), Account.S1.name(),
 							today.getTime() / 1000, tomorrow.getTime() / 1000);
 			if (drawTimesToday >= drawCountPerDay) {
-				return new Result(true, "draw_full", "每天可抽奖" + drawCountPerDay
+				return new Result(false, "faild", "每天可抽奖" + drawCountPerDay
 						+ "次", null);
 			}
 
@@ -108,12 +113,12 @@ public class Draw {
 			if (defaultChanceCount > 1 || chanceSum > 100) {
 				log.error("default chance must less than 1. chance sum must less than 100. draw group:"
 						+ group);
-				return new Result(false, "draw_error", "抽奖失败,奖励设置不正确", null);
+				return new Result(false, "faild", "抽奖失败,奖励设置不正确", null);
 			}
 			if (defaultChanceCount == 0 && chanceSum < 100) {
 				log.error("must have default chance,when chance sum less than 100. draw group:"
 						+ group);
-				return new Result(false, "draw_error", "抽奖失败,奖励设置不正确", null);
+				return new Result(false, "faild", "抽奖失败,奖励设置不正确", null);
 			}
 			if (defaultChanceCount == 1) {
 				defaultChance[0] = end;

@@ -40,7 +40,7 @@
 </div>
 <script type="text/javascript">
 $('#clip').zclip({
-	path:'/static/flash/ZeroClipboard.swf',
+	path:'${config.system_resource_url }/static/flash/ZeroClipboard.swf',
 	copy:$('#clip_text').val(),
 	afterCopy:function(){
 		$('.sucess').slideDown(300).delay(800).slideUp(400);

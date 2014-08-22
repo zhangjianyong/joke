@@ -55,7 +55,7 @@ public class Ucenter {
 	@SuppressWarnings("unchecked")
 	@ResponseBody
 	@RequiredLogin(ResultTypeEnum.json)
-	@RequestMapping("/ucenter/interface/score")
+	@RequestMapping("/uc/i/score")
 	public Result interfaceScore(HttpServletRequest request,
 			HttpServletResponse response, @LoginMember Member m) {
 		int uid = m.getId();
@@ -87,7 +87,7 @@ public class Ucenter {
 
 	@RequiredLogin
 	@ResponseBody
-	@RequestMapping("/ucenter/interface/scorelog")
+	@RequestMapping("/uc/i/scorelog")
 	public Result scoreLog(
 			HttpServletRequest request,
 			HttpServletResponse response,

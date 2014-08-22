@@ -2,7 +2,7 @@ var uc_account_status = {'PAY':'已发放', 'UNPAY':'未发放','REJECT':'拒绝
 var wealtype = {'DRAW':'抽奖','UPDOWN':'顶沉','THIRDPLAT_EXCHANGE':'第三方积分'};
 var load_option = {
 	page_id:'pagination',
-	url : J_utils.Config.website+"ucenter/interface/scorelog",
+	url : J_utils.Config.website+"uc/i/scorelog",
 	params:{page:1},
 	showlist:function(result){
 		$("#j_scorelogs").find(".jifen_table_info").remove();

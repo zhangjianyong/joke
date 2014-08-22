@@ -23,7 +23,7 @@
                 	<input id="pos" type="hidden" value="${param.pos }"/>
                 </form>
                 <c:if test="${article.type=='PIC' }"><div id="title" class="two_name">${article.title }</div>
-	                <div id="content" class="two_info"><br><img src="${pic_domain }${article.pic }" style="max-width: 559px;"/></div></c:if>
+	                <div id="content" class="two_info"><br><img src="${config.pic_domain }/${article.pic }" style="max-width: 559px;"/></div></c:if>
 	            <c:if test="${article.type=='TEXT' }"><div id="title" class="two_name">${article.title }</div>
 	                <div id="content" class="two_info">${article.content }<br></div></c:if>
 	            <c:if test="${article.type=='ASHAMED' }"><div class="two_name"></div>
@@ -88,7 +88,7 @@
         <div class="clear"></div>
     </div>
 </div>
-<script src="/static/js/article.js" type="text/javascript"></script>
+<script src="${config.system_resource_url }/static/js/article.js" type="text/javascript"></script>
 <%@ include file="foot.jsp" %>
 </body>
 </html>

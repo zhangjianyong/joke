@@ -49,7 +49,7 @@ public class ArticleListController {
 		request.setAttribute("page", page);
 		request.setAttribute("count", pages);
 		request.setAttribute("articles", articles);
-		request.setAttribute("config", Config.config);
+		request.setAttribute("config", Config.getConfig());
 		request.setAttribute(
 				"hots",
 				jdbcTemplate
