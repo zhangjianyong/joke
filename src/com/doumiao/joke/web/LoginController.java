@@ -34,7 +34,6 @@ public class LoginController {
 			TemplateResponse tr = new TemplateResponse(response, buf);
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/div/"
 					+ page + ".jsp");
-			request.setAttribute("control", Config.get("system_control_url",""));
 			tr.setCharacterEncoding("UTF-8");
 			rd.include(request, tr);
 			tr.flushBuffer();

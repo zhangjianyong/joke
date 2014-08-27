@@ -187,7 +187,7 @@ var eu = encodeURIComponent;
 					}
 				},
 				login : function(page,params){
-					var user = "loginuser".getCookie();
+					var user = "user".getCookie();
 					//已知用户
 					if(user){
 						return true;
@@ -198,7 +198,7 @@ var eu = encodeURIComponent;
 					//已初始化弹层
 					var logindiv = $("#logindiv");
 					if(logindiv.length>0){
-				        f.showMask();
+//				        f.showMask();
 						logindiv.show();
 						return;
 					}
@@ -213,13 +213,13 @@ var eu = encodeURIComponent;
 							if(result.result==false){
 								f.log(result.code+":"+result.msg);
 							}
-							f.showMask();
+//							f.showMask();
 							var div = $(result.content);
 							$('body').append(div);
 							div.show();
-							$("#mask").on("click",function(){
-								$("#logindiv").hide();
-							});
+//							$("#mask").on("click",function(){
+//								$("#logindiv").hide();
+//							});
 						},
 						error : function(xhr, ts, et) {
 							xhr = null;
