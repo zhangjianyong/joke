@@ -18,16 +18,18 @@
 	                        <c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }?pos=next">下一条</a></span></c:if>
 	                        <div class="clear"></div>
 						</div>
+						<span class="name_pic"><img src="${config.system_resource_url }/static/images/demoimg/i_01.gif"></span>
+						<span class="padding_left10">${article.member_nick }</span>
+						<span class="padding_left10 englist color_99">${article.create_time }</span>
                	</div>
                 <form>
                 	<input id="pos" type="hidden" value="${param.pos }"/>
                 </form>
-                <c:if test="${article.type=='PIC' }"><div id="title" class="two_name">${article.title }</div>
-	                <div id="content" class="two_info"><br><img src="${config.pic_domain }/${article.pic }" style="max-width: 559px;"/></div></c:if>
-	            <c:if test="${article.type=='TEXT' }"><div id="title" class="two_name">${article.title }</div>
-	                <div id="content" class="two_info">${article.content }<br></div></c:if>
-	            <c:if test="${article.type=='ASHAMED' }"><div class="two_name"></div>
-	                <div id="content" class="two_info">${article.content }<br></div></c:if>
+                <div id="title" class="two_name">${article.title }</div>
+                <c:if test="${article.type=='PIC' }">
+	                <div id="content" class="two_info"><br><img src="${config.pic_domain }/article/0${article.pic }" style="max-width: 559px;"/></div></c:if>
+	            <c:if test="${article.type=='TEXT' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
+	            <c:if test="${article.type=='ASHAMED' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
                 <div class="zhichi_bg">
                 	<div class="chizhi_left"><a id="up" data="${article.id }" href="javascript:void(0);" class="color_1"><span class="one1"></span><b>${article.up }</b></a></div>
                     <div class="chizhi_left"><a id="down" data="${article.id }"  href="javascript:void(0);" class="color_1"><span class="one2"></span><b>${article.down }</b></a></div>
@@ -37,35 +39,10 @@
                 </div>
                 <script type="text/javascript">ad_show('10');</script>
             </div>
-            <div class="info_gx_list bg_radius">
-            	<ul>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                </ul>
-                <div class="clear"></div>
-            </div>
             <script type="text/javascript">ad_show('11');</script>
             <div class="info_advert_list">
             	<script type="text/javascript">ad_show('12');</script>
             	<script type="text/javascript">ad_show('13');</script>
-            </div>
-            <div class="info_gx_list bg_radius">
-            	<ul>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                </ul>
-                <div class="clear"></div>
             </div>
         </div>
     	<!--  右侧-->

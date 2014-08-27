@@ -33,7 +33,7 @@ public class LoginController {
 		try {
 			ByteArrayOutputStream buf = new ByteArrayOutputStream(3000);
 			TemplateResponse tr = new TemplateResponse(response, buf);
-			RequestDispatcher rd = request.getRequestDispatcher("/jsp/login/"
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/div/"
 					+ page + ".jsp");
 			request.setAttribute("control", Config.get("system_control_url"));
 			tr.setCharacterEncoding("UTF-8");

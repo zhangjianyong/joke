@@ -34,13 +34,13 @@ public class ArticleController {
 			@RequestParam(value = "inviter", defaultValue = "0", required = false) int inviter) {
 		Map<String, Object> article = jdbcTemplate
 				.queryForMap(
-						"select id, title, pic, content, type, down, up, create_time from joke_article where  id = ?",
+						"select id, title, pic, content, type, down, up, create_time from joke_article where  id = ? and status = 2",
 						id);
 		int nextId = 0;
 		try {
 			nextId = jdbcTemplate
 					.queryForInt(
-							"select id from joke_article where id < ? order by id desc limit 0,1",
+							"select id from joke_article where id < ? and status = 2 order by id desc limit 0,1",
 							id);
 		} catch (EmptyResultDataAccessException e) {
 		} catch (Exception e) {
@@ -50,7 +50,7 @@ public class ArticleController {
 		try {
 			preId = jdbcTemplate
 					.queryForInt(
-							"select id from joke_article where id > ? order by id asc limit 0,1",
+							"select id from joke_article where id > ? and status = 2 order by id asc limit 0,1",
 							id);
 		} catch (EmptyResultDataAccessException e) {
 		} catch (Exception e) {
@@ -70,11 +70,10 @@ public class ArticleController {
 				"hots",
 				jdbcTemplate
 						.queryForList(
-								"select id, pic from joke_article where type = ? and is_show = 1 order by up desc,id desc limit 0, 6",
+								"select id, pic from joke_article where type = ? and status = 2 order by up desc,id desc limit 0, 6",
 								ArticleType.PIC.name()));
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
-		request.setAttribute("config", Config.getConfig());
 		return "/article";
 	}
 }

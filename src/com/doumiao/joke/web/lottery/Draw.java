@@ -43,6 +43,7 @@ public class Draw {
 	@RequestMapping(value = "/lottery/draw")
 	public String show(HttpServletRequest request,
 			HttpServletResponse response, @LoginMember Member m) {
+		request.setAttribute("config", Config.getConfig());
 		return "/lottery/draw";
 	}
 

@@ -22,6 +22,7 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.annotation.RequiredLogin;
 import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.lang.HttpClientHelper;
+import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
 
@@ -63,6 +64,7 @@ public class ExchangeController {
 		}
 		request.setAttribute("account", account);
 		request.setAttribute("alipayAccount", alipayAccount);
+		request.setAttribute("config", Config.getConfig());
 		return "/uc/exchange";
 	}
 

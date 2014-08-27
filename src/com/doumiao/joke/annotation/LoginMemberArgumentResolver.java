@@ -1,5 +1,6 @@
 package com.doumiao.joke.annotation;
 import java.lang.annotation.Annotation;
+import java.net.URLDecoder;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -48,6 +49,7 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         				byte[] loginuser = DESCoder.decrypt(loginuser_c,
         						key.getBytes(charset));
         				loginUser = objectMapper.readValue(loginuser, Member.class);
+        				loginUser.setNick(URLDecoder.decode(loginUser.getNick(),charset));
         			} catch (Exception e) {
         				e.printStackTrace();
         			}

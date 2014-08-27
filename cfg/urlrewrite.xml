@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <urlrewrite decode-using="utf-8">
 	
-	<!-- 首页为图片类第一页 -->
-	<rule> 
-        <from>^/$</from> 
-        <to type="forward">/list?t=pic</to> 
+	<!-- 首页为所有分类的混排 -->
+	<rule>
+        <from>^/$</from>
+        <to type="forward">/list?t=all&amp;o=today</to>
+    </rule>
+    <rule>
+        <from>^/favicon.ico$</from>
+        <to type="forward">/static/favicon.ico</to>
     </rule>
 	<!-- 以/结尾的所有链接,均去掉/ -->
-    <rule> 
+    <rule>
         <from>^/(.*[^/])/+$</from>
-        <to type="redirect">/$1</to> 
+        <to type="redirect">/$1</to>
     </rule>
-    <!-- 识别的类型有pic|text|ashamed.第二个参数为页数 -->
-    <rule> 
-        <from>^/(pic|text|ashamed)/([\d]*)$</from>
-        <to type="forward">/list?t=$1&amp;p=$2</to>
+    <!-- 识别的类型有pic|text|ashamed|all.第二个参数为排序new|today|week|month.第三个参数为页数 -->
+    <rule>
+        <from>^/(pic|text|ashamed|all)/(new|today|week|month)/([\d]*)$</from>
+        <to type="forward">/list?t=$1&amp;o=$2&amp;p=$3</to>
     </rule>
-    <!-- 参数中只有类型时,默认为第一页 -->
-    <rule> 
-        <from>^/(pic|text|ashamed)$</from>
-        <to type="forward">/list?t=$1</to> 
+    <!-- 识别的类型有pic|text|ashamed|all.第二个参数为排序new|today|week|month.默认为第一页 -->
+    <rule>
+        <from>^/(pic|text|ashamed|all)/(new|today|week|month)$</from>
+        <to type="forward">/list?t=$1&amp;o=$2</to>
+    </rule>
+    <!-- 参数中只有类型时,默认为new排序,默认为第一页 -->
+    <rule>
+        <from>^/(pic|text|ashamed|all)$</from>
+        <to type="forward">/list?t=$1&amp;o=today</to>
     </rule>
     <!-- 顶沉操作的链接配置 -->
     <rule> 
         <from>^/(up|down)/([\d]*)$</from>
-        <to type="forward">/updown?t=$1&amp;a=$2</to> 
+        <to type="forward">/updown?t=$1&amp;a=$2</to>
     </rule>
     <!-- 详情链接配置 -->
-    <rule> 
+    <rule>
         <from>^/article/([\d]*)$</from>
-        <to type="forward">/article?id=$1</to> 
+        <to type="forward">/article?id=$1</to>
     </rule>
     <!-- 详情邀请链接配置 -->
-    <rule> 
+    <rule>
         <from>^/article/([\d]*)/([\d]*)$</from>
-        <to type="forward">/article?id=$1&amp;inviter=$2</to> 
+        <to type="forward">/article?id=$1&amp;inviter=$2</to>
     </rule>
 </urlrewrite>

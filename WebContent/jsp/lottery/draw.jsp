@@ -10,7 +10,7 @@
 <div class="i_main_bg">
 	<div class="i_main">
     	<!--  左侧-->
-            <div class="left_two bg_radius margin_top0 padding_top20">
+            <div class="i_main_left">
                 <!--  抽奖  -->
                 <div class="layer_luck_bg">
                     <div class="layer_luck_list">
@@ -45,30 +45,10 @@
                 <!-- 结束 抽奖  -->
                 <script type="text/javascript">ad_show('16');</script>
             </div>
-            <div class="chj_info_three">
+            <div class="i_main_right">
                 <ul>
                     <li><script type="text/javascript">ad_show('17');</script></li>
                     <li><script type="text/javascript">ad_show('18');</script></li>
-                    <li><script type="text/javascript">ad_show('19');</script></li>
-                </ul>
-                <div class="clear"></div>
-            </div>
-            <div class="info_gx_list bg_radius chj_info_gx_list">
-            	<ul>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
-                	<li><a href="#"><img src="/static/images/demoimg/p_10.gif"><span>妹子等公交等的好累</span></a></li>
                 </ul>
                 <div class="clear"></div>
             </div>

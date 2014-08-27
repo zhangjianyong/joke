@@ -48,6 +48,7 @@ public class Ucenter {
 		account.put("uncheck", uncheck);
 		request.setAttribute("user", m);
 		request.setAttribute("account", account);
+		request.setAttribute("config", Config.getConfig());
 		return "/uc/score";
 	}
 

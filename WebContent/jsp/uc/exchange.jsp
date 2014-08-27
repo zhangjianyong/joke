@@ -20,7 +20,7 @@
 	        <div class="zichan_right">
             	<div class="zichan_right_name font14 fontbold">资产兑换</div>
                 <div class="zc_right_main">
-                    <p class="font14 line_height30">您的小金库有：<span id="score" class="color_red fontbold">${account.s2 }</span>金</p>
+                    <p class="font14 line_height30">您的小金库有：<span id="score" class="color_red fontbold">${account.s2 }</span> ${config.score_unit }</p>
                     <div class="dh_main">
                         <p class="zc_text_bg font14"><span style="padding-left:28px;">支付宝：</span><span><input name="act" type="text" class="zc_text post_data" value="${alipayAccount.account }"></span><span></span></p>
                         <p class="zc_text_bg font14"><span>兑换集分宝：</span><span><input id="val" name="val" value="${account.s2 }" type="text" class="zc_text post_data" style="width:80px;"></span><span>&nbsp;个</span></p>
