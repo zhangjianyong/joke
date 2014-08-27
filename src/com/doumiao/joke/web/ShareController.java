@@ -32,7 +32,7 @@ public class ShareController {
 			RequestDispatcher rd = request
 					.getRequestDispatcher("/jsp/share_div.jsp");
 			tr.setCharacterEncoding("UTF-8");
-			request.setAttribute("website", Config.get("system_website_url"));
+			request.setAttribute("website", Config.get("system_website_url",""));
 			request.setAttribute("uid", m==null?0:m.getId());
 			rd.include(request, tr);
 			tr.flushBuffer();

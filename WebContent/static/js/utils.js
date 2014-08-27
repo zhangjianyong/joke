@@ -1,3 +1,4 @@
+var eu = encodeURIComponent;
 (function(w, j, f, un) {
 	var m = {
 		charset : "utf-8",
@@ -165,6 +166,25 @@
 			        $("#mask").on("click",function(){
 			        	$("#mask").hide();
 			        });
+				},
+				share : function(webid, title,url, pic,summary) {
+				    f.open('http://www.jiathis.com/send/?webid=' + webid + '&url=' + eu(url) + '&title=' + eu(title) + '&summary=' + eu(summary)+ '&pic=' + pic + '&uid=1961209');
+				},
+				open : function(url,target){
+					if(target==undefined){
+						target='_self';
+					}else{
+						target=(typeof target=='string'?target:"_blank");
+					}
+					if(document.all){
+						var linka=document.createElement('a');
+						linka.href=url;
+						linka.target=target;
+						document.body.appendChild(linka);
+						linka.click();
+					}else{
+						window.open(url,target);
+					}
 				},
 				login : function(page,params){
 					var user = "loginuser".getCookie();
@@ -417,7 +437,7 @@ function removeMessage() {
 	};
 	$.fn.toggleButton.defaults = defaults;
 })(jQuery);
-var eu = encodeURIComponent;
+
 function preparePostData(postData, postDataSelector, options) {
 	$(postDataSelector).each(function() {
 		var $this = $(this);

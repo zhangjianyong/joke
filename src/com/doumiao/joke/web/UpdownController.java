@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -70,11 +69,9 @@ public class UpdownController {
 					.update("insert into joke_article_updown(article_id,member_id,type) values(?,?,?)",
 							aid, uid, _type);
 			// 发放积分
-			int scoreUpDownPerTime = Integer.parseInt(StringUtils
-					.defaultIfBlank(Config.get("score_up_down_per_time"), "1"));
-			int scoreUpDownMaxPerDay = Integer.parseInt(StringUtils
-					.defaultIfBlank(Config.get("score_up_down_max_per_day"),
-							"15"));
+			int scoreUpDownPerTime = Config.getInt("score_up_down_per_time", 1);
+			int scoreUpDownMaxPerDay = Config.getInt(
+					"score_up_down_max_per_day", 15);
 			Calendar c = Calendar.getInstance();
 			c.set(Calendar.HOUR_OF_DAY, 0);
 			c.set(Calendar.MINUTE, 0);
@@ -109,7 +106,7 @@ public class UpdownController {
 				// 调取后台接口发放奖品
 				Map<String, String> params = new HashMap<String, String>(1);
 				params.put("json", objectMapper.writeValueAsString(logs));
-				HttpClientHelper.controlPlatPost("/pay", params);
+				return HttpClientHelper.controlPlatPost("/pay", params);
 			}
 		} catch (Exception e) {
 			log.error(e, e);

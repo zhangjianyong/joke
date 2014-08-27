@@ -27,14 +27,35 @@
                 </form>
                 <div id="title" class="two_name">${article.title }</div>
                 <c:if test="${article.type=='PIC' }">
-	                <div id="content" class="two_info"><br><img src="${config.pic_domain }/article/0${article.pic }" style="max-width: 559px;"/></div></c:if>
+	                <div id="content" class="two_info"><br><img id="article_pic" src="${config.pic_domain }/article/0${article.pic }" style="max-width: 559px;"/></div></c:if>
 	            <c:if test="${article.type=='TEXT' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
 	            <c:if test="${article.type=='ASHAMED' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
                 <div class="zhichi_bg">
                 	<div class="chizhi_left"><a id="up" data="${article.id }" href="javascript:void(0);" class="color_1"><span class="one1"></span><b>${article.up }</b></a></div>
                     <div class="chizhi_left"><a id="down" data="${article.id }"  href="javascript:void(0);" class="color_1"><span class="one2"></span><b>${article.down }</b></a></div>
                     <div class="bshare_bg">
-                    	<span><a id="share" href="javascript:void(0);" data="${article.id }">分享</a></span>
+                        <div class="bshare_info">
+                        	<ul>
+                            	<li><a id="tsina" class="one1 share_button"></a></li>
+                            	<li><a id="qzone" class="one2 share_button"></a></li>
+                            	<li><a id="tqq" class="one3 share_button"></a></li>
+                            	<li class="end" onmousemove="document.getElementById('bshare_list').style.display='block'" onmouseout="document.getElementById('bshare_list').style.display='none'"><a href="#" class="next"></a>
+                                	<div class="bshare_list_bg" id="bshare_list" style="display: none;">
+                                        <div class="bshare_jt_top"></div>
+                                        <div class="bshare_list">
+                                            <ul>
+                                                <li class="tenxun"><a id="tqq" class="share_button">腾讯微博</a></li>
+                                                <li class="qq"><a id="cqq" class="share_button">QQ好友</a></li>
+                                                <li class="douban"><a id="douban" class="share_button">豆瓣</a></li>
+                                                <li class="renren"><a id="renren" class="share_button">人人网</a></li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+									</div>                                	
+                                </li>
+                            </ul>
+                        </div>
+                    	<span>分享</span>
                     </div>
                 </div>
                 <script type="text/javascript">ad_show('10');</script>

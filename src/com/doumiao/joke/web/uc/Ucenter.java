@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.collections.MapUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -48,7 +47,6 @@ public class Ucenter {
 		account.put("uncheck", uncheck);
 		request.setAttribute("user", m);
 		request.setAttribute("account", account);
-		request.setAttribute("config", Config.getConfig());
 		return "/uc/score";
 	}
 
@@ -79,8 +77,8 @@ public class Ucenter {
 			log.error(e, e);
 		}
 		account.put("uncheck", uncheck);
-		int scoreUsePerDraw = Integer.parseInt(StringUtils.defaultIfBlank(
-				Config.get("score_use_per_draw"), "5"));
+		int scoreUsePerDraw = 
+				Config.getInt("score_use_per_draw",5);
 		account.put("drawtimes",
 				Math.ceil((Integer) account.get("s1") / scoreUsePerDraw));
 		return new Result(true, "interface_score_success", "获取用户积分", account);

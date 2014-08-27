@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -53,15 +52,14 @@ public class Draw {
 			@LoginMember Member m) {
 		int uid = m.getId();
 		String group = "1";
-		int drawCountPerDay = Integer.parseInt(StringUtils.defaultIfBlank(
-				Config.get("draw_count_per_day"), "3"));
-		int scoreUsePerDraw = Integer.parseInt(StringUtils.defaultIfBlank(
-				Config.get("score_use_per_draw"), "5"));
+		int drawCountPerDay = Config.getInt("draw_count_per_day", 3);
+		int scoreUsePerDraw = Config.getInt("score_use_per_draw", 5);
 		try {
 			int drawTimesTotal = jdbcTemplate.queryForInt(
 					"select s1 from uc_account where member_id = ?", uid);
-			if(drawTimesTotal<scoreUsePerDraw){
-				return new Result(false, "faild", "你目前没有抽奖机会,点评五次笑话，可获得一次抽奖机会", null);
+			if (drawTimesTotal < scoreUsePerDraw) {
+				return new Result(false, "faild", "你目前没有抽奖机会,点评五次笑话，可获得一次抽奖机会",
+						null);
 			}
 			// 验证是否有抽奖资格
 			Calendar c = Calendar.getInstance();
@@ -171,8 +169,12 @@ public class Draw {
 			// 调取后台接口发放奖品
 			Map<String, String> params = new HashMap<String, String>(1);
 			params.put("json", objectMapper.writeValueAsString(logs));
-			HttpClientHelper.controlPlatPost("/pay", params);
-			return new Result(true, "success", "抽奖成功", award);
+			Result r = HttpClientHelper.controlPlatPost("/pay", params);
+			if (r.isSuccess()) {
+				return new Result(true, "success", "抽奖成功", award);
+			} else {
+				return new Result(false, "faild", "系统错误,请联系管理员", null);
+			}
 		} catch (Exception e) {
 			log.error(e, e);
 			return new Result(false, "faild", "系统错误,请联系管理员", null);

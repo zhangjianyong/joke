@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
@@ -33,6 +35,7 @@ import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Result;
 
 public class HttpClientHelper {
+	private static final Log log = LogFactory.getLog(HttpClientHelper.class);
 	private static final AbstractHttpClient client = new DefaultHttpClient() {
 		protected HttpParams createHttpParams() {
 			HttpParams params = new BasicHttpParams();
@@ -70,23 +73,24 @@ public class HttpClientHelper {
 		return client;
 	}
 
-	public static void controlPlatPost(String uri, Map<String, String> params)
-			throws Exception {
-		HttpPost post = new HttpPost(Config.get("system_control_url") + uri);
+	public static Result controlPlatPost(String uri, Map<String, String> params){
+		HttpPost post = new HttpPost(Config.get("system_control_url",null) + uri);
 		List<NameValuePair> nvps = new ArrayList<NameValuePair>();
 		for (String key : params.keySet()) {
 			nvps.add(new BasicNameValuePair(key, params.get(key)));
 		}
-		post.setEntity(new UrlEncodedFormEntity(nvps));
-		HttpResponse res = client.execute(post);
-		if (res.getStatusLine().getStatusCode() != 200) {
-			throw new Exception("url error:" + post.getURI());
-		}
-		String content = EntityUtils.toString(res.getEntity());
-		ObjectMapper mapper = new ObjectMapper();
-		Result result = mapper.readValue(content, Result.class);
-		if(!result.isSuccess()){
-			throw new Exception(content);
+		try {
+			post.setEntity(new UrlEncodedFormEntity(nvps));
+			HttpResponse res = client.execute(post);
+			if (res.getStatusLine().getStatusCode() != 200) {
+				throw new Exception("url error:" + post.getURI());
+			}
+			String content = EntityUtils.toString(res.getEntity());
+			ObjectMapper mapper = new ObjectMapper();
+			return mapper.readValue(content, Result.class);
+		} catch (Exception e) {
+			log.error(e,e);
+			return new Result(false, "faild", "系统错误", null);
 		}
 	}
 }

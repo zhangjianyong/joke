@@ -26,10 +26,10 @@ public class SystemFilter implements Filter {
 		}
 		request.setAttribute("firstcome", firstcome);
 		CookieUtils
-				.createCookie((HttpServletResponse) response, (String) Config
-						.get("cookie_domain"), "firstcome", null, "",
-						Integer.parseInt((String) Config
-								.get("new_user_show_div_days")) * 86400, false);
+				.createCookie((HttpServletResponse) response, Config
+						.get("cookie_domain",""), "firstcome", null, "",
+						Config
+								.getInt("new_user_show_div_days",1) * 86400, false);
 		filterChain.doFilter(request, response);
 	}
 

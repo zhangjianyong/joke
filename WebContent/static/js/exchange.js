@@ -9,8 +9,11 @@ $("#exchange").on("click",function(){
 		async:true,
 		data:data,
 		success : function(result) {
-			checkScore();
-			alert("对换成功");
+			if(result.success){
+				checkScore();
+			}else{
+				alert(result.msg);
+			}
 		},
 		error : function(xhr, ts, et) {
 			xhr = null;

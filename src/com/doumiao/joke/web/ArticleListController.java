@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,8 +77,7 @@ public class ArticleListController {
 			listSql += " order by up desc limit ?,?";
 		}
 
-		int rows = Integer.parseInt(StringUtils.defaultIfBlank(
-				Config.get("row_count_per_page"), "30"));
+		int rows = Config.getInt("row_count_per_page",30);
 
 		int count = jdbcTemplate.queryForInt(countSql, countParams.toArray());
 		int pages = count / rows + 1;

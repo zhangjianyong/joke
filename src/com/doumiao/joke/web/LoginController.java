@@ -6,7 +6,6 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -35,7 +34,7 @@ public class LoginController {
 			TemplateResponse tr = new TemplateResponse(response, buf);
 			RequestDispatcher rd = request.getRequestDispatcher("/jsp/div/"
 					+ page + ".jsp");
-			request.setAttribute("control", Config.get("system_control_url"));
+			request.setAttribute("control", Config.get("system_control_url",""));
 			tr.setCharacterEncoding("UTF-8");
 			rd.include(request, tr);
 			tr.flushBuffer();
@@ -50,8 +49,7 @@ public class LoginController {
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public Result loginOut(HttpServletRequest request,
 			HttpServletResponse response) {
-		String domain = StringUtils.defaultIfBlank(Config.get("system_domain"),
-				"yixiaoqianjin.com");
+		String domain = Config.get("system_domain","");
 		CookieUtils.deleteCookie(response, domain, "loginuser");
 		CookieUtils.deleteCookie(response, domain, "user");
 		return new Result(true, "login_out_ok", "退出登录", "");

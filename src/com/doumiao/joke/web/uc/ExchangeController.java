@@ -22,7 +22,6 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.annotation.RequiredLogin;
 import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.lang.HttpClientHelper;
-import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
 
@@ -64,7 +63,6 @@ public class ExchangeController {
 		}
 		request.setAttribute("account", account);
 		request.setAttribute("alipayAccount", alipayAccount);
-		request.setAttribute("config", Config.getConfig());
 		return "/uc/exchange";
 	}
 
@@ -80,12 +78,6 @@ public class ExchangeController {
 		params.put("uid", String.valueOf(m.getId()));
 		params.put("account", account);
 		params.put("wealth", String.valueOf(wealth));
-		try {
-			HttpClientHelper.controlPlatPost("/alipay_exchange", params);
-		} catch (Exception e) {
-			log.error(e, e);
-			return new Result(false, "faild", "对换失败", null);
-		}
-		return new Result(true, "success", "对换成功", null);
+		return HttpClientHelper.controlPlatPost("/alipay_exchange", params);
 	}
 }

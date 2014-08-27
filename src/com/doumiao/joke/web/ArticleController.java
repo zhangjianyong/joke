@@ -6,7 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -58,9 +57,9 @@ public class ArticleController {
 		}
 		// 记录邀请人
 		if (inviter > 0) {
-			int hours = Integer.parseInt(StringUtils.defaultIfBlank(
-					Config.get("inviter_cookie_time"), "24"));
-			String domain = Config.get("cookie_domain");
+			int hours = 
+					Config.getInt("inviter_cookie_time", 24);
+			String domain = Config.get("cookie_domain","");
 			CookieUtils.createCookie(response, domain, "inviter",
 					String.valueOf(inviter), "/", hours * 3600, false);
 		}

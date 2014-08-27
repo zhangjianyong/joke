@@ -5,7 +5,6 @@ import java.net.URLDecoder;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -39,9 +38,9 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
                 HttpServletRequest request = (HttpServletRequest)webRequest.getNativeRequest();
                 String loginuser_b64 = CookieUtils.readCookie(request, "loginuser");
         		Member loginUser = null;
-    			String charset = StringUtils.defaultIfBlank(
-    					Config.get("system_charset"), "utf-8");
-    			String key = Config.get("system_cookie_key");
+    			String charset = 
+    					Config.get("system_charset","utf-8");
+    			String key = Config.get("system_cookie_key","");
         		if (loginuser_b64 != null) {
         			try {
         				byte[] loginuser_c = DESCoder.decryptBASE64(loginuser_b64
