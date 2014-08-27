@@ -21,7 +21,7 @@
     <p class="font16">请使用QQ账号登录 </p>
 </div>
 <script type="text/javascript">
-$("#logindivclose").on("click",function(){
+$("#logindivclose").click(function(){
 	$("#logindiv").hide();
 });
 </script>
