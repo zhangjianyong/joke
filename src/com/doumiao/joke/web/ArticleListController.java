@@ -32,7 +32,7 @@ public class ArticleListController {
 			HttpServletResponse response,
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "p", required = false, defaultValue = "1") int page,
-			@RequestParam(value = "o", required = false, defaultValue = "toady") String order)
+			@RequestParam(value = "o", required = false, defaultValue = "new") String order)
 			throws Exception {
 		ArticleType typeE = null;
 		OrderType orderE = null;

@@ -52,7 +52,7 @@
             <div class="right_name font14 color_66 fontbold">搞笑图片推荐</div>
             <div class="right_list">
             	<ul><c:forEach var="h" items="${hots }">
-                	<li><a href="/article/${h.id }"><img style="min-width: 90px;max-height:90px;" src="${config.pic_domain }/${h.pic }!90"></a></li>
+                	<li><a href="/article/${h.id }"><img style="min-width: 90px;max-height:90px;" src="${config.pic_domain }/article/90${h.pic }"></a></li>
                 </c:forEach></ul>
                 <div class="clear"></div>
             </div>

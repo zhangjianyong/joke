@@ -4,7 +4,7 @@
 	<!-- 首页为所有分类的混排 -->
 	<rule>
         <from>^/$</from>
-        <to type="forward">/list?t=all&amp;o=today</to>
+        <to type="forward">/list?t=all&amp;o=new</to>
     </rule>
     <rule>
         <from>^/favicon.ico$</from>
@@ -28,7 +28,7 @@
     <!-- 参数中只有类型时,默认为new排序,默认为第一页 -->
     <rule>
         <from>^/(pic|text|ashamed|all)$</from>
-        <to type="forward">/list?t=$1&amp;o=today</to>
+        <to type="forward">/list?t=$1&amp;o=new</to>
     </rule>
     <!-- 顶沉操作的链接配置 -->
     <rule> 

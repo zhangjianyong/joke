@@ -34,7 +34,7 @@
                 </div>
                 <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div>
                 <c:if test="${a.type=='PIC' }"><div class="two_info"><br>
-	                <a href="/article/${a.id }" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
+	                <a href="/article/${a.id }" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
 	            <c:if test="${a.type=='TEXT' }"><div class="two_info">${a.content }<br></div></c:if>
 	            <c:if test="${a.type=='ASHAMED' }">
 	                <div class="two_info">${a.content }<br></div></c:if>
@@ -60,7 +60,7 @@
             <div class="right_name font14 color_66 fontbold">搞笑图片推荐</div>
             <div class="right_list">
             	<ul><c:forEach var="h" items="${hots }">
-                	<li><a href="/article/${h.id }"><img style="max-width: 90px;min-height:90px;" src="${config.pic_domain }/${h.pic }!90"></a></li>
+                	<li><a href="/article/${h.id }"><img style="max-width: 90px;min-height:90px;" src="${config.pic_domain }/article/90${h.pic }"></a></li>
                 </c:forEach></ul>
                 <div class="clear"></div>
             </div>
