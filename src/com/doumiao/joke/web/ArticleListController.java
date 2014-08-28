@@ -40,7 +40,7 @@ public class ArticleListController {
 			typeE = ArticleType.valueOf(type.toUpperCase());
 			orderE = OrderType.valueOf(order.toUpperCase());
 		} catch (Exception e) {
-			return "redirect:/404";
+			return "/404";
 		}
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.HOUR_OF_DAY, 0);

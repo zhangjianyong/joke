@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html><html lang=zh>
 <head>
-	<title>一笑千金-${article.title }</title>	
+	<title>${config.system_website_name}-${article.title }</title>	
 	<%@ include file="jscss.jsp" %>
 </head>
 <body>

@@ -31,10 +31,15 @@ public class ArticleController {
 			HttpServletResponse response,
 			@RequestParam(value = "id") int id,
 			@RequestParam(value = "inviter", defaultValue = "0", required = false) int inviter) {
-		Map<String, Object> article = jdbcTemplate
+		Map<String, Object> article=null;
+		try{
+		article = jdbcTemplate
 				.queryForMap(
 						"select id, title, pic, content, type, down, up, create_time from joke_article where  id = ? and status = 2",
 						id);
+		}catch(EmptyResultDataAccessException edae){
+			return "/404";
+		}
 		int nextId = 0;
 		try {
 			nextId = jdbcTemplate

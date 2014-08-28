@@ -22,7 +22,7 @@
     2.	每日每人最多获得${config.draw_count_per_day }次抽奖机会；抽奖机会当日有效。<br>
     3.	奖品最高为1000个金币，可以用来购物、电话充值、还信用卡等。</p>
     <p class="layer_collect_bg"><span class="layer_collect"><a id="addfavorite" href="javascript:void(0);">收藏本站</a></span><span class="word">收藏本站并开始娱乐之旅</span></p>
-</div></c:if>
+</div>
 <script type="text/javascript">
 var h = '${config.system_website_url }';
 var l = '${config.system_website_name }';
@@ -41,3 +41,4 @@ $("#addfavorite").on("click",function(){
 	}
 });
 </script>
+</c:if>
