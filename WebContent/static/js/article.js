@@ -161,6 +161,6 @@ $(".share_button").each(function(i,e){
 	var content=$("#content").text();
 	var pic=$("#article_pic").attr("src");
 	$(e).on("click",function(){
-		J_utils.share(webid,title,J_utils.Config.website+"/article/"+id,content,pic);
+		J_utils.share(webid,title,J_utils.Config.website+"article/"+id,content,pic);
 	})
 });
