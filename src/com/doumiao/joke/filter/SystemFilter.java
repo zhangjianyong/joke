@@ -27,7 +27,7 @@ public class SystemFilter implements Filter {
 		request.setAttribute("firstcome", firstcome);
 		CookieUtils
 				.createCookie((HttpServletResponse) response, Config
-						.get("cookie_domain",""), "firstcome", null, "",
+						.get("cookie_domain",""), "firstcome", "t", "",
 						Config
 								.getInt("new_user_show_div_days",1) * 86400, false);
 		filterChain.doFilter(request, response);
