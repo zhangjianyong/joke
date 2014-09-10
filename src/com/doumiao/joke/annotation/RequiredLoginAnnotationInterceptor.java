@@ -15,7 +15,6 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.doumiao.joke.lang.CookieUtils;
-import com.doumiao.joke.lang.Function;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Result;
 
@@ -41,7 +40,6 @@ public class RequiredLoginAnnotationInterceptor extends
 						"ref",
 						new String[] { StringUtils.defaultIfBlank(
 								request.getRequestURI(), "/") });
-				String paramStr = Function.joinMap(params);
 //				response.sendRedirect("/login?" + paramStr);
 				response.sendRedirect(Config.get("system_website_url", "/"));
 			} else if (login.value() == ResultTypeEnum.json) {

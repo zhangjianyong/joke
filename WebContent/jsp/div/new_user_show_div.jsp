@@ -2,32 +2,35 @@
 <c:if test="${firstcome==true }">
 <style type="text/css">
 	#newusershowdiv{
-	    background-color:#FFF;
-	    border:1px solid #888;
 	    display:block;
-	    left:40%;
-	    margin:-100px 0 0 -100px;
-	    padding:12px;
+	    left:50%;
+	    margin:-300px 0 0 -216px;
 	    position:fixed !important; 
 	    position:absolute;
 	    top:50%;
 	    z-index:11;
 	}
 </style>
-<div id="newusershowdiv" class="layer_login_nr layer_login_nr_bi">
-	<div id="newuserdivclose" class="layer_login_close"><a href="javascript:void(0);"></a></div>
-    <p class="font20">笑呵呵赚金币  </p>
-    <p class="font12 layer_prompt padding_top20">一笑千金赚积分说明：<br>
-    1.	每日查看并评论${config.score_use_per_draw }个笑话（赞或踩即可），即可获得一次抽奖机会。<br>
-    2.	每日每人最多获得${config.draw_count_per_day }次抽奖机会；抽奖机会当日有效。<br>
-    3.	奖品最高为1000个金币，可以用来购物、电话充值、还信用卡等。</p>
-    <p class="layer_collect_bg"><span class="layer_collect"><a id="addfavorite" href="javascript:void(0);">收藏本站</a></span><span class="word">收藏本站并开始娱乐之旅</span></p>
+<div id="newusershowdiv" class="layer_pic_bg">
+	<div class="layer_pic_top">
+    	<div class="layer_pic_close"><a id="newuserdivclose" href="#"></a></div>
+    </div>
+    <div class="layer_pic_info">
+        <p class="font16">笑呵呵赚金币</p>
+        <p>一笑千金赚积分说明：<br>
+    	1.	每日查看并评论${config.score_use_per_draw }个笑话（赞或踩即可），即可获得一次抽奖机会。<br>
+    	2.	每日每人最多获得${config.draw_count_per_day }次抽奖机会；抽奖机会当日有效。<br>
+    	3.	奖品最高为1000个金币，可以用来购物、电话充值、还信用卡等。</p>
+        <p class="layer_pic_botton"><a id="addfavorite" href="javascript:void(0);"></a></p>
+    </div>
 </div>
 <script type="text/javascript">
 var h = '${config.system_website_url }';
 var l = '${config.system_website_name }';
+$("#mask").show();
 $("#newuserdivclose").on("click",function(){
 	$("#newusershowdiv").hide();
+	$("#mask").hide();
 });
 $("#addfavorite").on("click",function(){
 	try{

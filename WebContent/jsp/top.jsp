@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
-<div id="mask" ></div>
+<div id="mask" class="overDiv"></div>
 <LINK href="${config.system_resource_url }/static/favicon.ico" type="image/x-icon" rel=icon>
 <LINK href="${config.system_resource_url }/static/favicon.ico" type="image/x-icon" rel="shortcut icon">
 <div class="i_top_bg" id="top">

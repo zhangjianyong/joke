@@ -158,15 +158,6 @@ var eu = encodeURIComponent;
 					}
 					return o;
 				},
-				showMask : function(){
-					$("#mask").css("height",$(document).height());
-			        $("#mask").css("width",$(document).width());
-			        $("#mask").css("z-index",10);
-			        $("#mask").show();
-			        $("#mask").on("click",function(){
-			        	$("#mask").hide();
-			        });
-				},
 				share : function(webid, title,url, pic,summary) {
 				    f.open('http://www.jiathis.com/send/?webid=' + webid + '&url=' + eu(url) + '&title=' + eu(title) + '&summary=' + eu(summary)+ '&pic=' + pic + '&uid=1961209');
 				},

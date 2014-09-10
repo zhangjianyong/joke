@@ -1,6 +1,8 @@
 package com.doumiao.joke.lang;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,6 +29,7 @@ public class Function {
 
 	public static String template(String templateContent,
 			Map<String, Object> params) {
+		assert (StringUtils.isNotBlank(templateContent));
 		for (String key : params.keySet()) {
 			templateContent = templateContent.replaceAll(
 					"\\$\\{" + key + "\\}", (String) params.get(key));
@@ -34,15 +37,35 @@ public class Function {
 		return templateContent;
 	}
 
-	public static String joinMap(Map<String, String[]> params) {
-		if (params == null || params.size() < 1) {
-			return StringUtils.EMPTY;
+	public static String joinUrl(String url, List<String[]> params) {
+		assert (StringUtils.isNotBlank(url));
+		String querystr = "?";
+		if (!params.isEmpty()) {
+			for (int i = 0; i < params.size(); i++) {
+				querystr += params.get(i);
+				if (i < params.size()) {
+					querystr += "&";
+				}
+			}
+			url += querystr;
 		}
-		StringBuilder sb = new StringBuilder();
-		for (String key : params.keySet()) {
-			sb.append(key).append("=")
-					.append(StringUtils.join(params.get(key), ","));
+		return url;
+	}
+
+	public static String joinSql(String sql, List<String> options, String order) {
+		assert (StringUtils.isNotBlank(sql));
+		String where = null;
+		if (!options.isEmpty()) {
+			where = " where ";
+			for (int i = 0; i < options.size(); i++) {
+				where += options.get(i) + " ";
+				if (i < options.size()) {
+					where += "and ";
+				}
+			}
+			sql += where;
 		}
-		return sb.toString();
+		sql += " " + order;
+		return sql;
 	}
 }

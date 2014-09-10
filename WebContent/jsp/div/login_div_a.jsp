@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <style type="text/css">
 	#logindiv{
-	    background-color:#FFF;
-	    border:1px solid #888;
-	    display:none;
-	    left:40%;
+	    display:block;
+	    left:50%;
 	    margin:-100px 0 0 -100px;
-	    padding:12px;
 	    position:fixed !important; 
 	    position:absolute;
 	    top:50%;
