@@ -76,6 +76,7 @@ img{border:0;}
 .left_two{padding:0 20px 20px; margin:15px 0 0;}
 .two_title{ height:35px; line-height:35px; padding:20px 0 0; position:relative;}
 .two_title .name_pic{ width:35px; height:35px; border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;-o-border-radius: 50%;-webkit-border-radius: 50%;overflow: hidden; float:left;}
+.two_title .name_pic img{ width:35px; height:35px;}
 .padding_left10{ padding-left:10px;}
 .two_title .title_more{ position:absolute;top:20px; right:0;}
 .two_title .title_more a{ color:#9b8878;}
@@ -270,5 +271,4 @@ img{border:0;}
 .layer_pic_info{ width:386px; background:#fefaef; padding:0 0 15px 20px; line-height:20px;  margin:0 auto; border-radius:0 0 20px 20px;}
 .layer_pic_botton{ width:146px; height:49px; margin:10px auto 0;}
 .layer_pic_botton a{ width:146px; height:49px; display:block; cursor:pointer;  background:url(../images/layer_botton.jpg) no-repeat left top;}
-.layer_center{position:relative;z-index:101;left: 43%;top:20%;margin-left: -150px!important;margin-top: -60px!important;margin-top: 0px;position: fixed!important;position: absolute;_top: expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 :/*IE6*/ document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2); }
 .overDiv{background-color: black;width: 100%;height: 100%;left: 0;top: 0;filter: alpha(opacity=60);opacity: 0.6;z-index: 100;position: fixed!important; display:none;}

@@ -98,7 +98,9 @@ public class ArticleListController {
 						.queryForList(
 								"select * from joke_article where `type` = ? and `status` = 2 order by up desc,id desc limit 0, 6",
 								ArticleType.PIC.name()));
-
+		if(ArticleType.ALL == typeE && page==1){
+			return "/index";
+		}
 		return "/list";
 	}
 }
