@@ -35,7 +35,7 @@ public class ArticleController {
 		try{
 		article = jdbcTemplate
 				.queryForMap(
-						"select id, title, pic, content, type, down, up, create_time from joke_article where  id = ? and status = 2",
+						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id = m.id and  a.id = ? and a.`status` = 2",
 						id);
 		}catch(EmptyResultDataAccessException edae){
 			return "/404";

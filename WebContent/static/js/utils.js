@@ -190,6 +190,7 @@ var eu = encodeURIComponent;
 					var logindiv = $("#logindiv");
 					if(logindiv.length>0){
 //				        f.showMask();
+						$("#mask").show();
 						logindiv.show();
 						return;
 					}
@@ -205,6 +206,7 @@ var eu = encodeURIComponent;
 								f.log(result.code+":"+result.msg);
 							}
 //							f.showMask();
+							$("#mask").show();
 							var div = $(result.content);
 							$('body').append(div);
 							div.show();
@@ -667,6 +669,9 @@ $.ajax({
 	jsonp : "jsoncallback",
 	async:false,
 	success : function(ad) {
+		if(ad.content==null){
+			return;
+		}
 		document.open();
 		if(!ad.tpl){
 			document.write(ad.content);

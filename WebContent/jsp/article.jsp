@@ -18,8 +18,8 @@
 	                        <c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }?pos=next">下一条</a></span></c:if>
 	                        <div class="clear"></div>
 						</div>
-						<span class="name_pic"><img src="${config.system_resource_url }/static/images/demoimg/i_01.gif"></span>
-						<span class="padding_left10">${article.member_nick }</span>
+						<span class="name_pic"><img src="${config.system_resource_url }/static${article.avatar}"></span>
+						<span class="padding_left10">${article.nick }</span>
 						<span class="padding_left10 englist color_99">${article.create_time }</span>
                	</div>
                 <form>

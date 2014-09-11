@@ -19,6 +19,7 @@
 </div>
 <script type="text/javascript">
 $("#logindivclose").click(function(){
+	$("#mask").hide();
 	$("#logindiv").hide();
 });
 </script>

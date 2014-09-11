@@ -32,10 +32,9 @@
                     <span class="padding_left10">${a.member_nick }</span>
                     <span class="padding_left10 englist color_99">${a.create_time }</span>
                 </div>
-                <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div>
-                <c:if test="${a.type=='PIC' }"><div class="two_info"><br>
+                <c:if test="${a.type=='PIC' }"> <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info"><br>
 	                <a href="/article/${a.id }" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
-	            <c:if test="${a.type=='TEXT' }"><div class="two_info">${a.content }<br></div></c:if>
+	            <c:if test="${a.type=='TEXT' }"> <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
 	            <c:if test="${a.type=='ASHAMED' }">
 	                <div class="two_info">${a.content }<br></div></c:if>
                 <div class="zhichi_bg">

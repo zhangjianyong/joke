@@ -28,14 +28,13 @@
             <c:forEach var="a"  items="${articles }"  varStatus="s" ><c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if><div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
                 <div class="two_title">
                 	<div class="title_more"><a href="/article/${a.id }" target="_blank">查看全文</a></div>
-                	<span class="name_pic"><img src="${config.system_resource_url }/static/images/demoimg/i_01.gif"></span>
-                    <span class="padding_left10">${a.member_nick }</span>
+                	<span class="name_pic"><img src="${config.system_resource_url }/static${a.avatar }"></span>
+                    <span class="padding_left10">${a.nick }</span>
                     <span class="padding_left10 englist color_99">${a.create_time }</span>
                 </div>
-                <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div>
-                <c:if test="${a.type=='PIC' }"><div class="two_info"><br>
+                <c:if test="${a.type=='PIC' }"><div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info"><br>
 	                <a href="/article/${a.id }" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
-	            <c:if test="${a.type=='TEXT' }"><div class="two_info">${a.content }<br></div></c:if>
+	            <c:if test="${a.type=='TEXT' }"><div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
 	            <c:if test="${a.type=='ASHAMED' }">
 	                <div class="two_info">${a.content }<br></div></c:if>
                 <div class="zhichi_bg">
