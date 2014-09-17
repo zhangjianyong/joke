@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ import com.doumiao.joke.vo.Result;
 public class PublishController {
 	@Resource
 	private JdbcTemplate jdbcTemplate;
-	
+	Log log = LogFactory.getLog(PublishController.class);
 	@RequestMapping(value = "/publish", method = RequestMethod.GET)
 	public String detail(
 			HttpServletRequest request,
@@ -52,21 +54,26 @@ public class PublishController {
 		if (StringUtils.isBlank(title)) {
 			return new Result(false, "article.title.empty", "标题不能为空", null);
 		}
-		// 图片笑话
-		if (typeE.equals(ArticleType.PIC)) {
-			if (StringUtils.isBlank(picpath)) {
-				return new Result(false, "article.picpath.empty", "图片不能为空",
-						null);
+		try{
+			// 图片笑话
+			if (typeE.equals(ArticleType.PIC)) {
+				if (StringUtils.isBlank(picpath)) {
+					return new Result(false, "article.picpath.empty", "图片不能为空",
+							null);
+				}
+				jdbcTemplate.update("insert into joke_article(title,pic,type,member_id,status) values(?,?,?,?,?)",title,picpath,typeE.name(),m.getId(),0);
 			}
-			jdbcTemplate.update("insert into joke_article(title,pic,type,member_id,status) values(?,?,?,?,?)",title,picpath,typeE.name(),m.getId(),0);
-		}
-		// 文本笑话
-		if (typeE.equals(ArticleType.TEXT)) {
-			if (StringUtils.isBlank(content)) {
-				return new Result(false, "article.content.empty", "内容不能为空",
-						null);
+			// 文本笑话
+			if (typeE.equals(ArticleType.TEXT)) {
+				if (StringUtils.isBlank(content)) {
+					return new Result(false, "article.content.empty", "内容不能为空",
+							null);
+				}
+				jdbcTemplate.update("insert into joke_article(title,content,type,member_id,status) values(?,?,?,?,?)",title,content,typeE.name(),m.getId(),2);
 			}
-			jdbcTemplate.update("insert into joke_article(title,content,type,member_id,status) values(?,?,?,?,?)",title,content,typeE.name(),m.getId(),2);
+		}catch(Exception e){
+			log.error(e,e);
+			return new Result(false, "faild", "发布失败", null);
 		}
 		return new Result(true, "success", "发布成功", null);
 	}
