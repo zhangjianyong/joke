@@ -1,3 +1,11 @@
+var login = getParam("login");
+var to = getParam("to");
+if(login){
+	var data={};
+	data['to']=to;
+	J_utils.login(data);
+}
+
 $(".updown.up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1");});
 $(".updown.down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1");});
 $(".updown").on("click",function(){

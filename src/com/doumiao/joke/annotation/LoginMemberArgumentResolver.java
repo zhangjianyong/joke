@@ -36,14 +36,14 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         for (Annotation annotation : annotations) {
             if (LoginMember.class.isInstance(annotation)) {
                 HttpServletRequest request = (HttpServletRequest)webRequest.getNativeRequest();
-                String loginuser_b64 = CookieUtils.readCookie(request, "loginuser");
+                String _user = CookieUtils.readCookie(request, "_user");
         		Member loginUser = null;
     			String charset = 
     					Config.get("system_charset","utf-8");
     			String key = Config.get("system_cookie_key","");
-        		if (loginuser_b64 != null) {
+        		if (_user != null) {
         			try {
-        				byte[] loginuser_c = DESCoder.decryptBASE64(loginuser_b64
+        				byte[] loginuser_c = DESCoder.decryptBASE64(_user
         						.getBytes(charset));
         				byte[] loginuser = DESCoder.decrypt(loginuser_c,
         						key.getBytes(charset));

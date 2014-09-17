@@ -3,10 +3,10 @@ if(user){
 	var user = eval('(' + JSON.parse(user) + ')');
 	$(".top_user_name").html(user.nick);
 };
-var loginuser = "loginuser".getCookie();
-if(loginuser){
+var _user = "_user".getCookie();
+if(_user){
 	$.ajax({
-		url : J_utils.Config.website+"uc/i/score",
+		url : J_utils.Config.website+"/uc/i/score",
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,

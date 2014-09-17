@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.commons.lang3.StringUtils;
@@ -40,7 +39,6 @@ public class ExtentionTag extends RequestContextAwareTag {
 				.getRequest();
 		HttpServletResponse response = (HttpServletResponse) pageContext
 				.getResponse();
-		JspWriter out = pageContext.getOut();
 		Map<String, Object> extention = null;
 		String content = null;
 		try {

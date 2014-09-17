@@ -30,8 +30,8 @@ public class RequiredLoginAnnotationInterceptor extends
 		if (null == login) {
 			return true;
 		}
-		String loginuser_b64 = CookieUtils.readCookie(request, "loginuser");
-		if (null == loginuser_b64) {
+		String _user = CookieUtils.readCookie(request, "_user");
+		if (null == _user) {
 			if (login.value() == ResultTypeEnum.page) {
 				Map<String, String[]> paramMap = request.getParameterMap();
 				Map<String, String[]> params = new HashMap<String, String[]>();
@@ -40,15 +40,14 @@ public class RequiredLoginAnnotationInterceptor extends
 						"ref",
 						new String[] { StringUtils.defaultIfBlank(
 								request.getRequestURI(), "/") });
-//				response.sendRedirect("/login?" + paramStr);
-				response.sendRedirect(Config.get("system_website_url", "/"));
+				response.sendRedirect(Config.get("system_website_url")+"/login_p");
 			} else if (login.value() == ResultTypeEnum.json) {
 				response.setCharacterEncoding("utf-8");
 				response.setContentType("text/html;charset=UTF-8");
 				OutputStream out = response.getOutputStream();
 				PrintWriter pw = new PrintWriter(new OutputStreamWriter(out,
 						"utf-8"));
-				Result msg = new Result(true, "login_no", "请登录", "");
+				Result msg = new Result(false, "login_no", "请登录", "");
 				pw.println(new ObjectMapper().writeValueAsString(msg));
 				pw.flush();
 				pw.close();

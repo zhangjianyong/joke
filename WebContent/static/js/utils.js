@@ -3,7 +3,8 @@ var eu = encodeURIComponent;
 	var m = {
 		charset : "utf-8",
 		domain : ".yixiaoqianjin.com",
-		website : "http://www.yixiaoqianjin.com/"
+		website : "http://www.yixiaoqianjin.com",
+		system_control_url : "http://control.yixiaoqianjin.com"
 	};
 	w[f] = w[f] || {};
 	f = w[f];
@@ -177,26 +178,20 @@ var eu = encodeURIComponent;
 						window.open(url,target);
 					}
 				},
-				login : function(page,params){
-					var user = "user".getCookie();
-					//已知用户
-					if(user){
-						return true;
-					}
+				login : function(params,page){
 					var data = {};
 					data["p"]=page;
 					$.extend(data,params);
 					//已初始化弹层
 					var logindiv = $("#logindiv");
 					if(logindiv.length>0){
-//				        f.showMask();
 						$("#mask").show();
 						logindiv.show();
 						return;
 					}
 					//生成弹层
 					$.ajax({
-						url : J_utils.Config.website+"login",
+						url : J_utils.Config.website+"/login",
 						type : "POST",
 						dataType : "JSON",
 						data:data,
@@ -205,14 +200,10 @@ var eu = encodeURIComponent;
 							if(result.result==false){
 								f.log(result.code+":"+result.msg);
 							}
-//							f.showMask();
 							$("#mask").show();
 							var div = $(result.content);
 							$('body').append(div);
 							div.show();
-//							$("#mask").on("click",function(){
-//								$("#logindiv").hide();
-//							});
 						},
 						error : function(xhr, ts, et) {
 							xhr = null;
@@ -663,10 +654,11 @@ $.fn.extend({pagination:function(option,pageInfo){
 }});
 function ad_show(id){
 $.ajax({
-	url : J_utils.Config.website+"ad/"+id,
+	url : J_utils.Config.website+"/ad/"+id,
 	type : "POST",
 	dataType : "JSON",
 	jsonp : "jsoncallback",
+	timeout:1000,
 	async:false,
 	success : function(ad) {
 		if(ad.content==null){
@@ -755,3 +747,10 @@ $.fn.scrollFloatBottom=function(rang_ele,bottom,end){
 		}
 	});
 };
+function getParam(name) {
+    var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+    if (result == null || result.length < 1) {
+        return "";
+    }
+    return result[1];
+}

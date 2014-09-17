@@ -10,13 +10,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.doumiao.joke.lang.CookieUtils;
 import com.doumiao.joke.lang.TemplateResponse;
-import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Result;
 
 @Controller
@@ -28,7 +25,7 @@ public class LoginController {
 	public Result login(
 			HttpServletRequest request,
 			HttpServletResponse response,
-			@RequestParam(value = "p", defaultValue = "login", required = false) String page) {
+			@RequestParam(value = "p", defaultValue = "login_div_a", required = false) String page) {
 		try {
 			ByteArrayOutputStream buf = new ByteArrayOutputStream(3000);
 			TemplateResponse tr = new TemplateResponse(response, buf);
@@ -43,14 +40,12 @@ public class LoginController {
 			return new Result(false, "login_page_faild", "登录页加载失败", "");
 		}
 	}
-
-	@ResponseBody
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
-	public Result loginOut(HttpServletRequest request,
-			HttpServletResponse response) {
-		String domain = Config.get("system_domain","");
-		CookieUtils.deleteCookie(response, domain, "loginuser");
-		CookieUtils.deleteCookie(response, domain, "user");
-		return new Result(true, "login_out_ok", "退出登录", "");
+	
+	@RequestMapping(value = "/login_p")
+	public String loginPage(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam(value = "u", required = false) String url) {
+		return "/login";
 	}
 }

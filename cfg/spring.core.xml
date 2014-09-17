@@ -48,5 +48,5 @@
 		<property name="jndiName" value="java:comp/env/jdbc/joke" />
 	</bean>
 	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper" />
-
+	<bean id="multipartResolver"  class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 </beans>
