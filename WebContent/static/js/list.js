@@ -12,8 +12,9 @@ $(".updown").on("click",function(){
 	var t = $(this);
 	var article = t.attr("data");
 	var data = {};
-	data["t"]=J_utils.Config.website+"article/"+article;
-	if(!J_utils.login("login_div_a",data)){
+	data["to"]=J_utils.Config.website+"/article/"+article;
+	if(!_user){
+		J_utils.login(data,"login_div_a")
 		return;
 	}else{
 		window.open(data.t);

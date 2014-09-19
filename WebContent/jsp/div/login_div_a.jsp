@@ -3,7 +3,7 @@
 	#logindiv{
 	    display:block;
 	    left:50%;
-	    margin:-100px 0 0 -100px;
+	    margin:-143px 0 0 -243px;
 	    position:fixed !important; 
 	    position:absolute;
 	    top:50%;

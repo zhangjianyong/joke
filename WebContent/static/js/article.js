@@ -1,7 +1,8 @@
 $("#up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1");});
 $("#down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1");});
 $("#up").on("click",function(){
-	if(!J_utils.login("login_div_a")){
+	if(!_user){
+		J_utils.login("login_div_a");
 		return;
 	}
 	var t = $(this);
@@ -11,7 +12,7 @@ $("#up").on("click",function(){
 	t.attr({"disabled":"disabled"});
 	var aid = t.attr("data");
 	$.ajax({
-		url : J_utils.Config.website+"up/"+aid,
+		url : J_utils.Config.website+"/up/"+aid,
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,
@@ -49,7 +50,8 @@ $("#up").on("click",function(){
 	});
 });
 $("#down").on("click",function(){
-	if(!J_utils.login("login_div_a")){
+	if(!_user){
+		J_utils.login("login_div_a");
 		return;
 	}
 	var t = $(this);
@@ -59,7 +61,7 @@ $("#down").on("click",function(){
 	t.attr({"disabled":"disabled"});
 	var aid = t.attr("data");
 	$.ajax({
-		url : J_utils.Config.website+"down/"+aid,
+		url : J_utils.Config.website+"/down/"+aid,
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,
@@ -161,6 +163,6 @@ $(".share_button").each(function(i,e){
 	var content=$("#content").text();
 	var pic=$("#article_pic").attr("src");
 	$(e).on("click",function(){
-		J_utils.share(webid,title,J_utils.Config.website+"article/"+id,content,pic);
+		J_utils.share(webid,title,J_utils.Config.website+"/article/"+id,content,pic);
 	})
 });
