@@ -17,7 +17,7 @@ $(".updown").on("click",function(){
 		J_utils.login(data,"login_div_a")
 		return;
 	}else{
-		window.open(data.t);
+		window.open(data.to);
 	}
 });
 $(function(){
