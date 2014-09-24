@@ -55,20 +55,32 @@ public class UpdownController {
 		}
 		int uid = u.getId();
 		try {
+			// 1检查该会员今天是否顶沉过该内容
 			int count = jdbcTemplate
 					.queryForInt(
 							"select count(1) from joke_article_updown where article_id = ? and member_id = ?",
 							aid, uid);
-			// 已顶沉过
 			if (count > 0) {
-				return new Result(false, "faild", "已投过票", "");
+				return new Result(false, "faild", "已投过票", null);
 			}
+
+			// 2检查此次操作应距上次10秒钟以上
+			Calendar cc = Calendar.getInstance();
+			cc.add(Calendar.SECOND, -10);
+			int _count = jdbcTemplate
+					.queryForInt(
+							"select count(1) from joke_article_updown where member_id = ? and unix_timestamp(create_time) > ?",
+							uid, cc.getTimeInMillis() / 1000);
+			if (_count > 0) {
+				return new Result(false, "faild", "慢一点，看完效果再点评吧", null);
+			}
+			// 3记为一次顶沉操作
 			jdbcTemplate.update("update joke_article set " + _type + " = "
 					+ _type + " +1 where id = ?", aid);
 			jdbcTemplate
 					.update("insert into joke_article_updown(article_id,member_id,type) values(?,?,?)",
 							aid, uid, _type);
-			// 发放积分
+			// 4检查当日积分是否满额
 			int scoreUpDownPerTime = Config.getInt("score_up_down_per_time", 1);
 			int scoreUpDownMaxPerDay = Config.getInt(
 					"score_up_down_max_per_day", 15);
@@ -86,6 +98,8 @@ public class UpdownController {
 									+ "and wealth_type = ? and account = ? and unix_timestamp(create_time) >= ? and unix_timestamp(create_time) < ?",
 							uid, WealthType.UPDOWN.name(), Account.S1.name(),
 							today.getTime() / 1000, tomorrow.getTime() / 1000);
+
+			// 5如果不满额,发放积分
 			if (scoreUpDownToday <= scoreUpDownMaxPerDay) {
 				String[] serialNumber = SerialNumberGenerator.generate(1);
 				// 生成中奖流水
@@ -110,8 +124,8 @@ public class UpdownController {
 			}
 		} catch (Exception e) {
 			log.error(e, e);
-			return new Result(false, "faild", "系统错误", "");
+			return new Result(false, "faild", "系统错误", null);
 		}
-		return new Result(true, "success", "投票成功", "");
+		return new Result(true, "success", "投票成功", null);
 	}
 }

@@ -47,7 +47,7 @@ public class Draw {
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/lottery/draw/go")
+	@RequestMapping(value = "/lottery/i/draw")
 	public Result go(HttpServletRequest request, HttpServletResponse response,
 			@LoginMember Member m) {
 		int uid = m.getId();

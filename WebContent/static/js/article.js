@@ -110,7 +110,7 @@ $("#share").on("click",function(){
 	}
 	//生成弹层
 	$.ajax({
-		url : J_utils.Config.website+"share",
+		url : J_utils.Config.website+"/share",
 		type : "POST",
 		dataType : "JSON",
 		data:data,

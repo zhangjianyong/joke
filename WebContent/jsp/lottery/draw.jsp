@@ -23,7 +23,7 @@
                             <li id="5"><span class="one2"></span><span class="one3"></span></li>
                             <li id="15"><span class="one2"></span><span class="one3"></span></li>
                             <li class="li_center">
-                                <p class="word font14">点评五次笑话，可获得一次抽奖机会...<br>
+                                <p class="word font14">点评${config.score_use_per_draw }次笑话，可获得一次抽奖机会...<br>
                                 <span id="drawtimes" class="color_red fontbold">你还有<em>--</em>次抽奖机会！</span></p>
                             </li>
                             <li id="6"><span class="one2"></span><span class="one3"></span></li>

@@ -74,8 +74,7 @@ public class ArticleController {
 				"hots",
 				jdbcTemplate
 						.queryForList(
-								"select id, pic from joke_article where type = ? and status = 2 order by up desc,id desc limit 0, 6",
-								ArticleType.PIC.name()));
+								"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 4"));
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
 		return "/article";

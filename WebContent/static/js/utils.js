@@ -436,7 +436,7 @@ function loginout(){
 	var defaults ={success:$.noop,error:$.noop};
 	var settings = $.extend(true, {}, defaults, loginout_option);
 	$.ajax({
-		url : J_utils.Config.website+"loginout",
+		url : J_utils.Config.website+"/loginout",
 		type : "POST",
 		dataType : "JSON",
 		jsonp : "jsoncallback",
@@ -573,7 +573,7 @@ Date.prototype.format = function(format){
         }});
 })(jQuery);
 function identifycode() {
-    $("#codeimg").attr("src", J_utils.Config.website+"code.htm?" + (new Date()).getTime());
+    $("#codeimg").attr("src", J_utils.Config.website+"/code?" + (new Date()).getTime());
     $('#J_verify_code').val('');
 }
 $("#codeimg").on("click",identifycode);
@@ -698,7 +698,7 @@ $.ajax({
 				$iframe.attr("frameborder",0);
 				$iframe.attr("marginwidth",0);
 				$iframe.attr("marginheight",0);
-				$iframe.attr("src",J_utils.Config.website+'adshow/'+ad.id);
+				$iframe.attr("src",J_utils.Config.website+'/adshow/'+ad.id);
 		$div.append($iframe);
 		document.write($div.html());
 		document.close();

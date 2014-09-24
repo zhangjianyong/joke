@@ -13,19 +13,20 @@ var i = 0, l = awards.length-1, al;
 $("#draw").on("click",function(){
 	al = "谢谢参与";
 	var data = {};
-	data["t"]=J_utils.Config.website+"lottery/draw";
-	if(!J_utils.login("login_div_a",data)){
+	data["to"]=J_utils.Config.website+"/lottery/draw";
+	if(!_user){
+		J_utils.login(data,"login_div_a")
 		return;
 	}
 	var drawtimes = parseInt($("#drawtimes").find("em").text());
 	if(drawtimes==0){
-		alert("你目前没有抽奖机会,点评五次笑话，可获得一次抽奖机会.");
+		alert("你目前没有抽奖机会.");
 		return;
 	}
 	
 	var t = 0;
 	$.ajax({
-		url : J_utils.Config.website+"lottery/draw/go",
+		url : J_utils.Config.website+"/lottery/i/draw",
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,
@@ -95,7 +96,7 @@ function fly_blank(){
 }
 function checkScore(){
 	$.ajax({
-		url : J_utils.Config.website+"uc/i/score",
+		url : J_utils.Config.website+"/uc/i/score",
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,

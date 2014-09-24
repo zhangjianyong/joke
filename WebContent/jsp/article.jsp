@@ -14,8 +14,8 @@
             <div class="left_two bg_radius margin_top0">
                  <div class="two_title">
 						<div class="jiantou info_top20">
-	                        <c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }?pos=next"></a></span></c:if>
-	                        <c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }?pos=next">下一条</a></span></c:if>
+	                        <c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
+	                        <c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
 	                        <div class="clear"></div>
 						</div>
 						<span class="name_pic"><img src="${config.system_resource_url }/static${article.avatar}"></span>
@@ -69,12 +69,45 @@
     	<!--  右侧-->
         <div class="i_main_right">
         	<script type="text/javascript">ad_show('6');</script>
+        	<div class="right_tuijian margin_top10">
+            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
+                <ul><c:forEach var="h" items="${hots }" end="1"><c:if test="${h.type eq 'PIC' }">
+                	<li>
+                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p></p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
+                        <a href="/article/${h.id }" class="font14"></a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if></c:forEach>
+                </ul>
+                <div class="clear"></div>
+            </div>
         	<script type="text/javascript">ad_show('7');</script>
-            <div class="right_name font14 color_66 fontbold">搞笑图片推荐</div>
-            <div class="right_list">
-            	<ul><c:forEach var="h" items="${hots }">
-                	<li><a href="/article/${h.id }"><img style="min-width: 90px;max-height:90px;" src="${config.pic_domain }/article/90${h.pic }"></a></li>
-                </c:forEach></ul>
+            <div class="right_tuijian margin_top10">
+            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
+                <ul><c:forEach var="h" items="${hots }" begin="2"><c:if test="${h.type eq 'PIC' }">
+                	<li>
+                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p></p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
+                        <a href="/article/${h.id }" class="font14"></a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if></c:forEach>
+                </ul>
                 <div class="clear"></div>
             </div>
         	<script type="text/javascript">ad_show('8');</script>
