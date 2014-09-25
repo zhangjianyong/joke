@@ -43,6 +43,10 @@ public class Draw {
 	public String show(HttpServletRequest request,
 			HttpServletResponse response, @LoginMember Member m) {
 		request.setAttribute("config", Config.getConfig());
+		request.setAttribute(
+				"hots",
+				jdbcTemplate
+						.queryForList("select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 2"));
 		return "/lottery/draw";
 	}
 
@@ -58,8 +62,8 @@ public class Draw {
 			int drawTimesTotal = jdbcTemplate.queryForInt(
 					"select s1 from uc_account where member_id = ?", uid);
 			if (drawTimesTotal < scoreUsePerDraw) {
-				return new Result(false, "faild", "你目前没有抽奖机会,点评五次笑话，可获得一次抽奖机会",
-						null);
+				return new Result(false, "faild",
+						"你目前没有抽奖机会,点评10个笑话，可获得1次抽奖机会", null);
 			}
 			// 验证是否有抽奖资格
 			Calendar c = Calendar.getInstance();

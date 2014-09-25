@@ -32,7 +32,7 @@
 	    </div>
 	</div>
 <script type="text/javascript" src="/static/js/exchange.js"></script>
-<%@ include file="uc_foot.jsp" %>
+<%@ include file="../foot.jsp" %>
 </div>
 </body>
 </html>

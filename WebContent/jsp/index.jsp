@@ -23,7 +23,7 @@
     	<div class="i_main_left">
         	<div class="left_one bg_radius">
             	<div class="one_name">小贴士</div>
-                <div class="one_nr">神马？你居然还没有注册一笑千金？注册的好处多多哦，可以参加一笑千金的抽奖活动，每日看笑话，还能赚金币啊！</div>
+                <div class="one_nr">神马？你居然还没有注册一笑千金？注册的好处多多哦，可以参加一笑千金的抽奖活动，每日看笑话，还能赚金币啊！<a style="color: red;" href="/lottery/draw" target="_blank">查看详情</a></div>
             </div><c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" ><c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if><div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
                 <div class="two_title">
@@ -50,14 +50,13 @@
             	<jsp:param value="/${param.t }/${param.o }" name="path"/>
             	<jsp:param value="/" name="first"/>
             </jsp:include>
-            <div class="left_advert"><img src="/static/images/demoimg/p_04.gif"></div>
         </div>
     	<!--  右侧-->
         <div class="i_main_right">
         	<script type="text/javascript">ad_show('20');</script>
         	<div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" end="1"><c:if test="${h.type eq 'PIC' }">
+                <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
                 	<li>
                     	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
                         <a href="/article/${h.id }" class="font14">${h.title }</a>
@@ -78,7 +77,7 @@
         	<script type="text/javascript">ad_show('21');</script>
             <div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" begin="2"><c:if test="${h.type eq 'PIC' }">
+                <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
                 	<li>
                     	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
                         <a href="/article/${h.id }" class="font14">${h.title }</a>

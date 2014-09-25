@@ -96,7 +96,7 @@ public class ArticleListController {
 				"hots",
 				jdbcTemplate
 						.queryForList(
-								"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 4"));
+								"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 2"));
 		if(ArticleType.ALL == typeE && page==1 && OrderType.NEW == orderE){
 			return "/index";
 		}

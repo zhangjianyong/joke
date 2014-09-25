@@ -11,7 +11,7 @@
             </ul>
             <div class="clear"></div>
         </div>
-        <div class="top_publish"><a href="/publish">戳一下</a></div>
+        <div class="top_publish"><a href="/publish">讲一个</a></div>
         <div class="clear"></div>
     </div>
 </div>

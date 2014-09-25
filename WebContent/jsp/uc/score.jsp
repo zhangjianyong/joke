@@ -42,7 +42,7 @@
 	    </div>
 	</div>
 <script type="text/javascript" src="/static/js/score.js"></script>
-<%@ include file="uc_foot.jsp" %>
+<%@ include file="../foot.jsp" %>
 </div>
 </body>
 </html>

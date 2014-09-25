@@ -71,7 +71,7 @@
         	<script type="text/javascript">ad_show('6');</script>
         	<div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" end="1"><c:if test="${h.type eq 'PIC' }">
+                <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
                 	<li>
                     	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
                         <a href="/article/${h.id }" class="font14">${h.title }</a>
@@ -92,7 +92,7 @@
         	<script type="text/javascript">ad_show('7');</script>
             <div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" begin="2"><c:if test="${h.type eq 'PIC' }">
+                <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
                 	<li>
                     	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
                         <a href="/article/${h.id }" class="font14">${h.title }</a>
