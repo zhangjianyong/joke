@@ -54,17 +54,49 @@
         </div>
     	<!--  右侧-->
         <div class="i_main_right">
-        	<div class="right_advert"><img src="/static/images/demoimg/p_05.gif"></div>
-        	<div class="right_advert margin_top10"><img src="/static/images/demoimg/p_06.gif"></div>
-            <div class="right_name font14 color_66 fontbold">搞笑图片推荐</div>
-            <div class="right_list">
-            	<ul><c:forEach var="h" items="${hots }">
-                	<li><a href="/article/${h.id }"><img style="max-width: 90px;min-height:90px;" src="${config.pic_domain }/article/90${h.pic }"></a></li>
-                </c:forEach></ul>
+        	<script type="text/javascript">ad_show('20');</script>
+        	<div class="right_tuijian margin_top10">
+            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
+                <ul><c:forEach var="h" items="${hots }" end="1"><c:if test="${h.type eq 'PIC' }">
+                	<li>
+                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p></p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
+                        <a href="/article/${h.id }" class="font14"></a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if></c:forEach>
+                </ul>
                 <div class="clear"></div>
             </div>
-            <div class="right_advert margin_top10"><img src="/static/images/demoimg/p_07.gif"></div>
-        	<div class="right_advert margin_top10"><img src="/static/images/demoimg/p_09.gif"></div>
+        	<script type="text/javascript">ad_show('21');</script>
+            <div class="right_tuijian margin_top10">
+            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
+                <ul><c:forEach var="h" items="${hots }" begin="2"><c:if test="${h.type eq 'PIC' }">
+                	<li>
+                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p></p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
+                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
+                        <a href="/article/${h.id }" class="font14"></a>
+                        <p>${h.content }</p>
+                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+                    </li></c:if></c:forEach>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <script type="text/javascript">ad_show('22');</script>
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>
             </div>
