@@ -18,6 +18,10 @@
         <from>^/bdunion.txt$</from>
         <to type="forward">/static/bdunion.txt</to>
     </rule>
+    <rule>
+        <from>^/64e25a7ff3394a14a8f5a4f13dde5f17.html$</from>
+        <to type="forward">/static/64e25a7ff3394a14a8f5a4f13dde5f17.html</to>
+    </rule>
 	<!-- 以/结尾的所有链接,均去掉/ -->
     <rule>
         <from>^/(.*[^/])/+$</from>
