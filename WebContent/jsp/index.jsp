@@ -32,11 +32,11 @@
                     <span class="padding_left10">${a.nick }</span>
                     <span class="padding_left10 englist color_99">${a.create_time }</span>
                 </div>
-                <c:if test="${a.type=='PIC' }"> <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info"><br>
+                <c:if test="${a.type=='PIC' }"> <div class="two_name"><a href="/pic">【搞笑图片】</a><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info"><br>
 	                <a href="/article/${a.id }" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
-	            <c:if test="${a.type=='TEXT' }"> <div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
+	            <c:if test="${a.type=='TEXT' }"> <div class="two_name"><a href="/text">【爆笑文字】</a><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
 	            <c:if test="${a.type=='ASHAMED' }">
-	                <div class="two_info">${a.content }<br></div></c:if>
+	                <div class="two_info"><a href="/ashamed">【糗事大全】</a>${a.content }<br></div></c:if>
                 <div class="zhichi_bg">
                 	<div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=up" class="color_1 updown up"><span class="one1"></span>${a.up }</a></div>
                     <div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=down" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>
