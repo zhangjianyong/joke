@@ -1,6 +1,10 @@
 $("#exchange").on("click",function(){
 	var data = {};
 	preparePostData(data,".post_data");
+	if(!window.confirm("请再次确认支付定账号是否有误:"+data.act)){
+		return;
+	}
+	
 	$.ajax({
 		url : J_utils.Config.website+"/uc/i/alipay_exchange",
 		type : "POST",
