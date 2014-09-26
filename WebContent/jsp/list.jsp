@@ -25,20 +25,25 @@
             	<div class="one_name">小贴士</div>
                 <div class="one_nr">神马？你居然还没有注册一笑千金？注册的好处多多哦，可以参加一笑千金的抽奖活动，每日看笑话，还能赚金币啊！<a style="color: red;" href="/lottery/draw" target="_blank">查看详情</a></div>
             </div><c:set var="pp" value="0"/>
-            <c:forEach var="a"  items="${articles }"  varStatus="s" ><c:if test="${s.index%10==0 }">
-            <script type="text/javascript">ad_show('23');</script>
-            <c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if><div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
+            <c:forEach var="a"  items="${articles }"  varStatus="s" >
+            <c:if test="${s.index==10 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('23');</script></div></c:if>
+            <c:if test="${s.index==20 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('24');</script></div></c:if>
+            <c:if test="${s.index==30 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('25');</script></div></c:if>
+            
+            <c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if>
+            
+            <div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
                 <div class="two_title">
                 	<div class="title_more"><a href="/article/${a.id }" target="_blank">查看全文</a></div>
                 	<span class="name_pic"><img src="${config.system_resource_url }/static${a.avatar }"></span>
                     <span class="padding_left10">${a.nick }</span>
                     <span class="padding_left10 englist color_99">${a.create_time }</span>
                 </div>
-                <c:if test="${a.type=='PIC' }"><div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info"><br>
+                <c:if test="${a.type=='PIC' }"><div class="two_name"><a href="/pic">【搞笑图片】</a><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info"><br>
 	                <a href="/article/${a.id }" target="_blank"><c:choose><c:when test="${pp==1 }"><img src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:when><c:otherwise><img data-src="${config.pic_domain }/article/0${a.pic }" style="max-width: 559px;"/></c:otherwise></c:choose></a></div></c:if>
-	            <c:if test="${a.type=='TEXT' }"><div class="two_name"><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
+	            <c:if test="${a.type=='TEXT' }"><div class="two_name"><a href="/text">【爆笑文字】</a><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
 	            <c:if test="${a.type=='ASHAMED' }">
-	                <div class="two_info">${a.content }<br></div></c:if>
+	                <div class="two_info"><a href="/ashamed">【糗事大全】</a>${a.content }<br></div></c:if>
                 <div class="zhichi_bg">
                 	<div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=up" class="color_1 updown up"><span class="one1"></span>${a.up }</a></div>
                     <div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=down" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>

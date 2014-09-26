@@ -62,8 +62,8 @@
             </div>
             <script type="text/javascript">ad_show('11');</script>
             <div class="info_advert_list">
-            	<script type="text/javascript">ad_show('12');</script>
-            	<script type="text/javascript">ad_show('13');</script>
+            	<div style="float:left;"><script type="text/javascript">ad_show('12');</script></div>
+            	<div style="float:left;padding-left:40px;"><script type="text/javascript">ad_show('13');</script></div>
             </div>
         </div>
     	<!--  右侧-->
