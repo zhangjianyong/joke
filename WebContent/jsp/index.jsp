@@ -41,10 +41,11 @@
                 	<div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=up" class="color_1 updown up"><span class="one1"></span>${a.up }</a></div>
                     <div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=down" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>
                 </div>
-                <c:if test="${s.index==9 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('23');</script></div></c:if>
+            </div>
+            <c:if test="${s.index==9 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('23');</script></div></c:if>
             	<c:if test="${s.index==19 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('24');</script></div></c:if>
             	<c:if test="${s.index==29 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('25');</script></div></c:if>
-            </div></c:forEach>
+            </c:forEach>
             <!-- 分页 -->
             <div id="loading" style="display: none;">正在加载..</div>
             <jsp:include page="/jsp/page.jsp">
