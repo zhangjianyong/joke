@@ -20,11 +20,8 @@
     <script type="text/javascript">$("#list_top_"+"${param.o}").addClass("hover");</script>
 	<div class="i_main">
     	<!--  左侧-->
-    	<div class="i_main_left">
-        	<div class="left_one bg_radius">
-            	<div class="one_name">小贴士</div>
-                <div class="one_nr">神马？你居然还没有注册一笑千金？注册的好处多多哦，可以参加一笑千金的抽奖活动，每日看笑话，还能赚金币啊！<a style="color: red;" href="/lottery/draw" target="_blank">查看详情</a></div>
-            </div><c:set var="pp" value="0"/>
+    	<div class="i_main_left"><script type="text/javascript">ad_show('23');</script>
+        	<c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" >
             <c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if>
             
