@@ -110,7 +110,7 @@ public class UpdownController {
 				l.put("a", Account.S1);
 				l.put("t", WealthType.UPDOWN);
 				l.put("w", scoreUpDownPerTime);
-				l.put("s", AccountLogStatus.CHECK.name());
+				l.put("s", AccountLogStatus.PAYED.name());
 				l.put("sn", serialNumber[0]);
 				l.put("ssn", serialNumber[1]);
 				l.put("r", "");

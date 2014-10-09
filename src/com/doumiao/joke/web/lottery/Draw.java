@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.enums.Account;
 import com.doumiao.joke.enums.AccountLogStatus;
-import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.HttpClientHelper;
 import com.doumiao.joke.lang.SerialNumberGenerator;
@@ -152,32 +151,27 @@ public class Draw {
 			l.put("a", Account.S1);
 			l.put("t", WealthType.DRAW);
 			l.put("w", -scoreUsePerDraw);
-			l.put("s", AccountLogStatus.CHECK.name());
+			l.put("s", AccountLogStatus.PAYED.name());
 			l.put("sn", serialNumber[0]);
 			l.put("ssn", serialNumber[1]);
 			l.put("r", "");
 			l.put("o", "system");
 			accountLog.add(l);
-			params.put("accountLog",
-					objectMapper.writeValueAsString(accountLog));
 			if (wealth != 0) {
-				List<Map<String, Object>> thirdAccountLog = new ArrayList<Map<String, Object>>(
-						1);
 				Map<String, Object> _l = new HashMap<String, Object>(1);
 				_l.put("u", uid);
+				_l.put("a", Account.S2);
 				_l.put("t", WealthType.DRAW);
-				_l.put("p", Plat.ALIPAY.name());
 				_l.put("w", wealth);
-				_l.put("s", AccountLogStatus.CHECK.name());
+				_l.put("s", AccountLogStatus.PAYED.name());
 				_l.put("sn", serialNumber[0]);
 				_l.put("ssn", serialNumber[2]);
 				_l.put("r", "");
 				_l.put("o", "system");
-				thirdAccountLog.add(_l);
-				params.put("thirdAccountLog",
-						objectMapper.writeValueAsString(thirdAccountLog));
+				accountLog.add(_l);
 			}
-
+			params.put("accountLog",
+					objectMapper.writeValueAsString(accountLog));
 			// 调取后台接口发放奖品
 			Result r = HttpClientHelper.controlPlatPost("/pay", params);
 			if (r.isSuccess()) {

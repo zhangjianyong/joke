@@ -13,11 +13,11 @@
     	<div class="i_main_left">
             <div class="left_two bg_radius margin_top0">
                  <div class="two_title">
-						<div class="jiantou info_top20">
+						<%--<div class="jiantou info_top20">
 	                        <c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
 	                        <c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
 	                        <div class="clear"></div>
-						</div>
+						</div> --%>
 						<span class="name_pic"><img src="${config.system_resource_url }/static${article.avatar}"></span>
 						<span class="padding_left10">${article.nick }</span>
 						<span class="padding_left10 englist color_99">${article.create_time }</span>
@@ -59,6 +59,11 @@
                     </div>
                 </div>
                 <script type="text/javascript">ad_show('10');</script>
+                <div class="info_tiao_bg">
+                	<c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
+                	<c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
+                    <div class="clear"></div>
+                </div>
             </div>
             <script type="text/javascript">ad_show('11');</script>
             <div class="info_advert_list">

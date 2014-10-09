@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -43,14 +44,25 @@ public class ExchangeController {
 		int uid = m.getId();
 		Map<String, Object> account = null;
 		try {
-			account = jdbcTemplate
+			account = jdbcTemplate.queryForMap(
+					"select s2 from uc_account where member_id = ?", uid);
+		} catch (EmptyResultDataAccessException erdae) {
+			log.error("user don't have account : " + uid);
+		} catch (Exception e) {
+			log.error(e, e);
+		}
+		Map<String, Object> alipayAccount = null;
+		try {
+			alipayAccount = jdbcTemplate
 					.queryForMap(
 							"select * from uc_thirdplat_account where member_id = ? and plat = ?",
 							uid, Plat.ALIPAY.name());
+		} catch (EmptyResultDataAccessException erdae) {
 		} catch (Exception e) {
 			log.error(e, e);
 		}
 		request.setAttribute("account", account);
+		request.setAttribute("alipayAccount", alipayAccount);
 		return "/uc/exchange";
 	}
 
@@ -66,6 +78,7 @@ public class ExchangeController {
 		params.put("uid", String.valueOf(m.getId()));
 		params.put("account", account);
 		params.put("wealth", String.valueOf(wealth));
-		return HttpClientHelper.controlPlatPost("/alipay_exchange", params);
+		params.put("plat", Plat.ALIPAY.name());
+		return HttpClientHelper.controlPlatPost("/exchange", params);
 	}
 }

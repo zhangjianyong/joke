@@ -1,8 +1,8 @@
-var uc_account_status = {'UNCHECK':'待审核', 'CHECK':'已审核','UNPAY':'等待打款', 'PAY':'已打款','REJECT':'申请驳回'};
-var wealtype = {'DRAW':'抽奖','UPDOWN':'顶沉','THIRDPLAT_EXCHANGE':'对换','DEDUCT':'作弊扣罚'};
+var uc_account_status = {'UNPAY':'待审核', 'PAYED':'已审核','REJECT':'申请驳回'};
+var wealtype = {'DRAW':'抽奖','UPDOWN':'顶沉','THIRDPLAT_EXCHANGE':'兑换','DEDUCT':'作弊扣罚'};
 var load_option = {
 	page_id:'pagination',
-	url : J_utils.Config.website+"/uc/i/thirdscorelog",
+	url : J_utils.Config.website+"/uc/i/scorelog",
 	params:{page:1},
 	showlist:function(result){
 		$("#j_scorelogs").find(".jifen_table_info").remove();

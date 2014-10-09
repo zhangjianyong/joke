@@ -21,7 +21,6 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.annotation.RequiredLogin;
 import com.doumiao.joke.annotation.ResultTypeEnum;
 import com.doumiao.joke.enums.Account;
-import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
@@ -42,21 +41,10 @@ public class Ucenter {
 		Map<String, Object> account = MapUtils.EMPTY_MAP;
 		try {
 			account = jdbcTemplate.queryForMap(
-					"select s1 from uc_account where member_id = ?", uid);
+					"select s1,s2 from uc_account where member_id = ?", uid);
 		} catch (Exception e) {
 			log.error(e, e);
 			account.put("s1", "账户异常");
-		}
-		int alipayScore = 0;
-		try {
-			alipayScore = jdbcTemplate
-					.queryForInt(
-							"select balance from uc_thirdplat_account where member_id = ? and plat = ?",
-							uid, Plat.ALIPAY.name());
-			account.put("alipay", alipayScore);
-		} catch (Exception e) {
-			log.error(e, e);
-			account.put("alipay", "账户异常");
 		}
 		request.setAttribute("user", m);
 		request.setAttribute("account", account);
@@ -74,21 +62,10 @@ public class Ucenter {
 		Map<String, Object> account = MapUtils.EMPTY_MAP;
 		try {
 			account = jdbcTemplate.queryForMap(
-					"select s1 from uc_account where member_id = ?", uid);
+					"select s1,s2 from uc_account where member_id = ?", uid);
 		} catch (Exception e) {
 			log.error(e, e);
 			account.put("s1", "账户异常");
-		}
-		int alipayScore = 0;
-		try {
-			alipayScore = jdbcTemplate
-					.queryForInt(
-							"select balance from uc_thirdplat_account where member_id = ? and plat = ?",
-							uid, Plat.ALIPAY.name());
-			account.put("alipay", alipayScore);
-		} catch (Exception e) {
-			log.error(e, e);
-			account.put("alipay", "账户异常");
 		}
 
 		int scoreUsePerDraw = Config.getInt("score_use_per_draw", 5);
