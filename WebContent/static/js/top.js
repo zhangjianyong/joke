@@ -13,7 +13,7 @@ if(_user){
 		async:true,
 		success : function(result) {
 			J_utils.log(result);
-			$("#top_score").html(result.content.s2);
+			$("#top_score").html(result.content.alipay);
 			$("#top_drawtimes").html(result.content.drawtimes);
 		},
 		error : function(xhr, ts, et) {

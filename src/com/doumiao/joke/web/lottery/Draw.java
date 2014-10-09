@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.enums.Account;
 import com.doumiao.joke.enums.AccountLogStatus;
+import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.HttpClientHelper;
 import com.doumiao.joke.lang.SerialNumberGenerator;
@@ -143,36 +144,41 @@ public class Draw {
 
 			// 生成中奖流水
 			String[] serialNumber = SerialNumberGenerator.generate(2);
-			List<Map<String, Object>> logs = new ArrayList<Map<String, Object>>(
-					2);
+			Map<String, String> params = new HashMap<String, String>(2);
+			List<Map<String, Object>> accountLog = new ArrayList<Map<String, Object>>(
+					1);
 			Map<String, Object> l = new HashMap<String, Object>(1);
 			l.put("u", uid);
 			l.put("a", Account.S1);
 			l.put("t", WealthType.DRAW);
 			l.put("w", -scoreUsePerDraw);
-			l.put("s", AccountLogStatus.PAY.name());
+			l.put("s", AccountLogStatus.CHECK.name());
 			l.put("sn", serialNumber[0]);
 			l.put("ssn", serialNumber[1]);
 			l.put("r", "");
 			l.put("o", "system");
-			logs.add(l);
+			accountLog.add(l);
+			params.put("accountLog",
+					objectMapper.writeValueAsString(accountLog));
 			if (wealth != 0) {
+				List<Map<String, Object>> thirdAccountLog = new ArrayList<Map<String, Object>>(
+						1);
 				Map<String, Object> _l = new HashMap<String, Object>(1);
 				_l.put("u", uid);
-				_l.put("a", Account.S2);
 				_l.put("t", WealthType.DRAW);
+				_l.put("p", Plat.ALIPAY.name());
 				_l.put("w", wealth);
-				_l.put("s", AccountLogStatus.PAY.name());
+				_l.put("s", AccountLogStatus.CHECK.name());
 				_l.put("sn", serialNumber[0]);
 				_l.put("ssn", serialNumber[2]);
 				_l.put("r", "");
 				_l.put("o", "system");
-				logs.add(_l);
+				thirdAccountLog.add(_l);
+				params.put("thirdAccountLog",
+						objectMapper.writeValueAsString(thirdAccountLog));
 			}
 
 			// 调取后台接口发放奖品
-			Map<String, String> params = new HashMap<String, String>(1);
-			params.put("json", objectMapper.writeValueAsString(logs));
 			Result r = HttpClientHelper.controlPlatPost("/pay", params);
 			if (r.isSuccess()) {
 				return new Result(true, "success", "抽奖成功", award);

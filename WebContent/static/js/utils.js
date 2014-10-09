@@ -658,7 +658,7 @@ $.ajax({
 	type : "POST",
 	dataType : "JSON",
 	jsonp : "jsoncallback",
-	timeout:1000,
+	timeout:200,
 	async:false,
 	success : function(ad) {
 		if(ad.content==null){

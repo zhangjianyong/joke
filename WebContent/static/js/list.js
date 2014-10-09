@@ -47,4 +47,4 @@ $(function(){
 		}
 	});
 });
-$(".i_main_right").scrollFloatBottom($(".i_main_left"),-80,125);
+$(".i_main_right").scrollFloatBottom($(".i_main_left"),170,125);

@@ -15,6 +15,7 @@ $("#exchange").on("click",function(){
 		success : function(result) {
 			if(result.success){
 				checkScore();
+				alert("对换成功");
 			}else{
 				alert(result.msg);
 			}
@@ -34,10 +35,10 @@ function checkScore(){
 		async:true,
 		success : function(result) {
 			J_utils.log(result);
-			$("#top_score").text(result.content.s2);
+			$("#top_score").text(result.content.alipay);
 			$("#top_drawtimes").text(result.content.drawtimes);
-			$("#score").text(result.content.s2);
-			$("#val").text(result.content.s2);
+			$("#score").text(result.content.alipay);
+			$("#val").text(result.content.alipay);
 		},
 		error : function(xhr, ts, et) {
 			xhr = null;

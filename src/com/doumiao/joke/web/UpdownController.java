@@ -110,7 +110,7 @@ public class UpdownController {
 				l.put("a", Account.S1);
 				l.put("t", WealthType.UPDOWN);
 				l.put("w", scoreUpDownPerTime);
-				l.put("s", AccountLogStatus.PAY.name());
+				l.put("s", AccountLogStatus.CHECK.name());
 				l.put("sn", serialNumber[0]);
 				l.put("ssn", serialNumber[1]);
 				l.put("r", "");
@@ -119,7 +119,7 @@ public class UpdownController {
 
 				// 调取后台接口发放奖品
 				Map<String, String> params = new HashMap<String, String>(1);
-				params.put("json", objectMapper.writeValueAsString(logs));
+				params.put("accountLog", objectMapper.writeValueAsString(logs));
 				return HttpClientHelper.controlPlatPost("/pay", params);
 			}
 		} catch (Exception e) {

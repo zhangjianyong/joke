@@ -10,7 +10,6 @@ import javax.sql.DataSource;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -29,7 +28,7 @@ import com.doumiao.joke.vo.Result;
 public class ExchangeController {
 	private static final Log log = LogFactory.getLog(ExchangeController.class);
 	@Resource
-	private JdbcTemplate jbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	@Resource
 	private DataSource dataSource;
@@ -44,25 +43,14 @@ public class ExchangeController {
 		int uid = m.getId();
 		Map<String, Object> account = null;
 		try {
-			account = jbcTemplate.queryForMap(
-					"select s2 from uc_account where member_id = ?", uid);
-		} catch (EmptyResultDataAccessException erdae) {
-			log.error("user don't have account : " + uid);
-		} catch (Exception e) {
-			log.error(e, e);
-		}
-		Map<String, Object> alipayAccount = null;
-		try {
-			alipayAccount = jbcTemplate
+			account = jdbcTemplate
 					.queryForMap(
 							"select * from uc_thirdplat_account where member_id = ? and plat = ?",
 							uid, Plat.ALIPAY.name());
-		} catch (EmptyResultDataAccessException erdae) {
 		} catch (Exception e) {
 			log.error(e, e);
 		}
 		request.setAttribute("account", account);
-		request.setAttribute("alipayAccount", alipayAccount);
 		return "/uc/exchange";
 	}
 

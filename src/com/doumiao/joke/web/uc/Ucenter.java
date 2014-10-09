@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +21,7 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.annotation.RequiredLogin;
 import com.doumiao.joke.annotation.ResultTypeEnum;
 import com.doumiao.joke.enums.Account;
+import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
@@ -38,13 +38,26 @@ public class Ucenter {
 	public String score(HttpServletRequest request,
 			HttpServletResponse response, @LoginMember Member m) {
 		int uid = m.getId();
-		Map<String, Object> account = jdbcTemplate.queryForMap(
-				"select s1,s2 from uc_account where member_id = ?", uid);
-		int uncheck = jdbcTemplate
-				.queryForInt(
-						"select sum(wealth) from uc_account_log_tmp where account = ? and member_id = ?",
-						Account.S2.name(), uid);
-		account.put("uncheck", uncheck);
+		@SuppressWarnings("unchecked")
+		Map<String, Object> account = MapUtils.EMPTY_MAP;
+		try {
+			account = jdbcTemplate.queryForMap(
+					"select s1 from uc_account where member_id = ?", uid);
+		} catch (Exception e) {
+			log.error(e, e);
+			account.put("s1", "账户异常");
+		}
+		int alipayScore = 0;
+		try {
+			alipayScore = jdbcTemplate
+					.queryForInt(
+							"select balance from uc_thirdplat_account where member_id = ? and plat = ?",
+							uid, Plat.ALIPAY.name());
+			account.put("alipay", alipayScore);
+		} catch (Exception e) {
+			log.error(e, e);
+			account.put("alipay", "账户异常");
+		}
 		request.setAttribute("user", m);
 		request.setAttribute("account", account);
 		return "/uc/score";
@@ -61,24 +74,24 @@ public class Ucenter {
 		Map<String, Object> account = MapUtils.EMPTY_MAP;
 		try {
 			account = jdbcTemplate.queryForMap(
-					"select s1,s2 from uc_account where member_id = ?", uid);
+					"select s1 from uc_account where member_id = ?", uid);
 		} catch (Exception e) {
 			log.error(e, e);
-			account.put("s2", "账户异常");
+			account.put("s1", "账户异常");
 		}
-		int uncheck = 0;
+		int alipayScore = 0;
 		try {
-			uncheck = jdbcTemplate
+			alipayScore = jdbcTemplate
 					.queryForInt(
-							"select sum(wealth) from uc_account_log_tmp where account = ? and member_id = ?",
-							Account.S2.name(), uid);
-		} catch (EmptyResultDataAccessException e) {
+							"select balance from uc_thirdplat_account where member_id = ? and plat = ?",
+							uid, Plat.ALIPAY.name());
+			account.put("alipay", alipayScore);
 		} catch (Exception e) {
 			log.error(e, e);
+			account.put("alipay", "账户异常");
 		}
-		account.put("uncheck", uncheck);
-		int scoreUsePerDraw = 
-				Config.getInt("score_use_per_draw",5);
+
+		int scoreUsePerDraw = Config.getInt("score_use_per_draw", 5);
 		account.put("drawtimes",
 				Math.ceil((Integer) account.get("s1") / scoreUsePerDraw));
 		return new Result(true, "interface_score_success", "获取用户积分", account);
@@ -111,6 +124,39 @@ public class Ucenter {
 									+ "where account = ? and member_id = ? order by id desc limit ?,?",
 							Account.S2.name(), uid, (page - 1) * rowCount,
 							rowCount);
+			pageInfo.put("list", logs);
+			return new Result(true, "score_load_ok", "积分加载成功", pageInfo);
+		} catch (Exception e) {
+			log.error(e, e);
+			return new Result(false, "score_load_faild", "积分加载出错", null);
+		}
+	}
+
+	@RequiredLogin
+	@ResponseBody
+	@RequestMapping("/uc/i/thirdscorelog")
+	public Result thirdAccountLog(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@LoginMember Member m,
+			@RequestParam(value = "page", defaultValue = "1", required = false) int page) {
+		Map<String, Object> pageInfo = new HashMap<String, Object>(2);
+		int rowCount = 20;
+		int uid = m.getId();
+		try {
+			int count = jdbcTemplate
+					.queryForInt(
+							"select count(1) from uc_thirdplat_account_log where member_id = ?",
+							uid);
+			int pagecount = count % rowCount == 0 ? count / rowCount : count
+					/ rowCount + 1;
+			pageInfo.put("pagecount", pagecount);
+			pageInfo.put("rowcount", rowCount);
+			pageInfo.put("page", page);
+			List<Map<String, Object>> logs = jdbcTemplate.queryForList(
+					"select * from uc_thirdplat_account_log "
+							+ "where member_id = ? order by id desc limit ?,?",
+					uid, (page - 1) * rowCount, rowCount);
 			pageInfo.put("list", logs);
 			return new Result(true, "score_load_ok", "积分加载成功", pageInfo);
 		} catch (Exception e) {
