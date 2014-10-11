@@ -9,27 +9,71 @@ var awards = [{"id":"0","k":"coin","v":"0"}, {"id":"1","k":"coin","v":"1"},
 for(i in awards){
 	$("#"+awards[i].id).find(".one3").text(awards[i].v+"积分");
 }
+$("#divshow").on("click",function(){
+	refreshcode();
+	$("#draw_button").hide();
+	$("#_code").show();
+});
+$("#_code img").on("click",function(){
+	refreshcode();
+});
+function refreshcode(){
+	$.ajax({
+		url : J_utils.Config.website+"/code",
+		type : "POST",
+		dataType : "JSON",
+		timeout : 3000,
+		async:true,
+		success : function(result) {
+			if(result.success){
+				$("#_code img").attr("src",result.content);
+				$("#_code img").attr("data-key",result.code);
+			}
+		},
+		error : function(xhr, ts, et) {
+			xhr = null;
+			J_utils.log(et);
+		}
+	});	
+}
+
 var i = 0, l = awards.length-1, al;
-$("#draw").on("click",function(){
+var drawing = false;
+$("#_code a").on("click",function(){
+	J_utils.log(drawing);
+	if(drawing){
+		return;
+	}
+	drawing = true;
+	var code = $("#_code input").val();
+	var key = $("#_code img").attr("data-key");
+	if(!code){
+		alert("请输入验证码");
+		drawing = false;
+		return;
+	}
 	al = "谢谢参与";
 	var data = {};
-	data["to"]=J_utils.Config.website+"/lottery/draw";
+	data["code"]=code;
+	data["key"]=key;
 	if(!_user){
-		J_utils.login(data,"login_div_a")
+		J_utils.login(data,"login_div_a");
+		drawing = false;
 		return;
 	}
 	var drawtimes = parseInt($("#drawtimes").find("em").text());
 	if(drawtimes==0){
 		alert("你目前没有抽奖机会.");
+		drawing = false;
 		return;
 	}
-	
 	var t = 0;
 	$.ajax({
 		url : J_utils.Config.website+"/lottery/i/draw",
 		type : "POST",
 		dataType : "JSON",
 		timeout : 3000,
+		data:data,
 		async:true,
 		success : function(result) {
 			var flying;
@@ -65,6 +109,9 @@ $("#draw").on("click",function(){
 			J_utils.log(et);
 		}
 	});
+	$("#draw_button").show();
+	$("#_code").hide();
+	drawing = false;
 });
 function fly_target(i,t){
 	var interval = 0,_interval = 0;

@@ -11,12 +11,14 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.doumiao.joke.annotation.LoginMember;
@@ -53,7 +55,19 @@ public class Draw {
 	@ResponseBody
 	@RequestMapping(value = "/lottery/i/draw")
 	public Result go(HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value="code") String code,
+			@RequestParam(value="key") String key,
 			@LoginMember Member m) {
+		if(StringUtils.isBlank(code)){
+			return new Result(false,"faild","请输入",null);
+		}
+		Map<String,String> param = new HashMap<String,String>();
+		param.put("code", code);
+		param.put("key", key);
+		Result checkCode = HttpClientHelper.controlPlatPost("/checkCode", param);
+		if(!checkCode.isSuccess()){
+			return checkCode;
+		}
 		int uid = m.getId();
 		String group = "1";
 		int drawCountPerDay = Config.getInt("draw_count_per_day", 3);

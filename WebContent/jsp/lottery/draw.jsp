@@ -29,7 +29,8 @@
                             <li id="6"><span class="one2"></span><span class="one3"></span></li>
                             <li id="14"><span class="one2"></span><span class="one3"></span></li>
                             <li class="li_center li_bottom">
-                                <p class="luck_botton"><a id="draw" href="javascript:void(0);">立即抽奖</a></p>
+                                <p class="luck_botton" id="draw_button"><a id="divshow" href="javascript:void(0);">立即抽奖</a></p>
+                                <p id="_code" style="display:none;width:260px;margin:20px auto 0; "><img style="float:left;cursor:pointer; "><input type="text" class="zc_text pub_title_text" style="width:50px; float:left; margin:0 10px;"><span class="pub_botton" style="float:left; padding:0;"><a>提交</a></span></p>
                             </li>
                             <li id="7"><span class="one2"></span><span class="one3"></span></li>
                             <li id="13"><span class="one2"></span><span class="one3"></span></li>
