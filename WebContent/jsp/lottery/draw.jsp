@@ -11,6 +11,11 @@
 	<div class="i_main">
     	<!--  左侧-->
             <div class="i_main_left">
+	            <div class="left_one bg_radius">
+	            	<div class="one_name">小贴士</div>
+	                <div class="one_nr">金币可以用来兑换集分宝，1:1兑换。集分宝可以用来购物、电话充值、还信用卡等<br>
+					您目前拥有:&nbsp;<em class="color_red englist_one" id="draw_page_score">--</em>&nbsp;${config.score_unit },&nbsp;<a style="color: red;" href="/uc/score">查看详情</a></div>
+	            </div>
                 <!--  抽奖  -->
                 <div class="layer_luck_bg">
                     <div class="layer_luck_list">
@@ -44,6 +49,12 @@
                     </div>
                 </div>
                 <!-- 结束 抽奖  -->
+                <div class="draw_bg">
+                	<div class="draw_name fontbold font14">中奖页面</div>
+                    <ul class="draw_list"><c:forEach var="o" items="${draws }">
+                    	<li><span class="word">${o.nick }抽中了</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
+                    </c:forEach></ul>
+                </div>
                 <script type="text/javascript">ad_show('16');</script>
             </div>
             <div class="i_main_right">

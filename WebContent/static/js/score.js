@@ -12,7 +12,7 @@ var load_option = {
 			$tr.append("<td bgcolor='#ffffff' class='color_red fontbold'>"+v.wealth+"</td>");
 			$tr.append("<td bgcolor='#ffffff' class='color_red fontbold'>"+v.wealth_balance+"</td>");
 			$tr.append("<td bgcolor='#ffffff'>"+wealtype[v.wealth_type]+"</td>");
-			$tr.append("<td bgcolor='#ffffff'>"+uc_account_status[v.status]+"</td>");
+			//$tr.append("<td bgcolor='#ffffff'>"+uc_account_status[v.status]+"</td>");
 			$tr.append("<td bgcolor='#ffffff'>"+(v.remark||'')+"</td>");
 			$tr.hide();
 			$("#j_scorelogs").append($tr);

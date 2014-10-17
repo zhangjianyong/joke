@@ -27,6 +27,10 @@
                         <p class="zc_login_botton"><a id="exchange" href="javascript:void(0);">立即兑换</a></p>
                     </div>
                 </div>
+                <div class="left_one bg_radius">
+	            	<div class="one_name">小贴士</div>
+	                <div class="one_nr">我们将在5个工作日内打款，请大家耐心等待.</div>
+	            </div>
                 <div class="zhanghao_border">
                     	<table id="j_scorelogs" width="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="#f2f2f2" class="color_66">
                           <tr class="height37">

@@ -71,7 +71,7 @@ img{border:0;}
 .bg_radius{ background:#fff; border-radius:3px;}
 .left_one{ height:65px; padding:15px 20px;}
 .left_one .one_name{ height:25px; line-height:25px; position:relative;}
-.jiantou{ position:absolute; top:0; right:0; }
+.jiantou{ float:left; }
 .jiantou span{ float:left; display:block;}
 .jiantou span.jt_left{ width:19px; height:16px; float:left}
 .jiantou span.jt_right{ width:19px; height:16px; float:left; padding:0 0 0 5px;}
@@ -94,7 +94,7 @@ img{border:0;}
 .two_info .gaoxiao span{ padding:0 10px 0 7px;}
 .zhichi_bg{ height:28px;}
 .zhichi_bg .chizhi_left{ height:26px; border:1px solid #e8e8e8; border-radius:3px; float:left; margin-right:15px; position:relative;}
-.zhichi_bg .chizhi_left .zhichi_tishi{ width:100px; position:absolute; top:-36px; left:0; border:1px solid #e8e8e8; background:#fff; text-align:center;display:block;  height:30px; line-height:30px;}
+.zhichi_bg .chizhi_left .zhichi_tishi{ width:150px; position:absolute; top:-36px; left:0; border:1px solid #e8e8e8; background:#fff; text-align:center;display:block;  height:30px; line-height:30px;}
 .chizhi_left a{ height:26px; line-height:26px; padding:0 10px; font-family:Arial;}
 .chizhi_left a.color_1{ color:#a6e0c3;}
 .chizhi_left a.color_4{ color:#fbb9b0;}
@@ -107,6 +107,7 @@ img{border:0;}
 .chizhi_left a .one4{background-position:-62px -119px;}
 .right_tuijian{ background:#fff; padding:0 15px 20px;}
 .right_tuijian li{ width:270px; padding:20px 0 15px; float:left; border-bottom:1px solid #e1e1e1}
+.right_tuijian li p{ height:36px; overflow:hidden;}
 .right_tuijian li .pic{ float:left; _display:inline; padding:0 10px 0 0;}
 .right_tuijian li a{ line-height:18px;}
 .right_tuijian li .time{ color:#bcbcbc; padding:10px 0 0; clear:both; }
@@ -185,7 +186,7 @@ img{border:0;}
 .info_gx_list li img{width:104px; height:137px; display:block;}
 .info_gx_list li span{width:104px; height:34px; color:#f35a61; line-height:17px; padding:5px 0 0; display:block;}
 .info_left_advert{ width:640px; height:90px; margin:15px 0 0;}
-.info_advert_list{ height:250px; margin:15px 0 0;}
+.info_advert_list{ height:250px; margin:0px 0 0;}
 .info_advert_list .advert_one{width:300px; height:250px; float:left;}
 .info_advert_list .advert_two{width:335px; height:250px; float:left; margin-left:5px; display:inline;}
 .info_advert_word{ width:600px; height:90px; margin:20px auto 0;}
@@ -193,7 +194,7 @@ img{border:0;}
 .info_tiao_bg{ height:27px; margin:25px 0 0;}
 .info_jiantou{ width:27px; height:27px; float:right;display:block;}
 .info_jiantou a{ width:27px; height:27px; display:block; cursor:pointer; background:url(../images/i_icon.gif) no-repeat -90px -80px;}
-.info_next{ width:66px; height:27px; float:right;display:block; margin:0 0 0 10px;}
+.info_next{ width:66px; height:27px; float:left;display:block; margin:0 0 0 10px;}
 .info_next a{ width:66px; height:27px; line-height:27px; display:block; cursor:pointer; background:#ffa015; border-radius:3px; text-align:center; color:#fff; }
 .info_top20{top:20px;}
 .margin_top0{ margin-top:0;}
@@ -244,6 +245,14 @@ img{border:0;}
 .luck_botton a{ width:192px; height:59px; display:block; cursor:pointer; background:#ffc80c; color:#e45133; font-size:30px;  line-height:59px; text-align:center; border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px; -o-border-radius:30px;}
 .luck_botton a:hover{background:#ffc80c; color:#e45133;}
 .layer_luck_list li.li_bottom{ width:409px; height:91px; margin:0 0 0 3px; background:#ebeded; }
+.draw_bg{ width:638px; height:130px; background:#fff; border:1px solid #e5e5e5; margin:25px 0 0;}
+.draw_bg .draw_name{ height:30px; padding:10px 0 0 20px; line-height:30px;}
+.draw_bg .draw_list li{ width:290px; height:26px; line-height:26px; margin:0 0 0 20px; display:inline; float:left; color:#666}
+.draw_bg .draw_list li span{ float:left; display:block; overflow:hidden;}
+.draw_bg .draw_list li span.word{ width:121px;}
+.draw_bg .draw_list li span.word1{ width:74px; color:#ff8400; font-weight:bold;}
+.draw_bg .draw_list li span.word2{ width:85px}
+
 #mask { background-color:Gray; left:0px; opacity:0.5; position:absolute; top:0px; z-index:3; filter:alpha(opacity=50); /* IE6 */  -moz-opacity:0.5; /* Mozilla */   -khtml-opacity:0.5; /* Safari */  
 } 
 .padding_top20{ padding-top:20px;}

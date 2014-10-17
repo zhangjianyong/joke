@@ -1,3 +1,10 @@
+if(!"favorite".getCookie()){
+	$("#favorite").show();
+}
+$(".close_favorite").on("click",function(){
+	"favorite".setCookie(true,24*3600,J_utils.Config.domain,"/",false);
+	$("#favorite").slideUp(1000,function(){this.remove();});
+});
 var user = "user".getCookie();
 if(user){
 	var user = eval('(' + JSON.parse(user) + ')');

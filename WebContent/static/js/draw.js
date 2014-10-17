@@ -111,6 +111,7 @@ $("#_code a").on("click",function(){
 	});
 	$("#draw_button").show();
 	$("#_code").hide();
+	$("#_code input").val("")
 	drawing = false;
 });
 function fly_target(i,t){
@@ -161,3 +162,4 @@ function checkScore(){
 	});	
 };
 checkScore();
+$("#draw_page_score").text($("#top_score").text());

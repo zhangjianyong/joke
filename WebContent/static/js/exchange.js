@@ -16,6 +16,7 @@ $("#exchange").on("click",function(){
 			if(result.success){
 				checkScore();
 				alert("对换成功");
+				load({data:load_option});
 			}else{
 				alert(result.msg);
 			}

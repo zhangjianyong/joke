@@ -33,6 +33,11 @@
                 <div class="zhichi_bg">
                 	<div class="chizhi_left"><a id="up" data="${article.id }" href="javascript:void(0);" class="color_1"><span class="one1"></span><b>${article.up }</b></a></div>
                     <div class="chizhi_left"><a id="down" data="${article.id }"  href="javascript:void(0);" class="color_1"><span class="one2"></span><b>${article.down }</b></a></div>
+                    <div class="jiantou info_top20">
+	                	<c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
+	                	<c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
+	                    <div class="clear"></div>
+	                </div>
                     <div class="bshare_bg">
                         <div class="bshare_info">
                         	<ul>
@@ -58,22 +63,19 @@
                     	<span>分享</span>
                     </div>
                 </div>
-                <script type="text/javascript">ad_show('10');</script>
-                <div class="info_tiao_bg">
-                	<c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
-                	<c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
-                    <div class="clear"></div>
-                </div>
+                ${ads.ad10.content }
             </div>
-            <script type="text/javascript">ad_show('11');</script>
-            <div class="info_advert_list">
-            	<div style="float:left;"><script type="text/javascript">ad_show('12');</script></div>
-            	<div style="float:left;padding-left:40px;"><script type="text/javascript">ad_show('13');</script></div>
+            <div class="info_advert_list" style="background-color: #fff;">
+            	<div style="float:left;" id="ad1">${ads.ad12.content }</div>
+            	<div style="float:left;padding-left:40px;" id="ad2">${ads.ad13.content }</div>
+            </div>
+            <div style="padding: 20px 0 0;background-color: #fff;">
+            	${ads.ad11.content }
             </div>
         </div>
     	<!--  右侧-->
         <div class="i_main_right">
-        	<script type="text/javascript">ad_show('6');</script>
+        	${ads.ad6.content }
         	<div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
                 <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
@@ -94,7 +96,7 @@
                 </ul>
                 <div class="clear"></div>
             </div>
-        	<script type="text/javascript">ad_show('7');</script>
+        	${ads.ad7.content }
             <div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
                 <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
@@ -115,8 +117,8 @@
                 </ul>
                 <div class="clear"></div>
             </div>
-        	<script type="text/javascript">ad_show('8');</script>
-        	<script type="text/javascript">ad_show('9');</script>
+        	${ads.ad8.content }
+        	${ads.ad9.content }
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>
             </div>

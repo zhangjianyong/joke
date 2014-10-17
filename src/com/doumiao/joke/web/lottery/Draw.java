@@ -49,6 +49,10 @@ public class Draw {
 				"hots",
 				jdbcTemplate
 						.queryForList("select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 2"));
+		request.setAttribute(
+				"draws",
+				jdbcTemplate
+						.queryForList("select m.nick,a.wealth,date_format(a.create_time,'%T') time from uc_account_log a,uc_member m where a.wealth_type = 'DRAW' and a.account='S2' and m.id=a.member_id order by a.id desc limit 0, 30"));
 		return "/lottery/draw";
 	}
 

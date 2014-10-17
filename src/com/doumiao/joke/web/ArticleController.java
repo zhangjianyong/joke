@@ -1,6 +1,9 @@
 package com.doumiao.joke.web;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.doumiao.joke.enums.ArticleType;
 import com.doumiao.joke.lang.CookieUtils;
 import com.doumiao.joke.schedule.Config;
 
@@ -61,15 +63,29 @@ public class ArticleController {
 			log.error(e, e);
 		}
 		// 记录邀请人
+		
 		if (inviter > 0) {
+			String domain = Config.get("cookie_domain");
 			int hours = 
 					Config.getInt("inviter_cookie_time", 24);
-			String domain = Config.get("cookie_domain","");
 			CookieUtils.createCookie(response, domain, "inviter",
 					String.valueOf(inviter), "/", hours * 3600, false);
 		}
-
+		
+		//广告
+		List<Map<String,Object>> ads = jdbcTemplate.queryForList("select * from ad_script where id in(6,7,8,11,12,13)");
+		Map<Object,Map<String,Object>> adMap = new HashMap<Object,Map<String,Object>>();
+		Random r = new Random();
+		for(Map<String,Object> ad : ads){
+			adMap.put("ad"+ad.get("id"), ad);
+		}
+		if(r.nextBoolean()){
+			Map<String,Object> o = adMap.get("ad13");
+			adMap.put("ad13", adMap.get("ad12"));
+			adMap.put("ad12", o);
+		}
 		request.setAttribute("article", article);
+		request.setAttribute("ads", adMap);
 		request.setAttribute(
 				"hots",
 				jdbcTemplate
