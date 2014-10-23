@@ -1,6 +1,5 @@
 $(window).scroll(function() {
 	var t = $(window);
-	J_utils.log(t.scrollTop());
 	if(t.scrollTop()>100){
 		$('.index_top_bg').show()
 	}else{
