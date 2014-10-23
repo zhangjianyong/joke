@@ -5,6 +5,17 @@
 <div id="favorite" style="height: 40px;overflow: hidden;background-color: #fff4db;text-align: center; line-height: 40px;display:none;">
 		<div style="width:960px; margin: 0 auto; position: relative;"><p class="close_favorite" style="position: absolute; top:0; right:0;cursor: pointer;">关闭</p>按 <strong>Ctrl+D</strong>，把${config.system_website_name }放入收藏夹！<span><a href="javascript:void(0)" class="close_favorite" style="text-decoration: underline; color: #e02f2f">不再提醒</a></span></div>
 </div>
+<div class="index_top_bg" style="display:none;">
+	<div class="index_top">
+    	<ul>
+        	<li><a href="/" class="pos index">首页</a></li>
+            <li><a href="/pic" class="pos pic">搞笑图片</a></li>
+            <li><a href="/text" class="pos text">爆笑文字</a></li>
+            <li><a href="/ashamed" class="pos ashamed">糗事大全</a></li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+</div>
 <div class="i_top_bg" id="top">
 	<div id="msg_top" ></div>
 	<form>
