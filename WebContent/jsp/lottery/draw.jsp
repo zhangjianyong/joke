@@ -51,9 +51,9 @@
                 <!-- 结束 抽奖  -->
                 <div class="draw_bg">
                 	<div class="draw_name fontbold font14">中奖页面</div>
-                    <ul class="draw_list"><c:forEach var="o" items="${draws }">
+                    <c:forEach var="o" items="${draws }" end="5" varStatus="s"><ul class="draw_list">
                     	<li><span class="word">${o.nick }抽中了</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
-                    </c:forEach></ul>
+                    </ul></c:forEach>
                 </div>
                 <script type="text/javascript">ad_show('16');</script>
             </div>

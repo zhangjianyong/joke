@@ -18,4 +18,3 @@
 		<a href="/uc/score" class="margin_left10">个人中心</a>
 		<a href="/lottery/draw" class="margin_left10 color_red englist_one">抽奖(<b id="top_drawtimes">--</b>)</a></div>
 </div>
-<script src="${config.system_resource_url }/static/js/top.js" type="text/javascript"></script>

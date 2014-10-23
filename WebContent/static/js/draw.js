@@ -7,7 +7,7 @@ var awards = [{"id":"0","k":"coin","v":"0"}, {"id":"1","k":"coin","v":"1"},
               {"id":"12","k":"coin","v":"50"}, {"id":"13","k":"coin","v":"1"},
               {"id":"14","k":"coin","v":"10"}, {"id":"15","k":"coin","v":"20"}];
 for(i in awards){
-	$("#"+awards[i].id).find(".one3").text(awards[i].v+"积分");
+	$("#"+awards[i].id).find(".one3").text(awards[i].v+"金币");
 }
 $("#divshow").on("click",function(){
 	refreshcode();
