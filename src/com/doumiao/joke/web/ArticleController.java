@@ -92,19 +92,14 @@ public class ArticleController {
 			adMap.put("ad12", o);
 		}
 		// 评论及抽奖次数
-		if (m!=null && m.getId() > 0) {
-			request.setAttribute(
-					"updown_times",
-					jdbcTemplate
-							.queryForInt(
-									"select count(1) from uc_account_log where member_id = ? and account = ? and wealth_type = ?",
-									m.getId(), Account.S1.name(), WealthType.UPDOWN.name()));
+		if (m != null && m.getId() > 0) {
 			request.setAttribute(
 					"draw_times",
 					jdbcTemplate
 							.queryForInt(
 									"select count(1) from uc_account_log where member_id = ? and account = ? and wealth_type = ?",
-									m.getId(), Account.S1.name(), WealthType.DRAW.name()));
+									m.getId(), Account.S1.name(),
+									WealthType.DRAW.name()));
 		}
 		request.setAttribute("article", article);
 		request.setAttribute("ads", adMap);

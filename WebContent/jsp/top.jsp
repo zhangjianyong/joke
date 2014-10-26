@@ -21,6 +21,7 @@
 	<div id="msg_top" ></div>
 	<form>
 		<input id="go_url" type="hidden" value="/"></input>
+		<input id="top_s1" type="hidden" value=""></input>
 	</form>
 	<div id="nouser"  class="i_top">您好！<em class="top_user_name">朋友</em><a href="${config.system_control_url }/qqbind" class="qq">QQ登录</a></div>
 	<div id="haveuser" class="i_top" style="display:none">

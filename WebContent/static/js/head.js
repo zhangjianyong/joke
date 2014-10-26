@@ -29,6 +29,7 @@ if(_user){
 		success : function(result) {
 			J_utils.log(result);
 			$("#top_score").html(result.content.s2);
+			$("#top_s1").val(result.content.s1);
 			$("#top_drawtimes").html(result.content.drawtimes);
 		},
 		error : function(xhr, ts, et) {

@@ -1,3 +1,10 @@
+if(_user){
+	var draw = $('#article_draw');
+	var ems = draw.find("em");
+	$(ems[0]).text($('#top_s1').val());
+	$(ems[1]).text($('#top_drawtimes').text());
+	draw.show();
+}
 $("#up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1");});
 $("#down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1");});
 $("#up").on("click",function(){
