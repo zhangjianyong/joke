@@ -36,7 +36,7 @@
                     <div class="jiantou info_top20">
 	                	<c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
 	                	<c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
-	                    <span id="article_draw" style="color: red;padding:5px;display: none;">(点评次数：<em>--</em>次 , 抽奖机会：<a href="/lottery/draw"></a><em>--</em></a>次)</span>
+	                    <span id="article_draw" style="color: red;padding:5px;display: none;">(点评次数：<em>--</em>次 , 抽奖机会：<a href="/lottery/draw"><em>--</em></a>次)</span>
 	                    <div class="clear"></div>
 	                </div>
                     <div class="bshare_bg">
