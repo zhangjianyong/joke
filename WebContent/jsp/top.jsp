@@ -12,6 +12,7 @@
             <li><a href="/pic" class="pos pic">搞笑图片</a></li>
             <li><a href="/text" class="pos text">爆笑文字</a></li>
             <li><a href="/ashamed" class="pos ashamed">糗事大全</a></li>
+            <li><a href="/shortcut" target="_blank">保存到桌面</a></li>
         </ul>
         <div class="clear"></div>
     </div>
