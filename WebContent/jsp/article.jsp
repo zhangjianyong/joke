@@ -73,53 +73,15 @@
             <div style="padding: 20px 0 0;background-color: #fff;">
             	${ads.ad11.content }
             </div>
+            <c:forEach var="h" items="${hots_text }">
+            	<div class="left_two bg_radius page">
+	            	<div class="two_name"><a href="/article/${h.id }" target="_blank">${h.title } </a></div><div class="two_info">${h.content }<br></div>
+            	</div>
+            </c:forEach>
         </div>
     	<!--  右侧-->
         <div class="i_main_right">
-        	${ads.ad6.content }
-        	<div class="right_tuijian margin_top10">
-            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
-                	<li>
-                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p></p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
-                        <a href="/article/${h.id }" class="font14"></a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if></c:forEach>
-                </ul>
-                <div class="clear"></div>
-            </div>
-        	${ads.ad7.content }
-            <div class="right_tuijian margin_top10">
-            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
-                	<li>
-                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p></p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
-                        <a href="/article/${h.id }" class="font14"></a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if></c:forEach>
-                </ul>
-                <div class="clear"></div>
-            </div>
         	${ads.ad8.content }
-        	${ads.ad9.content }
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>
             </div>

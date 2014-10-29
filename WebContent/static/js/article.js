@@ -162,7 +162,7 @@ if(posV){
 	}
 }
 //$(".jiantou.info_top20").scrollFloatTop($("#content"));
-//$(".i_main_right").scrollFloatBottom($(".i_main_left"),125,125);
+//$(".i_main_right").scrollFloatBottom($(".i_main_left"),125,0);
 $(".share_button").each(function(i,e){
 	var webid = $(e).attr("id");
 	var id = $("#up").attr("data");
@@ -173,8 +173,8 @@ $(".share_button").each(function(i,e){
 		J_utils.share(webid,title,J_utils.Config.website+"/article/"+id,content,pic);
 	})
 });
-var vc = parseInt("vc".getCookie()||0);
-if(vc>=10){
-	$(".left_two.bg_radius.margin_top0").css("padding","0 20px 10px");
-}
-"vc".setCookie(vc+1,24*3600,J_utils.Config.domain,"/",false);
+//var vc = parseInt("vc".getCookie()||0);
+//if(vc>=10){
+//	$(".left_two.bg_radius.margin_top0").css("padding","0 20px 10px");
+//}
+//"vc".setCookie(vc+1,24*3600,J_utils.Config.domain,"/",false);

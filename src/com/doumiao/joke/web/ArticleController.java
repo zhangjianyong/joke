@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.enums.Account;
+import com.doumiao.joke.enums.ArticleType;
 import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.CookieUtils;
 import com.doumiao.joke.schedule.Config;
@@ -104,9 +105,9 @@ public class ArticleController {
 		request.setAttribute("article", article);
 		request.setAttribute("ads", adMap);
 		request.setAttribute(
-				"hots",
+				"hots_text",
 				jdbcTemplate
-						.queryForList("select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 2"));
+						.queryForList("select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 10",ArticleType.TEXT.name()));
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
 		return "/article";
