@@ -52,7 +52,7 @@ public class Draw {
 		request.setAttribute(
 				"draws",
 				jdbcTemplate
-						.queryForList("select m.nick,a.wealth,date_format(a.create_time,'%T') time from uc_account_log a,uc_member m where a.wealth_type = 'DRAW' and a.account='S2' and m.id=a.member_id order by a.wealth desc limit 0, 30"));
+						.queryForList("select m.nick,a.wealth,date_format(a.create_time,'%T') time from uc_account_log a,uc_member m where a.wealth_type = 'DRAW' and a.account='S2' and m.id=a.member_id and DATE(a.create_time) = CURDATE() order by a.wealth desc limit 0, 30"));
 		return "/lottery/draw";
 	}
 
