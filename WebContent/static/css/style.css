@@ -253,8 +253,6 @@ img{border:0;}
 .draw_bg .draw_list li span.word1{ width:74px; color:#ff8400; font-weight:bold;}
 .draw_bg .draw_list li span.word2{ width:85px}
 
-#mask { background-color:Gray; left:0px; opacity:0.5; position:absolute; top:0px; z-index:3; filter:alpha(opacity=50); /* IE6 */  -moz-opacity:0.5; /* Mozilla */   -khtml-opacity:0.5; /* Safari */  
-} 
 .padding_top20{ padding-top:20px;}
 .chj_info_three{ width:1030px; margin:15px 0 15px -30px;}
 .chj_info_three li{ width:300px; height:250px; float:left; margin:0 0 0 30px; display:inline;}
@@ -291,7 +289,7 @@ img{border:0;}
 .layer_pic_close a{ width:50px; height:51px; display:block; cursor:pointer; }
 .layer_pic_botton{ width:117px; height:39px; position:absolute; bottom:16px; left:230px;}
 .layer_pic_botton a{ width:117px; height:39px; display:block; cursor:pointer; background:url(../images/layer_botton.png) no-repeat left top;_background:url(../images/layer_botton1.png) no-repeat left top}
-.overDiv{background-color: black;width: 100%;height: 100%;left: 0;top: 0;filter: alpha(opacity=60);opacity: 0.6;z-index: 100;position: fixed!important; display:none;}
+.overDiv{background-color: black;width: 100%;height: 100%;left: 0;top: 0;filter: alpha(opacity=80);opacity: 0.8;z-index: 10;position: fixed!important; display:none;}
 .pub_main_left{ width:600px; float:left; background:#fff; padding:20px 20px 100px;}
 .pub_title_text{ width:315px;}
 .pub_title_word{ line-height:35px; font-size:14px; font-weight:bold;}
