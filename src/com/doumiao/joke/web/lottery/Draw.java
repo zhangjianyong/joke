@@ -62,6 +62,7 @@ public class Draw {
 			@RequestParam(value="code") String code,
 			@RequestParam(value="key") String key,
 			@LoginMember Member m) {
+		log.info("lottery draw:"+m.getId());
 		if(StringUtils.isBlank(code)){
 			return new Result(false,"faild","请输入",null);
 		}
