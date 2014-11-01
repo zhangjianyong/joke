@@ -29,5 +29,5 @@
 		<em class="margin_left10">目前拥有<a href="/uc/score"><em class="color_red englist_one"  id="top_score">--</em></a> ${config.score_unit }</em>
 		<a href="/uc/exchange" class="margin_left10">兑换集分宝</a>
 		<a href="/uc/score" class="margin_left10">个人中心</a>
-		<a href="/lottery/draw" class="margin_left10 color_red englist_one">抽奖(<b id="top_drawtimes">--</b>)</a></div>
+		<a href="/lottery/draw" class="margin_left10 color_red englist_one">签到(<b id="top_drawtimes">--</b>)</a></div>
 </div>

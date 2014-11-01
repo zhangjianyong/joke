@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.doumiao.joke.enums.ArticleType;
 import com.doumiao.joke.enums.OrderType;
+import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.schedule.Config;
 
 @Controller
@@ -77,7 +79,7 @@ public class ArticleListController {
 			listSql += " order by a.up desc limit ?,?";
 		}
 
-		int rows = Config.getInt("row_count_per_page",30);
+		int rows = Config.getInt("row_count_per_page", 30);
 
 		int count = jdbcTemplate.queryForInt(countSql, countParams.toArray());
 		int pages = count / rows + 1;
@@ -88,16 +90,31 @@ public class ArticleListController {
 
 		listParams.add((page - 1) * rows);
 		listParams.add(rows);
-		List<Map<String, Object>> articles = jdbcTemplate.queryForList(listSql,listParams.toArray());
+		List<Map<String, Object>> articles = jdbcTemplate.queryForList(listSql,
+				listParams.toArray());
 		request.setAttribute("page", page);
 		request.setAttribute("count", pages);
 		request.setAttribute("articles", articles);
-		request.setAttribute(
-				"hots",
-				jdbcTemplate
-						.queryForList(
-								"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 2"));
-		if(ArticleType.ALL == typeE && page==1 && OrderType.NEW == orderE){
+
+		@SuppressWarnings("unchecked")
+		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+				.get(Cache.Key.AD);
+		Map<String,Map<String, Object>> listAd = adMap.get("list");
+		request.setAttribute("ads", listAd);
+		request.setAttribute("footAds", adMap.get("foot"));
+		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
+		@SuppressWarnings("unchecked")
+		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
+				.get(Cache.Key.HOT_PIC);
+		if (l.size() > 2) {
+			Random rand = new Random();
+			int seed = rand.nextInt(l.size() - 2);
+			for (int i = 0; i < 2; i++) {
+				hots.add(l.get(i + seed));
+			}
+		}
+		request.setAttribute("hots", hots);
+		if (ArticleType.ALL == typeE && page == 1 && OrderType.NEW == orderE) {
 			return "/index";
 		}
 		return "/list";

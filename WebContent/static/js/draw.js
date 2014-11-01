@@ -154,6 +154,7 @@ function checkScore(){
 			$("#top_score").text(result.content.s2);
 			$("#top_drawtimes").text(result.content.drawtimes);
 			$("#drawtimes").find("em").text(result.content.drawtimes);
+			$("#draw_page_score").text(result.content.s2);
 		},
 		error : function(xhr, ts, et) {
 			xhr = null;
@@ -161,5 +162,6 @@ function checkScore(){
 		}
 	});	
 };
-checkScore();
-$("#draw_page_score").text($("#top_score").text());
+if(_user){
+	checkScore();
+}

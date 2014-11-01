@@ -1,5 +1,6 @@
 package com.doumiao.joke.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.doumiao.joke.annotation.LoginMember;
-import com.doumiao.joke.enums.Account;
-import com.doumiao.joke.enums.ArticleType;
-import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.CookieUtils;
+import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 
@@ -80,34 +79,32 @@ public class ArticleController {
 		}
 
 		// 广告
-		List<Map<String, Object>> ads = jdbcTemplate
-				.queryForList("select * from ad_script where id in(6,7,8,11,12,13)");
-		Map<Object, Map<String, Object>> adMap = new HashMap<Object, Map<String, Object>>();
 		Random r = new Random();
-		for (Map<String, Object> ad : ads) {
-			adMap.put("ad" + ad.get("id"), ad);
-		}
+		@SuppressWarnings("unchecked")
+		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+				.get(Cache.Key.AD);
+		Map<String,Map<String, Object>> articleAd = adMap.get("article");
 		if (r.nextBoolean()) {
-			Map<String, Object> o = adMap.get("ad13");
-			adMap.put("ad13", adMap.get("ad12"));
-			adMap.put("ad12", o);
-		}
-		// 评论及抽奖次数
-		if (m != null && m.getId() > 0) {
-			request.setAttribute(
-					"draw_times",
-					jdbcTemplate
-							.queryForInt(
-									"select count(1) from uc_account_log where member_id = ? and account = ? and wealth_type = ?",
-									m.getId(), Account.S1.name(),
-									WealthType.DRAW.name()));
+			Map<String, Object> o = articleAd.get("ad13");
+			articleAd.put("ad13", articleAd.get("ad12"));
+			articleAd.put("ad12", o);
 		}
 		request.setAttribute("article", article);
-		request.setAttribute("ads", adMap);
-		request.setAttribute(
-				"hots_text",
-				jdbcTemplate
-						.queryForList("select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 10",ArticleType.TEXT.name()));
+		request.setAttribute("ads", articleAd);
+		request.setAttribute("footAds", adMap.get("foot"));
+
+		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
+		@SuppressWarnings("unchecked")
+		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
+				.get(Cache.Key.HOT_TEXT);
+		if (l.size() > 10) {
+			Random rand = new Random();
+			int seed = rand.nextInt(l.size() - 10);
+			for (int i = 0; i < 10; i++) {
+				hots.add(l.get(i + seed));
+			}
+		}
+		request.setAttribute("hots_text", hots);
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
 		return "/article";

@@ -59,13 +59,13 @@ public class Ucenter {
 	public Result interfaceScore(HttpServletRequest request,
 			HttpServletResponse response, @LoginMember Member m) {
 		int uid = m.getId();
-		Map<String, Object> account = MapUtils.EMPTY_MAP;
+		Map<String, Object> account = new HashMap<String,Object>();
 		try {
 			account = jdbcTemplate.queryForMap(
 					"select s1,s2 from uc_account where member_id = ?", uid);
 		} catch (Exception e) {
 			log.error(e, e);
-			account.put("s1", "账户异常");
+			return new Result(false, "interface_score_faild", "获取用户积分失败", null);
 		}
 
 		int scoreUsePerDraw = Config.getInt("score_use_per_draw", 5);

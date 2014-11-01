@@ -112,7 +112,7 @@ img{border:0;}
 .right_tuijian li a{ line-height:18px;}
 .right_tuijian li .time{ color:#bcbcbc; padding:10px 0 0; clear:both; }
 .right_tuijian li .time em{ color:#b69e88; padding-right:10px;}
-.bshare_bg{ width:170px; float:right;}
+.bshare_bg{ width:120px; float:right;}
 .bshare_bg span{ float:right; line-height:26px; padding:0 10px 0 0; color:#999;}
 .bshare_bg .bshare_icon{ width:31px; height:28px; float:right;}
 .bshare_bg .bshare_icon a{ width:31px; height:28px; background:url(../images/bshare.png) no-repeat left top; display:block; cursor:pointer;}

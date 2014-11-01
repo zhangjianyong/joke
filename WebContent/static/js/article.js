@@ -1,13 +1,6 @@
-if(_user){
-	var draw = $('#article_draw');
-	var ems = draw.find("em");
-	$(ems[0]).text($('#top_s1').val());
-	$(ems[1]).text($('#top_drawtimes').text());
-	draw.show();
-}
-$("#up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1");});
-$("#down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1");});
-$("#up").on("click",function(){
+$(".color_1.updown.up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1 updown up");});
+$(".color_1.updown.down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1 updown dwon");});
+$(".color_1.updown.up").on("click",function(){
 	if(!_user){
 		J_utils.login("login_div_a");
 		return;
@@ -17,7 +10,7 @@ $("#up").on("click",function(){
 		return;
 	}
 	t.attr({"disabled":"disabled"});
-	var aid = t.attr("data");
+	var aid = t.attr("data-id");
 	$.ajax({
 		url : J_utils.Config.website+"/up/"+aid,
 		type : "POST",
@@ -56,7 +49,7 @@ $("#up").on("click",function(){
 		}
 	});
 });
-$("#down").on("click",function(){
+$(".color_1.updown.down").on("click",function(){
 	if(!_user){
 		J_utils.login("login_div_a");
 		return;
@@ -66,7 +59,7 @@ $("#down").on("click",function(){
 		return;
 	}
 	t.attr({"disabled":"disabled"});
-	var aid = t.attr("data");
+	var aid = t.attr("data-id");
 	$.ajax({
 		url : J_utils.Config.website+"/down/"+aid,
 		type : "POST",
@@ -178,3 +171,25 @@ $(".share_button").each(function(i,e){
 //	$(".left_two.bg_radius.margin_top0").css("padding","0 20px 10px");
 //}
 //"vc".setCookie(vc+1,24*3600,J_utils.Config.domain,"/",false);
+if(_user){
+	var draw = $('#article_draw');
+	draw.show();
+	$.ajax({
+		url : J_utils.Config.website+"/uc/i/score",
+		type : "POST",
+		dataType : "JSON",
+		timeout : 3000,
+		async:true,
+		success : function(result) {
+			var ems = draw.find("em");
+			$(ems[0]).text(result.content.s1);
+			$(ems[1]).text(result.content.drawtimes);
+			$("#top_score").text(result.content.s2);
+			$("#top_drawtimes").text(result.content.drawtimes);
+		},
+		error : function(xhr, ts, et) {
+			xhr = null;
+			J_utils.log(et);
+		}
+	});
+}

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,7 @@ import com.doumiao.joke.enums.AccountLogStatus;
 import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.HttpClientHelper;
 import com.doumiao.joke.lang.SerialNumberGenerator;
+import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
@@ -45,10 +47,25 @@ public class Draw {
 	public String show(HttpServletRequest request,
 			HttpServletResponse response, @LoginMember Member m) {
 		request.setAttribute("config", Config.getConfig());
-		request.setAttribute(
-				"hots",
-				jdbcTemplate
-						.queryForList("select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 order by up desc,id desc limit 0, 2"));
+		@SuppressWarnings("unchecked")
+		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+				.get(Cache.Key.AD);
+		Map<String,Map<String, Object>> drawAd = adMap.get("draw");
+		request.setAttribute("ads", drawAd);
+		request.setAttribute("footAds", adMap.get("foot"));
+		
+		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
+		@SuppressWarnings("unchecked")
+		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
+				.get(Cache.Key.HOT_PIC);
+		if (l.size() > 2) {
+			Random rand = new Random();
+			int seed = rand.nextInt(l.size() - 2);
+			for (int i = 0; i < 2; i++) {
+				hots.add(l.get(i + seed));
+			}
+		}
+		request.setAttribute("hots", hots);
 		request.setAttribute(
 				"draws",
 				jdbcTemplate

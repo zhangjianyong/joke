@@ -20,7 +20,7 @@
     <script type="text/javascript">$("#list_top_"+"${param.o}").addClass("hover");</script>
 	<div class="i_main">
     	<!--  左侧-->
-    	<div class="i_main_left"><script type="text/javascript">ad_show('23');</script>
+    	<div class="i_main_left">${ads.ad23.content }
         	<c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" >
             <c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if>
@@ -42,9 +42,9 @@
                     <div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=down" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>
                 </div>
             </div>
-            <c:if test="${s.index==9 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('23');</script></div></c:if>
-            	<c:if test="${s.index==19 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('24');</script></div></c:if>
-            	<c:if test="${s.index==29 }"><div style="margin-top:15px;"><script type="text/javascript">ad_show('25');</script></div></c:if>
+            <c:if test="${s.index==9 }"><div style="margin-top:15px;">${ads.ad23.content }</div></c:if>
+            <c:if test="${s.index==19 }"><div style="margin-top:15px;">${ads.ad24.content }</div></c:if>
+            <c:if test="${s.index==29 }"><div style="margin-top:15px;">${ads.ad25.content }</div></c:if>
             </c:forEach>
             <!-- 分页 -->
             <div id="loading" style="display: none;">正在加载..</div>
@@ -54,11 +54,11 @@
             	<jsp:param value="/${param.t }/${param.o }" name="path"/>
             	<jsp:param value="/" name="first"/>
             </jsp:include>
-            <script type="text/javascript">ad_show('5');</script>
+            ${ads.ad5.content }
         </div>
     	<!--  右侧-->
         <div class="i_main_right">
-        	<script type="text/javascript">ad_show('1');</script>
+        	${ads.ad1.content }
         	<div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
                 <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
@@ -79,7 +79,7 @@
                 </ul>
                 <div class="clear"></div>
             </div>
-        	<script type="text/javascript">ad_show('2');</script>
+        	${ads.ad2.content }
         	<div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
                 <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
@@ -100,8 +100,8 @@
                 </ul>
                 <div class="clear"></div>
             </div>
-            <script type="text/javascript">ad_show('3');</script>
-            <script type="text/javascript">ad_show('4');</script>
+            ${ads.ad3.content }
+            ${ads.ad4.content }
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>
             </div>

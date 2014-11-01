@@ -31,12 +31,12 @@
 	            <c:if test="${article.type=='TEXT' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
 	            <c:if test="${article.type=='ASHAMED' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
                 <div class="zhichi_bg">
-                	<div class="chizhi_left"><a id="up" data="${article.id }" href="javascript:void(0);" class="color_1"><span class="one1"></span><b>${article.up }</b></a></div>
-                    <div class="chizhi_left"><a id="down" data="${article.id }"  href="javascript:void(0);" class="color_1"><span class="one2"></span><b>${article.down }</b></a></div>
+                	<div class="chizhi_left"><a data-id="${article.id }" href="javascript:void(0);" class="color_1 updown up"><span class="one1"></span><b>${article.up }</b></a></div>
+                    <div class="chizhi_left"><a data-id="${article.id }"  href="javascript:void(0);" class="color_1 updown down"><span class="one2"></span><b>${article.down }</b></a></div>
                     <div class="jiantou info_top20">
 	                	<c:if test="${preId!=0 }"><span class="info_jiantou"><a id="next" class="pre" href="/article/${preId }"></a></span></c:if>
 	                	<c:if test="${nextId!=0 }"><span class="info_next"><a id="next" class="next" href="/article/${nextId }">下一条</a></span></c:if>
-	                    <span id="article_draw" style="color: red;padding:5px;display: none;">(点评次数：<em>--</em>次 , 抽奖机会：<a href="/lottery/draw"><em style="color:blue;">--</em></a>次)</span>
+	                    <span id="article_draw" style="color: red;padding:5px;display: none;">(点评：<em>--</em>次 , 签到机会：<a href="/lottery/draw"><em style="color:blue;">--</em></a>次)</span>
 	                    <div class="clear"></div>
 	                </div>
                     <div class="bshare_bg">
@@ -61,22 +61,30 @@
                                 </li>
                             </ul>
                         </div>
-                    	<span>分享</span>
+                    	<span></span>
                     </div>
                 </div>
-                ${ads.ad10.content }
             </div>
             <div class="info_advert_list" style="background-color: #fff;">
             	<div style="float:left;" id="ad1">${ads.ad12.content }</div>
             	<div style="float:left;padding-left:40px;" id="ad2">${ads.ad13.content }</div>
             </div>
             <div style="padding: 20px 0 0;background-color: #fff;">
-            	${ads.ad11.content }
             </div>
-            <c:forEach var="h" items="${hots_text }">
+            <c:forEach var="a" items="${hots_text }">
             	<div class="left_two bg_radius page">
-	            	<div class="two_name"><a href="/article/${h.id }" target="_blank">${h.title } </a></div><div class="two_info">${h.content }<br></div>
-            	</div>
+                <div class="two_title">
+                	<div class="title_more"><a href="/article/${a.id }" target="_blank">查看全文</a></div>
+                	<span class="name_pic"><img src="${config.system_resource_url }/static${a.avatar }"></span>
+                    <span class="padding_left10">${a.nick }</span>
+                    <span class="padding_left10 englist color_99">${a.create_time }</span>
+                </div>
+	            <c:if test="${a.type=='TEXT' }"><div class="two_name"><a href="/text">【爆笑文字】</a><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
+                <div class="zhichi_bg">
+                	<div class="chizhi_left"><a href="javascript:void(0);" data-id="${a.id }" class="color_1 updown up"><span class="one1"></span><b>${a.up }</b></a></div>
+                    <div class="chizhi_left"><a href="javascript:void(0);" data-id="${a.id }" class="color_1 updown down"><span class="one2"></span><b>${a.down }</b></a></div>
+                </div>
+            </div>
             </c:forEach>
         </div>
     	<!--  右侧-->

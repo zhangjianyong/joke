@@ -5,7 +5,23 @@ if(login){
 	data['to']=to;
 	J_utils.login(data);
 }
-
+if(_user){
+	$.ajax({
+		url : J_utils.Config.website+"/uc/i/score",
+		type : "POST",
+		dataType : "JSON",
+		timeout : 3000,
+		async:true,
+		success : function(result) {
+			$("#top_score").text(result.content.s2);
+			$("#top_drawtimes").text(result.content.drawtimes);
+		},
+		error : function(xhr, ts, et) {
+			xhr = null;
+			J_utils.log(et);
+		}
+	});
+}
 $(".updown.up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1");});
 $(".updown.down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1");});
 $(".updown").on("click",function(){

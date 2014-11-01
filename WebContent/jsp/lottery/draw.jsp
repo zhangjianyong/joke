@@ -28,8 +28,8 @@
                             <li id="5"><span class="one2"></span><span class="one3"></span></li>
                             <li id="15"><span class="one2"></span><span class="one3"></span></li>
                             <li class="li_center">
-                                <p class="word font14">点评${config.score_use_per_draw }个笑话，可获得1次抽奖机会.每日最多${config.draw_count_per_day }次,当天有效.<br>
-                                <span id="drawtimes" class="color_red fontbold">你还有<em>--</em>次抽奖机会！</span></p>
+                                <p class="word font14">点评${config.score_use_per_draw }个笑话，可获得1次签到机会.每日最多${config.draw_count_per_day }次,当天有效.<br>
+                                <span id="drawtimes" class="color_red fontbold">你还有<em>--</em>次签到机会！</span></p>
                             </li>
                             <li id="6"><span class="one2"></span><span class="one3"></span></li>
                             <li id="14"><span class="one2"></span><span class="one3"></span></li>
@@ -55,11 +55,11 @@
                     	<li><span class="word">${o.nick }抽中了</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
                     </ul></c:forEach>
                 </div>
-                <script type="text/javascript">ad_show('16');</script>
+                ${ads.ad16.content }
             </div>
             <div class="i_main_right">
                 <ul>
-                    <li><script type="text/javascript">ad_show('17');</script></li>
+                    <li>${ads.ad17.content }</li>
                     <div class="right_tuijian margin_top10">
 		            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
 		                <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
@@ -80,7 +80,7 @@
 		                </ul>
 		                <div class="clear"></div>
 		            </div>
-                    <li><script type="text/javascript">ad_show('18');</script></li>
+                    <li>${ads.ad18.content }</li>
                 </ul>
                 <div class="clear"></div>
             </div>
