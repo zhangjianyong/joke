@@ -3,4 +3,4 @@
 ${footAds.ad28.content }
 ${footAds.ad19.content }
 ${footAds.ad26.content }
-${footAds.ad26.content }
+${footAds.ad27.content }

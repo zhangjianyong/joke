@@ -2,7 +2,6 @@ package com.doumiao.joke.web;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
-import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +26,7 @@ public class DeskShortcutController {
 			HttpServletResponse response, @LoginMember Member m) {
 		try {
 			response.setHeader("Content-type","application/octet-stream");
-			response.setHeader("Content-Disposition","attachment; filename="+URLEncoder.encode(Config.get("system_website_name"),"UTF-8")+".url");
+			response.setHeader("Content-Disposition","attachment; filename=YiXiaoQianJin.url");
 			BufferedWriter sw = new BufferedWriter(new OutputStreamWriter(response.getOutputStream()));
 			sw.write("[DEFAULT]");
 			sw.newLine();

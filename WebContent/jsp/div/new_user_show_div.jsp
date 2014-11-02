@@ -14,7 +14,7 @@
 <div id="newusershowdiv" class="layer_pic_bg">
 	<div class="layer_pic_top">
     	<div class="layer_pic_close"><a id="newuserdivclose" href="#"></a></div>
-   		 <p class="layer_pic_botton"><a id="addfavorite" href="javascript:void(0);"></a></p>
+   		 <p class="layer_pic_botton"><a href="/shortcut"></a></p>
     </div>
 </div>
 <script type="text/javascript">
@@ -24,17 +24,6 @@ $("#mask").show();
 $("#newuserdivclose").on("click",function(){
 	$("#newusershowdiv").hide();
 	$("#mask").hide();
-});
-$("#addfavorite").on("click",function(){
-	try{
-	    window.external.addFavorite(h, l);
-	}catch (e){
-	    try{
-	        window.sidebar.addPanel(h, l, "");
-	    }catch (e){
-	        alert("你的浏览器不支持这个功能，请使用Ctrl+D进行添加");
-	    }
-	}
 });
 </script>
 </c:if>
