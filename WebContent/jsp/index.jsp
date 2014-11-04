@@ -54,7 +54,7 @@
         </div>
     	<!--  右侧-->
         <div class="i_main_right">
-        	${footAds.ad20.content }
+        	${ads.ad20.content }
         	<div class="right_tuijian margin_top10">
             	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
                 <ul><c:forEach var="h" items="${hots }" end="0"><c:if test="${h.type eq 'PIC' }">
@@ -75,8 +75,8 @@
                 </ul>
                 <div class="clear"></div>
             </div>
-        	${footAds.ad21.content }
-            ${footAds.ad22.content }
+        	${ads.ad21.content }
+            ${ads.ad22.content }
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>
             </div>
