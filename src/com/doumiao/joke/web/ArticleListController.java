@@ -101,8 +101,7 @@ public class ArticleListController {
 		@SuppressWarnings("unchecked")
 		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
-		Map<String,Map<String, Object>> listAd = adMap.get("list");
-		request.setAttribute("ads", listAd);
+		request.setAttribute("ads", adMap.get("list"));
 		request.setAttribute("footAds", adMap.get("foot"));
 		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
 		@SuppressWarnings("unchecked")
@@ -117,6 +116,7 @@ public class ArticleListController {
 		}
 		request.setAttribute("hots", hots);
 		if (StringUtils.equals(pos, "index")) {
+			request.setAttribute("ads", adMap.get("index"));
 			return "/index";
 		}
 		return "/list";
