@@ -20,7 +20,7 @@
 	        <div class="zichan_right">
             	<div class="zichan_right_name font14 fontbold">我的资产</div>
                 <div class="zc_right_main">
-                    <p class="font14 line_height30">亲爱的会员 ${user.nick }，欢迎你！</p>
+                    <p class="font14 line_height30">亲爱的会员 ${user.nick }（会员ID：${user.id }），欢迎你！</p>
                     <p class="font14 line_height30">你的小金库有：<a href="#" class="color_red fontbold">${account.s2 }</a> ${config.score_unit }</p>
                     <p class="line_height30 color_99">金库内的金，可以兑换成集分宝，集分宝可以还信用卡，缴水电煤费，淘宝购物抵现！<a href="/uc/exchange" class="color_red">兑换集分宝&gt;&gt;</a></p>
                     <div class="zhanghao_border">

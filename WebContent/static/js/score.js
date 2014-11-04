@@ -21,3 +21,24 @@ var load_option = {
 	}
 };
 load({data:load_option});
+function checkScore(){
+	$.ajax({
+		url : J_utils.Config.website+"/uc/i/score",
+		type : "POST",
+		dataType : "JSON",
+		timeout : 3000,
+		async:true,
+		success : function(result) {
+			J_utils.log(result);
+			$("#top_score").text(result.content.s2);
+			$("#top_drawtimes").text(result.content.drawtimes);
+		},
+		error : function(xhr, ts, et) {
+			xhr = null;
+			J_utils.log(et);
+		}
+	});	
+};
+if(_user){
+	checkScore();
+}

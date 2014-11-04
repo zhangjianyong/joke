@@ -22,6 +22,10 @@
         <from>^/64e25a7ff3394a14a8f5a4f13dde5f17.html$</from>
         <to type="forward">/static/64e25a7ff3394a14a8f5a4f13dde5f17.html</to>
     </rule>
+    <rule>
+        <from>^/baidu_verify_buP7f9ZETh.html$</from>
+        <to type="forward">/static/baidu_verify_buP7f9ZETh.html</to>
+    </rule>
 	<!-- 以/结尾的所有链接,均去掉/ -->
     <rule>
         <from>^/(.*[^/])/+$</from>

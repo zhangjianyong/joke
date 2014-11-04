@@ -21,6 +21,7 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.annotation.RequiredLogin;
 import com.doumiao.joke.annotation.ResultTypeEnum;
 import com.doumiao.joke.enums.Account;
+import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
@@ -47,6 +48,10 @@ public class Ucenter {
 			account.put("s1", "账户异常");
 		}
 		request.setAttribute("user", m);
+		@SuppressWarnings("unchecked")
+		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+				.get(Cache.Key.AD);
+		request.setAttribute("footAds", adMap.get("foot"));
 		request.setAttribute("account", account);
 		return "/uc/score";
 	}

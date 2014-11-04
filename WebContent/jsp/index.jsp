@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html><html lang=zh>
 <head>
-	<title>${config.system_website_name}</title>
+	<title>${config.system_website_name}-一个看笑话还能赚金币的网站，笑话，搞笑图片，笑话大全，爆笑文字，冷笑话，幽默笑话，爆笑笑话，爆笑图片，搞笑笑话，内涵笑话，搞笑图集，gif动态图片，热门笑话，笑话吧</title>
 	<%@ include file="jscss.jsp" %>
 </head>
 <body>
@@ -79,26 +79,6 @@
                 <div class="clear"></div>
             </div>
         	<script type="text/javascript">ad_show('21');</script>
-            <div class="right_tuijian margin_top10">
-            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
-                	<li>
-                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p></p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
-                        <a href="/article/${h.id }" class="font14"></a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if></c:forEach>
-                </ul>
-                <div class="clear"></div>
-            </div>
             <script type="text/javascript">ad_show('22');</script>
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>

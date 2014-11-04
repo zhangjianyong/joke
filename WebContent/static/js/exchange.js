@@ -36,7 +36,7 @@ function checkScore(){
 		async:true,
 		success : function(result) {
 			J_utils.log(result);
-			$("#top_score").text(result.content.alipay);
+			$("#top_score").text(result.content.s2);
 			$("#top_drawtimes").text(result.content.drawtimes);
 			$("#score").text(result.content.alipay);
 			$("#val").text(result.content.alipay);
@@ -47,6 +47,9 @@ function checkScore(){
 		}
 	});	
 };
+if(_user){
+	checkScore();
+}
 var uc_account_status = {'UNPAY':'等待打款', 'PAYED':'已打款','REJECT':'申请驳回'};
 var plat = {'ALIPAY':'集分宝'};
 var load_option = {

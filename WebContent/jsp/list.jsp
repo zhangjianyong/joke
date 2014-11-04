@@ -81,24 +81,7 @@
             </div>
         	${ads.ad2.content }
         	<div class="right_tuijian margin_top10">
-            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" begin="1"><c:if test="${h.type eq 'PIC' }">
-                	<li>
-                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p></p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'TEXT' }"><li>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if><c:if test="${h.type eq 'ASHAMED' }"><li>
-                        <a href="/article/${h.id }" class="font14"></a>
-                        <p>${h.content }</p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:if></c:forEach>
-                </ul>
-                <div class="clear"></div>
+            	
             </div>
             ${ads.ad3.content }
             ${ads.ad4.content }
