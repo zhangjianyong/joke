@@ -35,7 +35,7 @@ public class ArticleListController {
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "p", required = false, defaultValue = "1") int page,
 			@RequestParam(value = "o", required = false, defaultValue = "new") String order,
-			@RequestParam(value = "pos") String pos)
+			@RequestParam(value = "pos" ,required = false, defaultValue="") String pos)
 			throws Exception {
 		ArticleType typeE = null;
 		OrderType orderE = null;
