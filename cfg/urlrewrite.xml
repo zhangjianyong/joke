@@ -4,7 +4,7 @@
 	<!-- 首页为所有分类的混排 -->
 	<rule>
         <from>^/$</from>
-        <to type="forward">/list?t=pic&amp;o=new</to>
+        <to type="forward">/list?t=pic&amp;o=new&amp;pos=index</to>
     </rule>
     <rule>
         <from>^/all/new[/]?$</from>

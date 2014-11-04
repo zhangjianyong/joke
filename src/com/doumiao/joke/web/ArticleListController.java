@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,8 @@ public class ArticleListController {
 			HttpServletResponse response,
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "p", required = false, defaultValue = "1") int page,
-			@RequestParam(value = "o", required = false, defaultValue = "new") String order)
+			@RequestParam(value = "o", required = false, defaultValue = "new") String order,
+			@RequestParam(value = "pos") String pos)
 			throws Exception {
 		ArticleType typeE = null;
 		OrderType orderE = null;
@@ -114,7 +116,7 @@ public class ArticleListController {
 			}
 		}
 		request.setAttribute("hots", hots);
-		if (ArticleType.ALL == typeE && page == 1 && OrderType.NEW == orderE) {
+		if (StringUtils.equals(pos, "index")) {
 			return "/index";
 		}
 		return "/list";
