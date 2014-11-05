@@ -70,10 +70,11 @@ public class ArticleListController {
 			listSql += " and unix_timestamp(a.create_time) >= ? and unix_timestamp(a.create_time) < ? ";
 			c.add(Calendar.DAY_OF_MONTH, -orderE.getValue());
 			Date end = c.getTime();
-			countParams.add(today.getTime() / 1000);
 			countParams.add(end.getTime() / 1000);
-			listParams.add(today.getTime() / 1000);
+			countParams.add(today.getTime() / 1000);
 			listParams.add(end.getTime() / 1000);
+			listParams.add(today.getTime() / 1000);
+			
 		}
 
 		if (OrderType.NEW == orderE) {
