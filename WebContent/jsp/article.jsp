@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html><html lang=zh>
 <head>
-	<title>${config.system_website_name}-${article.title }</title>	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<title>${config.system_website_name}-
+	<c:if test="${empty article.title}">
+		<c:if test="${empty article.content}">
+			${article.nick }-${article.create_time }
+		</c:if>
+		<c:if test="${not empty article.content}">
+			${fn:substring(article.content,0,10)}
+		</c:if>
+	</c:if>
+	${article.title }</title>	
 	<%@ include file="jscss.jsp" %>
 </head>
 <body>

@@ -52,7 +52,6 @@ public class Draw {
 				.get(Cache.Key.AD);
 		Map<String,Map<String, Object>> drawAd = adMap.get("draw");
 		request.setAttribute("ads", drawAd);
-		request.setAttribute("footAds", adMap.get("foot"));
 		
 		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
 		@SuppressWarnings("unchecked")

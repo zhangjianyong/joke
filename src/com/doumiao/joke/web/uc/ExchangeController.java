@@ -22,7 +22,6 @@ import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.annotation.RequiredLogin;
 import com.doumiao.joke.enums.Plat;
 import com.doumiao.joke.lang.HttpClientHelper;
-import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
 
@@ -63,10 +62,6 @@ public class ExchangeController {
 			log.error(e, e);
 		}
 		request.setAttribute("account", account);
-		@SuppressWarnings("unchecked")
-		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
-				.get(Cache.Key.AD);
-		request.setAttribute("footAds", adMap.get("foot"));
 		request.setAttribute("alipayAccount", alipayAccount);
 		return "/uc/exchange";
 	}

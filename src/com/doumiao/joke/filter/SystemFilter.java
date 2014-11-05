@@ -1,6 +1,7 @@
 package com.doumiao.joke.filter;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.doumiao.joke.lang.CookieUtils;
+import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.schedule.Config;
 
 public class SystemFilter implements Filter {
@@ -27,10 +29,13 @@ public class SystemFilter implements Filter {
 			.createCookie((HttpServletResponse) response, Config
 					.get("cookie_domain",""), "firstcome", "t", "/",
 					Config
-							.getInt("new_user_show_div_days",1) * 86400, false);
+							.getInt("new_user_show_div_days",1) * 24*60*60, false);
 		}
 		request.setAttribute("firstcome", firstcome);
-		
+		@SuppressWarnings("unchecked")
+		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+				.get(Cache.Key.AD);
+		request.setAttribute("footAds", adMap.get("foot"));
 		filterChain.doFilter(request, response);
 	}
 

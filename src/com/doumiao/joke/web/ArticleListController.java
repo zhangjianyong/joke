@@ -103,7 +103,6 @@ public class ArticleListController {
 		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
 		request.setAttribute("ads", adMap.get("list"));
-		request.setAttribute("footAds", adMap.get("foot"));
 		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache

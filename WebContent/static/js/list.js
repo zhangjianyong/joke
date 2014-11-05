@@ -44,7 +44,6 @@ $(function(){
 		if(loadpage.length > 0){
 			var loadpagetop = loadpage.offset().top;
 			if(top+600>loadpagetop){
-				J_utils.log(page);
 				$("#loading").show();
 				var do_class = "page"+page;
 				$("."+do_class).find("img").each(function(){
@@ -63,4 +62,4 @@ $(function(){
 		}
 	});
 });
-$(".i_main_right").scrollFloatBottom($(".i_main_left"),170,125);
+$(".i_main_right").scrollFloatBottom($(".i_main_left"),0,125);

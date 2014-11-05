@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html><html lang=zh>
 <head>
-	<title>个人中心-我的资产</title>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<title>${config.system_website_name}-个人中心-我的资产</title>
 	<%@ include file="../jscss.jsp" %>
 </head>
 <body>

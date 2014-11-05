@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html><html lang=zh>
 <head>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<title>${config.system_website_name}-签到赚金币</title>
 	<%@ include file="../jscss.jsp" %>
 </head>

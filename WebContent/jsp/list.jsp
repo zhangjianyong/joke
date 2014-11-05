@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html><html lang=zh>
 <head>
-	<title>${config.system_website_name}</title>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<title>${config.system_website_name}-
+		<c:if test="${param.t eq 'pic'}">搞笑图片</c:if>
+		<c:if test="${param.t eq 'text'}">爆笑文字</c:if>
+		<c:if test="${param.t eq 'ashamed'}">糗事大全</c:if>
+	</title>
 	<%@ include file="jscss.jsp" %>
 </head>
 <body>
@@ -80,11 +86,8 @@
                 <div class="clear"></div>
             </div>
         	${ads.ad2.content }
-        	<div class="right_tuijian margin_top10">
-            	
-            </div>
+        	<div class="right_tuijian margin_top10"></div>
             ${ads.ad3.content }
-            ${ads.ad4.content }
             <div class="right_botton_bg margin_top10">
             	<span class="top"><a href="#top"></a></span>
             </div>

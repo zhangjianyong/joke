@@ -1,7 +1,6 @@
 package com.doumiao.joke.web;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.tuckey.web.filters.urlrewrite.utils.StringUtils;
 
 import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.lang.CookieUtils;
@@ -44,6 +44,14 @@ public class ArticleController {
 					.queryForMap(
 							"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id = m.id and  a.id = ? and a.`status` = 2",
 							id);
+			if (article.get("title") == null) {
+				Object content = article.get("content");
+				if (content != null) {
+
+				} else {
+
+				}
+			}
 		} catch (EmptyResultDataAccessException edae) {
 			return "/404";
 		} catch (Exception e) {
@@ -81,9 +89,9 @@ public class ArticleController {
 		// 广告
 		Random r = new Random();
 		@SuppressWarnings("unchecked")
-		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+		Map<String, Map<String, Map<String, Object>>> adMap = (Map<String, Map<String, Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
-		Map<String,Map<String, Object>> articleAd = adMap.get("article");
+		Map<String, Map<String, Object>> articleAd = adMap.get("article");
 		if (r.nextBoolean()) {
 			Map<String, Object> o = articleAd.get("ad13");
 			articleAd.put("ad13", articleAd.get("ad12"));
@@ -91,7 +99,6 @@ public class ArticleController {
 		}
 		request.setAttribute("article", article);
 		request.setAttribute("ads", articleAd);
-		request.setAttribute("footAds", adMap.get("foot"));
 
 		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
 		@SuppressWarnings("unchecked")
