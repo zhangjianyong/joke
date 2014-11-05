@@ -68,7 +68,7 @@ public class ArticleListController {
 		if (OrderType.NEW != orderE) {
 			countSql += " and unix_timestamp(a.create_time) >= ? and unix_timestamp(a.create_time) < ? ";
 			listSql += " and unix_timestamp(a.create_time) >= ? and unix_timestamp(a.create_time) < ? ";
-			c.add(Calendar.DAY_OF_MONTH, orderE.getValue());
+			c.add(Calendar.DAY_OF_MONTH, -orderE.getValue());
 			Date end = c.getTime();
 			countParams.add(today.getTime() / 1000);
 			countParams.add(end.getTime() / 1000);
