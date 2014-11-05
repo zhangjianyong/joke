@@ -35,7 +35,8 @@ public class ArticleListController {
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "p", required = false, defaultValue = "1") int page,
 			@RequestParam(value = "o", required = false, defaultValue = "new") String order,
-			@RequestParam(value = "pos" ,required = false, defaultValue="") String pos)
+			@RequestParam(value = "pos" ,required = false, defaultValue="") String pos,
+			@RequestParam(value = "adv" ,required = false, defaultValue="") String adv)
 			throws Exception {
 		ArticleType typeE = null;
 		OrderType orderE = null;
@@ -115,7 +116,7 @@ public class ArticleListController {
 			}
 		}
 		request.setAttribute("hots", hots);
-		if (StringUtils.equals(pos, "index")) {
+		if (StringUtils.equals(pos, "index")&&StringUtils.equals(adv, "0")) {
 			request.setAttribute("ads", adMap.get("index"));
 			return "/index";
 		}
