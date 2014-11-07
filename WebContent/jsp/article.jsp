@@ -22,6 +22,7 @@
 	<div class="i_main">
     	<!--  左侧-->
     	<div class="i_main_left">
+    		${ads.ad9.content }
             <div class="left_two bg_radius margin_top0">
                  <div class="two_title">
 						<%--<div class="jiantou info_top20">

@@ -3,7 +3,9 @@
 	<ul>
     	<li><a id="bar_score"  href="/uc/score" class="J_uc_bar">我的资产</a></li>
     	<li><a id="bar_exchange" href="/uc/exchange" class="J_uc_bar">资产兑换</a></li>
-    	<!--<li><a id="binding" href="/uc/binding" class="J_uc_bar">兑换账号</a></li> -->
+    	<li></li>
+    	${ads.ad1.content }
+    	${ads.ad2.content }
     </ul>
 </div>
 <script type="text/javascript">
