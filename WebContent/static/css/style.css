@@ -311,3 +311,11 @@ img{border:0;}
 .pub_pic_down img{max-height:200px;max-width:200px;vertical-align: middle;_top: -50%;_left: -50%; position:relative; z-index:2; }
 .pub_pic_down .word{width:200px; height:200px; text-align:center; line-height:200px; position:absolute; top:0; left:0; font-size:14px;z-index:1; }
 .pub_pic_down .file{width:200px; height:100px;background:#ddd; position:absolute; top:0; left:0;}
+.layer_news_main{ width:536px; height:438px; margin:0 auto; background:#fff; position:relative;}
+.layer_news_name{ padding:30px 0 0; line-height:20px; text-align:center;}
+.layer_news_info{ line-height:19px; padding:15px 20px 0;}
+.layer_pic{ width:138px; height:28px; float:left;background:url(../images/layer_1.gif) no-repeat left top; display:inline; }
+.padding_top5{ padding-top:5px;}
+.layer_botton_news{ width:187px; height:29px; margin:20px auto 0;}
+.layer_botton_news a{ width:187px; height:29px; display:block; cursor:pointer; background:url(../images/layer_botton_news.png) no-repeat left top;}
+a.layer_news_close{ width:12px; height:12px; display:block; cursor:pointer; background:url(../images/layer_news_close.jpg) no-repeat left top; position:absolute; top:11px; right:11px;} 
