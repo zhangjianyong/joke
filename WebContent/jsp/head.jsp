@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  trimDirectiveWhitespaces="true"%>
 <div class="i_nav_bg">
     <div class="i_nav">
-        <div class="logo"><a href="/"><img src="/static/images/logo.jpg"></a></div>
+        <div class="logo"><a href="/"><img src="${config.system_resource_url }/static/images/logo.jpg"></a></div>
         <div class="nav_list">
             <ul>
             	<li><a href="/" class="pos index">首页</a></li>
