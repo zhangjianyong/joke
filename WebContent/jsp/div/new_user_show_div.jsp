@@ -16,7 +16,7 @@
 	<div class="layer_news_name"><p class="font20">一笑千金签到领金币</p><p class="font14 fontbold">全拼域名（YiXiaoQianJin.com）</p></div>
     <div class="layer_news_info">
     	<a id="newuserdivclose" class="layer_news_close"></a>
-    	<p>“一笑千金”是一个笑话网站，每日签到可以领取金币（金币1:1兑换为集分宝，集分宝可以<span class="fontbold color_red">兑换电话卡、还信用卡、淘宝购物</span></p>
+    	<p>“一笑千金”是一个笑话网站，每日签到可以领取金币（金币1:1兑换为集分宝，集分宝可以<span class="fontbold color_red">兑换电话卡、还信用卡、淘宝购物</span>）</p>
         <p class="font14 fontbold padding_top20">签到流程：</p>
         <p class="font14 fontbold margin_top10">1.点评笑话</p>
         <p>每点评10条笑话，即可获得1次签到机会。</p>
