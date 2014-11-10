@@ -24,9 +24,9 @@
     	<!--  左侧-->
     	<div class="i_main_left">
         	<div class="left_one bg_radius">
-            	<div class="one_name">小贴士</div>
+            	<div class="one_name" style="color: red;"><b>签到赚金币流程</b></div>
                 <div class="one_nr">
-			    	<p>“一笑千金”是一个笑话网站，每日签到可以领取金币（金币1:1兑换为集分宝，集分宝可以<span class="fontbold color_red">兑换电话卡、还信用卡、淘宝购物</span></p>
+			    	<p>“一笑千金”是一个笑话网站，每日签到可以领取金币（金币1:1兑换为集分宝，集分宝可以<span class="fontbold color_red">兑换电话卡、还信用卡、淘宝购物</span>）</p>
 			        <p class="fontbold">签到流程：</p>
 			        <p class="fontbold padding_top5">1.点评笑话</p>
 			        <div><span class="float_left padding_top5">每点评${config.score_use_per_draw }条笑话，即可获得1次签到机会。</span><span class="layer_pic"></span><div class="clear"></div></div>

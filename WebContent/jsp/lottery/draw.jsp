@@ -52,9 +52,9 @@
                 </div>
                 <!-- 结束 抽奖  -->
                 <div class="draw_bg">
-                	<div class="draw_name fontbold font14">中奖页面</div>
+                	<div class="draw_name fontbold font14">今日签到排行</div>
                     <c:forEach var="o" items="${draws }" end="5" varStatus="s"><ul class="draw_list">
-                    	<li><span class="word">${o.nick }抽中了</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
+                    	<li><span class="word">${o.nick }</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
                     </ul></c:forEach>
                 </div>
                 ${ads.ad16.content }
