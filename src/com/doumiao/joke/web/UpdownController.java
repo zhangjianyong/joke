@@ -27,7 +27,6 @@ import com.doumiao.joke.enums.Account;
 import com.doumiao.joke.enums.AccountLogStatus;
 import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.HttpClientHelper;
-import com.doumiao.joke.lang.SerialNumberGenerator;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
 import com.doumiao.joke.vo.Result;
@@ -101,7 +100,6 @@ public class UpdownController {
 
 			// 5如果不满额,发放积分
 			if (scoreUpDownToday <= scoreUpDownMaxPerDay) {
-				String[] serialNumber = SerialNumberGenerator.generate(1);
 				// 生成中奖流水
 				List<Map<String, Object>> logs = new ArrayList<Map<String, Object>>(
 						2);
@@ -111,8 +109,6 @@ public class UpdownController {
 				l.put("t", WealthType.UPDOWN);
 				l.put("w", scoreUpDownPerTime);
 				l.put("s", AccountLogStatus.PAYED.name());
-				l.put("sn", serialNumber[0]);
-				l.put("ssn", serialNumber[1]);
 				l.put("r", "");
 				l.put("o", "system");
 				logs.add(l);

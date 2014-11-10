@@ -25,7 +25,7 @@
     	<div class="i_main_left">
         	<div class="left_one bg_radius">
             	<div class="one_name">小贴士</div>
-                <div class="one_nr">神马？你居然还没有注册一笑千金？注册的好处多多哦，可以参加一笑千金的抽奖活动，每日看笑话，还能赚金币啊！<a style="color: red;" href="/lottery/draw" target="_blank">查看详情</a></div>
+                <div class="one_nr">“一笑千金”是一个笑话网站，每日签到可以领取金币（金币1:1兑换为集分宝，集分宝可以兑换电话卡、还信用卡、淘宝购物）。<br>签到流程：1. 点评笑话：每点评${config.score_use_per_draw }条笑话，即可获得1次签到机会。（找到每条笑话下面的大拇指图标，随便点一下就可以了）；2. 进入签到页面，即可签到；3. 每人每天可以有${config.draw_count_per_day }次签到机会。<a style="color: red;" href="/lottery/draw" target="_blank">查看详情</a></div>
             </div><script type="text/javascript">ad_show('23');</script><c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" ><c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if><div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
                 <div class="two_title">

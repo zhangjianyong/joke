@@ -69,7 +69,7 @@ img{border:0;}
 .i_main_list li a.hover{ color:#fff; background:#ffa015; font-weight:bold; }
 .i_main_left{ width:640px; float:left;}
 .bg_radius{ background:#fff; border-radius:3px;}
-.left_one{ height:65px; padding:15px 20px;}
+.left_one{ height:100px; padding:15px 20px;}
 .left_one .one_name{ height:25px; line-height:25px; position:relative;}
 .jiantou{ float:left; }
 .jiantou span{ float:left; display:block;}
@@ -200,12 +200,12 @@ img{border:0;}
 .margin_top0{ margin-top:0;}
 .zichan_bg{ width:960px; margin:0 auto;border-bottom:2px solid #f2f2f2}
 .zichan_main{background:#fff;border-bottom:2px solid #e6e6e6; padding-bottom:100px;}
-.zichan_left{ width:250px; float:left;}
+.zichan_left{ width:310px; float:left;}
 .zichan_left li{ height:37px; line-height:37px;}
 .zichan_left li a{ height:37px; display:block; padding:0 0 0 67px; font-size:14px;	 }
 .zichan_left li a:hover{ color:#ffa015;}
 .zichan_left li a.hover{ color:#fff; background-color:#ffa015; font-weight:bold;}
-.zichan_right{ width:620px; padding:0 0 0 45px; float:left;}
+.zichan_right{ width:560px; padding:0 0 0 45px; float:left;}
 .zichan_right_name{ height:30px; padding:6px 0 0; line-height:30px; border-bottom:1px solid #ededed}
 .zc_right_main{ padding:10px 0 0 10px;}
 .line_height30{ line-height:30px;}

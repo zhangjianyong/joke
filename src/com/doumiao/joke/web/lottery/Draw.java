@@ -27,7 +27,6 @@ import com.doumiao.joke.enums.Account;
 import com.doumiao.joke.enums.AccountLogStatus;
 import com.doumiao.joke.enums.WealthType;
 import com.doumiao.joke.lang.HttpClientHelper;
-import com.doumiao.joke.lang.SerialNumberGenerator;
 import com.doumiao.joke.schedule.Cache;
 import com.doumiao.joke.schedule.Config;
 import com.doumiao.joke.vo.Member;
@@ -177,7 +176,6 @@ public class Draw {
 			int wealth = Integer.parseInt((String) award.get("value"));
 
 			// 生成中奖流水
-			String[] serialNumber = SerialNumberGenerator.generate(2);
 			Map<String, String> params = new HashMap<String, String>(2);
 			List<Map<String, Object>> accountLog = new ArrayList<Map<String, Object>>(
 					1);
@@ -187,8 +185,6 @@ public class Draw {
 			l.put("t", WealthType.DRAW);
 			l.put("w", -scoreUsePerDraw);
 			l.put("s", AccountLogStatus.PAYED.name());
-			l.put("sn", serialNumber[0]);
-			l.put("ssn", serialNumber[1]);
 			l.put("r", "");
 			l.put("o", "system");
 			accountLog.add(l);
@@ -199,8 +195,6 @@ public class Draw {
 				_l.put("t", WealthType.DRAW);
 				_l.put("w", wealth);
 				_l.put("s", AccountLogStatus.PAYED.name());
-				_l.put("sn", serialNumber[0]);
-				_l.put("ssn", serialNumber[2]);
 				_l.put("r", "");
 				_l.put("o", "system");
 				accountLog.add(_l);
