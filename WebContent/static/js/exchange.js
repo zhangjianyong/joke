@@ -17,7 +17,7 @@ $("#exchange").on("click",function(){
 				//checkScore();
 				alert("对换成功");
 				//load({data:load_option});
-				windown.location.reload();
+				window.location.reload();
 			}else{
 				alert(result.msg);
 			}

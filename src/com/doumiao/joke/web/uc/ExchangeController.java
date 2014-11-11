@@ -2,6 +2,8 @@ package com.doumiao.joke.web.uc;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -64,7 +66,7 @@ public class ExchangeController {
 		}
 		request.setAttribute("account", account);
 		request.setAttribute("alipayAccount", alipayAccount);
-		
+
 		@SuppressWarnings("unchecked")
 		Map<String, Map<String, Map<String, Object>>> adMap = (Map<String, Map<String, Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
@@ -79,6 +81,23 @@ public class ExchangeController {
 			HttpServletResponse response, @LoginMember Member m,
 			@RequestParam(value = "act") final String account,
 			@RequestParam(value = "val") final int wealth) {
+
+		String[] patterns = new String[] {
+				"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$",
+				"^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$" };
+		boolean isAccount = false;
+		for (String p : patterns) {
+			Pattern pattern = Pattern.compile(p);
+			Matcher matcher = pattern.matcher(account);
+			if (matcher.find()) {
+				isAccount = true;
+				break;
+			}
+		}
+
+		if (!isAccount) {
+			return new Result(false, "account.error", "请填写正确的支付宝账户(手机号或邮箱).", null);
+		}
 		// 调取后台接口发放奖品
 		Map<String, String> params = new HashMap<String, String>(3);
 		params.put("uid", String.valueOf(m.getId()));
