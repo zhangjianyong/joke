@@ -14,9 +14,10 @@ $("#exchange").on("click",function(){
 		data:data,
 		success : function(result) {
 			if(result.success){
-				checkScore();
+				//checkScore();
 				alert("对换成功");
-				load({data:load_option});
+				//load({data:load_option});
+				windown.location.reload();
 			}else{
 				alert(result.msg);
 			}
