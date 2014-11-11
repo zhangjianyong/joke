@@ -50,7 +50,7 @@
 	        <div class="clear"></div>
 	    </div>
 	</div>
-<script type="text/javascript" src="/static/js/exchange.js"></script>
+<script type="text/javascript" src="${config.system_resource_url }/static/js/exchange.js"></script>
 <%@ include file="../foot.jsp" %>
 </div>
 </body>
