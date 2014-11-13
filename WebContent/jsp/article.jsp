@@ -92,10 +92,6 @@
                     <span class="padding_left10 englist color_99">${a.create_time }</span>
                 </div>
 	            <c:if test="${a.type=='TEXT' }"><div class="two_name"><a href="/text">【爆笑文字】</a><a href="/article/${a.id }" target="_blank">${a.title } </a></div><div class="two_info">${a.content }<br></div></c:if>
-                <div class="zhichi_bg">
-                	<div class="chizhi_left"><a href="javascript:void(0);" data-id="${a.id }" class="color_1 updown up"><span class="one1"></span><b>${a.up }</b></a></div>
-                    <div class="chizhi_left"><a href="javascript:void(0);" data-id="${a.id }" class="color_1 updown down"><span class="one2"></span><b>${a.down }</b></a></div>
-                </div>
             </div>
             </c:forEach>
         </div>
