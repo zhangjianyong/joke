@@ -83,7 +83,7 @@ public class ExchangeController {
 			@RequestParam(value = "val") final int wealth) {
 
 		String[] patterns = new String[] {
-				"^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$",
+				"^(1[3-8])\\d{9}$",
 				"^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$" };
 		boolean isAccount = false;
 		for (String p : patterns) {
