@@ -71,7 +71,7 @@ img{border:0;}
 .bg_radius{ background:#fff; border-radius:3px;}
 .left_one{  padding:15px 20px;}
 .left_one .one_name{ height:25px; line-height:25px; position:relative;}
-.jiantou{ float:right; }
+.jiantou{ float:left; }
 .jiantou span{ float:left; display:block;}
 .jiantou span.jt_left{ width:19px; height:16px; float:left}
 .jiantou span.jt_right{ width:19px; height:16px; float:left; padding:0 0 0 5px;}
