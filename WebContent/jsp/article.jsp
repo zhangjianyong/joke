@@ -68,12 +68,13 @@
                     	<span></span>
                     </div>
                 </div>
-                <div class="info_advert_list" style="background-color: #fff;margin: 20px 0;">
-	            	<div style="float:left;" id="ad1">${ads.ad12.content }</div>
+            </div>
+            <div class="info_advert_list" style="background-color: #fff;">
+	            	<div style="float:left;padding:0 20px 0 10px;" id="ad1">${ads.ad12.content }</div>
 	            	<div style="float:left;" id="ad2">${ads.ad13.content }</div>
 	            	<div class="clear"></div>
 	            </div>
-	            <div class="zhichi_bg">
+	            <div class="zhichi_bg" style="background-color: #fff;padding:20px;">
                 	<div class="chizhi_left"><a id="up" data-id="${article.id }" href="javascript:void(0);" class="color_1 updown up"><span class="one1"></span><b>${article.up }</b></a></div>
                     <div class="chizhi_left"><a id="down" data-id="${article.id }"  href="javascript:void(0);" class="color_1 updown down"><span class="one2"></span><b>${article.down }</b></a></div>
                     <div class="jiantou info_top20">
@@ -83,7 +84,6 @@
 	                    <div class="clear"></div>
 	                </div>
 	             </div>
-            </div>
             <c:forEach var="a" items="${hots_text }">
             	<div class="left_two bg_radius page">
                 <div class="two_title">
