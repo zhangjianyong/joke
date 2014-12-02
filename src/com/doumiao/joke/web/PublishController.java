@@ -69,7 +69,7 @@ public class PublishController {
 					return new Result(false, "article.content.empty", "内容不能为空",
 							null);
 				}
-				jdbcTemplate.update("insert into joke_article(title,content,type,member_id,status) values(?,?,?,?,?)",title,content,typeE.name(),m.getId(),2);
+				jdbcTemplate.update("insert into joke_article(title,content,type,member_id,status) values(?,?,?,?,?)",title,content,typeE.name(),m.getId(),0);
 			}
 		}catch(Exception e){
 			log.error(e,e);
