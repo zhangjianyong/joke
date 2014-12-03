@@ -47,11 +47,11 @@ public class Draw {
 			HttpServletResponse response, @LoginMember Member m) {
 		request.setAttribute("config", Config.getConfig());
 		@SuppressWarnings("unchecked")
-		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+		Map<String, Map<String, Map<String, Object>>> adMap = (Map<String, Map<String, Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
-		Map<String,Map<String, Object>> drawAd = adMap.get("draw");
+		Map<String, Map<String, Object>> drawAd = adMap.get("draw");
 		request.setAttribute("ads", drawAd);
-		
+
 		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
@@ -64,28 +64,25 @@ public class Draw {
 			}
 		}
 		request.setAttribute("hots", hots);
-		request.setAttribute(
-				"draws",
-				jdbcTemplate
-						.queryForList("select m.nick,a.wealth,date_format(a.create_time,'%T') time from uc_account_log a,uc_member m where a.wealth_type = 'DRAW' and a.account='S2' and m.id=a.member_id and DATE(a.create_time) = CURDATE() order by a.wealth desc limit 0, 30"));
+		request.setAttribute("draws", Cache.get(Cache.Key.LOTTERY_LOG));
 		return "/lottery/draw";
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/lottery/i/draw")
 	public Result go(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value="code") String code,
-			@RequestParam(value="key") String key,
-			@LoginMember Member m) {
-		log.info("lottery draw:"+m.getId());
-		if(StringUtils.isBlank(code)){
-			return new Result(false,"faild","请输入",null);
+			@RequestParam(value = "code") String code,
+			@RequestParam(value = "key") String key, @LoginMember Member m) {
+		log.info("lottery draw:" + m.getId());
+		if (StringUtils.isBlank(code)) {
+			return new Result(false, "faild", "请输入", null);
 		}
-		Map<String,String> param = new HashMap<String,String>();
+		Map<String, String> param = new HashMap<String, String>();
 		param.put("code", code);
 		param.put("key", key);
-		Result checkCode = HttpClientHelper.controlPlatPost("/checkCode", param);
-		if(!checkCode.isSuccess()){
+		Result checkCode = HttpClientHelper
+				.controlPlatPost("/checkCode", param);
+		if (!checkCode.isSuccess()) {
 			return checkCode;
 		}
 		int uid = m.getId();

@@ -81,4 +81,16 @@ public class CacheSchedule {
 			Cache.set(Cache.Key.AD, adMap);
 		}
 	}
+	
+	@Scheduled(fixedDelay = 60000)
+	protected void refreshLotteryLog() {
+		if (log.isDebugEnabled()) {
+			log.debug("refresh lottery log");
+		}
+		List<Map<String, Object>> lotteryLogs = jdbcTemplate
+				.queryForList("select m.nick,a.wealth,date_format(a.create_time,'%T') time from uc_account_log a,uc_member m where a.wealth_type = 'DRAW' and a.account='S2' and m.id=a.member_id and DATE(a.create_time) = CURDATE() order by a.wealth desc limit 0, 30");
+		if (lotteryLogs != null && lotteryLogs.size() > 0) {
+			Cache.set(Cache.Key.LOTTERY_LOG, lotteryLogs);
+		}
+	}
 }
