@@ -61,7 +61,7 @@ public class PublishController {
 					return new Result(false, "article.picpath.empty", "图片不能为空",
 							null);
 				}
-				jdbcTemplate.update("insert into joke_article(title,pic,type,member_id,status) values(?,?,?,?,?)",title,picpath,typeE.name(),m.getId(),0);
+				jdbcTemplate.update("insert into joke_article(title,pic,type,member_id,status) values(?,?,?,?,?)",title,picpath,typeE.name(),m.getId(),3);
 			}
 			// 文本笑话
 			if (typeE.equals(ArticleType.TEXT)) {
