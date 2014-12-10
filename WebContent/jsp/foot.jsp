@@ -7,10 +7,10 @@
 		z-index: 99;
 		position: fixed;
 		top: 45%;
-		left: 50%;
+		left: 2%;
 		_position: absolute;
 		_top: expression(eval(document.documentElement.scrollTop + 200));
-		margin-left: 520px;
+		margin-left: 0px;
 	}
 </style>
 <a class="bus_right" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2772231186&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2772231186:53" alt="一笑千金问题反馈" title="一笑千金问题反馈"/></a>
