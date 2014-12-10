@@ -106,6 +106,7 @@
         <div class="clear"></div>
     </div>
 </div>
+${ads.ad10.content }
 <script src="${config.system_resource_url }/static/js/article.js" type="text/javascript"></script>
 <%@ include file="foot.jsp" %>
 </body>
