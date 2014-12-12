@@ -652,42 +652,24 @@ $.fn.extend({pagination:function(option,pageInfo){
 		$(ele).on("click",l_o,load);
 	});
 }});
-
-$.fn.scrollFloatTop=function(rang_ele){
-	var t = $(this);
-	var t_top = t.offset().top, t_left=t.offset().left, t_height = t.height(), t_pos = t.css("position"), t_margin_top = t.position().top, t_margin_left = t.position().left;
+$.fn.scroolFloat = function (ele,t) {
+	var div = $(this), div_height=div.outerHeight(true) + div.offset().top, window_height = $(window).height();
 	$(window).scroll(function(){
-		var top = $(this).scrollTop();
-		var r_end = rang_ele?(rang_ele.offset().top + rang_ele.height()):0;
-		if(top<=t_top){
-			t.show();
-			t.css({position: t_pos, top: t_margin_top, left: t_margin_left});
-		}else if(r_end<=top+t_height && rang_ele){
-			t.hide();
-			//t.css({position: "fixed",top: r_end-t_height,left: t_left});
+		var scoll_height = $(document).scrollTop(), ele_height = ele.outerHeight(true);
+		
+		if(div_height > window_height && div_height < scoll_height + window_height){
+			if(ele_height < div_height){
+				//J_utils.log(document_height);
+				div.css({'position' : 'fixed', bottom: scoll_height + window_height - ele_height});
+			}else{
+				div.css({'position' : 'fixed', bottom: 0});
+			}
 		}else{
-			t.show();
-			t.css({position: "fixed", top: 0, left: t_left});
-		}
-	});
-};
-$.fn.scrollFloatBottom=function(rang_ele,bottom,end){
-	var t = $(this);
-	var t_top = t.offset().top, t_left=t.offset().left, t_height = t.height(), t_pos = t.css("position"), t_margin_bottom = t.position().bottom, t_margin_left = t.position().left,
-	w_height = $(window).height();
-	$(window).scroll(function(){
-		var top = $(this).scrollTop();
-		var r_end = rang_ele?(rang_ele.offset().top + rang_ele.height()):0;
-		if(w_height>=t_height){
-			t.css({position: "fixed", top: 0, left: t_left});
-			return;
-		}
-		if(r_end<=top+w_height && rang_ele){
-			t.css({position: "fixed",bottom: top+w_height-r_end+end,left: t_left});
-		}else if(t_height-w_height<=top-t_top-bottom){
-			t.css({position: "fixed", bottom: bottom, left: t_left});
-		}else{
-			t.css({position: t_pos, bottom: t_margin_bottom, left: t_margin_left});
+			if(div_height > window_height){
+				div.removeAttr("style");
+			}else{
+				div.css({'position' : 'fixed', top: t});
+			}
 		}
 	});
 };

@@ -97,12 +97,14 @@
             </c:forEach>
         </div>
     	<!--  右侧-->
-        <div class="i_main_right">
-        	${ads.ad8.content }
-            <div class="right_botton_bg margin_top10">
-            	<span class="top"><a href="#top"></a></span>
-            </div>
-        </div>
+    	<div class="i_main_rightbg">
+	        <div class="i_main_right">
+	        	<div class="right_advert_bg">${ads.ad8.content }</div>
+	            <div class="right_botton_bg margin_top10">
+	            	<span class="top"><a href="#top"></a></span>
+	            </div>
+	        </div>
+	    </div>
         <div class="clear"></div>
     </div>
 </div>

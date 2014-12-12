@@ -37,7 +37,7 @@
 			        <p>每人每天可以有${config.draw_count_per_day }次签到机会。</p>
 				</div>
             </div>
-            <script type="text/javascript">ad_show('23');</script><c:set var="pp" value="0"/>
+            ${ads.ad23.content }<c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" ><c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if><div class="left_two bg_radius page${pp }" <c:if test="${pp>1 }">style="display:none"</c:if>>
                 <div class="two_title">
                 	<div class="title_more"><a href="/article/${a.id }" target="_blank">查看全文</a></div>
@@ -67,35 +67,35 @@
             </jsp:include>
         </div>
     	<!--  右侧-->
-        <div class="i_main_right">
-        	<c:if test="${param.adv eq 0 }">${ads.ad20.content }</c:if>
-        	<c:if test="${param.adv ne 0 }">${ads.ad1.content }</c:if>
-        	<div class="right_tuijian margin_top10">
-            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
-                <ul><c:forEach var="h" items="${hots }" end="0">
-                	<li>
-                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
-                        <a href="/article/${h.id }" class="font14">${h.title }</a>
-                        <p></p>
-                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
-                    </li></c:forEach>
-                </ul>
-                <div class="clear"></div>
-            </div>
-        	<c:if test="${param.adv eq 0 }">
-	        	${ads.ad21.content }
-	        	<div class="right_tuijian margin_top10"></div>
-	        	${ads.ad22.content }
-        	</c:if>
-            <c:if test="${param.adv ne 0 }">
-	        	${ads.ad2.content }
-	        	<div class="right_tuijian margin_top10"></div>
-	        	${ads.ad3.content }
-        	</c:if>
-            <div class="right_botton_bg margin_top10">
-            	<span class="top"><a href="#top"></a></span>
-            </div>
-        </div>
+    	<div class="i_main_rightbg">
+	        <div class="i_main_right">
+	        	<c:if test="${param.adv eq 0 }">${ads.ad20.content }</c:if>
+	        	<c:if test="${param.adv ne 0 }">${ads.ad1.content }</c:if>
+	        	<div class="right_tuijian margin_top10">
+	            	<div class="right_name font14 color_66 fontbold">一笑推荐</div>
+	                <ul><c:forEach var="h" items="${hots }" end="0">
+	                	<li>
+	                    	<a href="/article/${h.id }" class="pic"><img src="${config.pic_domain }/article/90${h.pic }" height="62"></a>
+	                        <a href="/article/${h.id }" class="font14">${h.title }</a>
+	                        <p></p>
+	                        <div class="time"><em>${h.nick }</em>${h.create_time }</div>
+	                    </li></c:forEach>
+	                </ul>
+	                <div class="clear"></div>
+	            </div>
+	        	<c:if test="${param.adv eq 0 }">
+		        	<div class="right_advert_bg">${ads.ad21.content }</div>
+		        	<div class="right_advert_bg">${ads.ad22.content }</div>
+	        	</c:if>
+	            <c:if test="${param.adv ne 0 }">
+		        	<div class="right_advert_bg">${ads.ad2.content }</div>
+		        	<div class="right_advert_bg">${ads.ad3.content }</div>
+	        	</c:if>
+	            <div class="right_botton_bg margin_top10">
+	            	<span class="top"><a href="#top"></a></span>
+	            </div>
+	        </div>
+	    </div>
         <div class="clear"></div>
     </div>
 </div>
