@@ -43,7 +43,7 @@ $(function(){
 		var top =  $(document).scrollTop();
 		if(loadpage.length > 0){
 			var loadpagetop = loadpage.offset().top;
-			if(top+600>loadpagetop){
+			if(top + $(window).height() - 100 > loadpagetop){
 				$("#loading").show();
 				var do_class = "page"+page;
 				$("."+do_class).find("img").each(function(){

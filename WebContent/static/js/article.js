@@ -155,7 +155,7 @@ if(posV){
 	}
 }
 //$(".jiantou.info_top20").scrollFloatTop($("#content"));
-$(".i_main_right").scroolFloat(40,230);
+$(".i_main_right").scroolFloat($(".i_main_left"), 40);
 $(".share_button").each(function(i,e){
 	var webid = $(e).attr("id");
 	var id = $("#up").attr("data");

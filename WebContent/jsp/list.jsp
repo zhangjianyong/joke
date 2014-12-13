@@ -26,7 +26,8 @@
     <script type="text/javascript">$("#list_top_"+"${param.o}").addClass("hover");</script>
 	<div class="i_main">
     	<!--  左侧-->
-    	<div class="i_main_left">${ads.ad23.content }
+    	<div class="i_main_left">
+    		<div class="right_advert_bg">${ads.ad23.content }</div>
         	<c:set var="pp" value="0"/>
             <c:forEach var="a"  items="${articles }"  varStatus="s" >
             <c:if test="${s.index%10==0 }"><c:set var="pp" value="${pp+1 }"/><div id="loadpage${pp }"></div></c:if>
@@ -61,7 +62,7 @@
             	<jsp:param value="/${param.t }/${param.o }" name="path"/>
             	<jsp:param value="/" name="first"/>
             </jsp:include>
-            ${ads.ad5.content }
+            <div class="right_advert_bg">${ads.ad5.content }</div>
         </div>
     	<!--  右侧-->
     	<div class="i_main_rightbg">
@@ -87,9 +88,8 @@
 	                </ul>
 	                <div class="clear"></div>
 	            </div>
-	        	${ads.ad2.content }
-	        	<div class="right_tuijian margin_top10"></div>
-	            ${ads.ad3.content }
+	        	<div class="right_advert_bg">${ads.ad2.content }</div>
+	            <div class="right_advert_bg">${ads.ad3.content }</div>
 	            <div class="right_botton_bg margin_top10">
 	            	<span class="top"><a href="#top"></a></span>
 	            </div>

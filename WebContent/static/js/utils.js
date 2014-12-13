@@ -653,19 +653,22 @@ $.fn.extend({pagination:function(option,pageInfo){
 	});
 }});
 $.fn.scroolFloat = function (ele,t) {
-	var div = $(this), div_height=div.outerHeight(true) + div.offset().top, window_height = $(window).height();
+	var div = $(this), div_height=div.outerHeight(true), div_top = div.offset().top, window_height = $(window).height();
 	$(window).scroll(function(){
-		var scoll_height = $(document).scrollTop(), ele_height = ele.outerHeight(true);
+		var scoll_height = $(document).scrollTop(), ele_height = ele.outerHeight(true) + ele.offset().top;
 		
-		if(div_height > window_height && div_height < scoll_height + window_height){
-			if(ele_height < div_height){
-				//J_utils.log(document_height);
-				div.css({'position' : 'fixed', bottom: scoll_height + window_height - ele_height});
+		if(div_height > window_height){
+			if(div_height + div_top < window_height + scoll_height){
+				if(ele_height < window_height + scoll_height){
+					div.css({'position' : 'fixed', bottom: scoll_height + window_height - ele_height});
+				}else{
+					div.css({'position' : 'fixed', bottom: 0});
+				}
 			}else{
-				div.css({'position' : 'fixed', bottom: 0});
+				div.removeAttr("style");
 			}
 		}else{
-			if(div_height > window_height){
+			if(scoll_height + t< div_top){
 				div.removeAttr("style");
 			}else{
 				div.css({'position' : 'fixed', top: t});

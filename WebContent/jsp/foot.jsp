@@ -13,8 +13,9 @@
 		margin-left: 0px;
 	}
 </style>
-<a class="bus_right" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2772231186&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2772231186:53" alt="一笑千金问题反馈" title="一笑千金问题反馈"/></a>
+<%--<a class="bus_right" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2772231186&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2772231186:53" alt="一笑千金问题反馈" title="一笑千金问题反馈"/></a> --%>
 ${footAds.ad28.content }
 ${footAds.ad19.content }
 ${footAds.ad26.content }
 ${footAds.ad27.content }
+${footAds.ad30.content }

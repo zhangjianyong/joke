@@ -22,7 +22,7 @@
 	<div class="i_main">
     	<!--  左侧-->
     	<div class="i_main_left">
-    		${ads.ad9.content }
+    		<div class="right_advert_bg" style="text-align:center;">${ads.ad9.content }</div>
             <div class="left_two bg_radius margin_top0">
                  <div class="two_title">
 						<%--<div class="jiantou info_top20">
@@ -100,6 +100,7 @@
     	<div class="i_main_rightbg">
 	        <div class="i_main_right">
 	        	<div class="right_advert_bg">${ads.ad8.content }</div>
+	        	<div class="right_advert_bg">${ads.ad29.content }</div>
 	            <div class="right_botton_bg margin_top10">
 	            	<span class="top"><a href="#top"></a></span>
 	            </div>
