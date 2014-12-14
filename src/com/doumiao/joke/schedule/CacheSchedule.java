@@ -39,7 +39,7 @@ public class CacheSchedule {
 		}
 		List<Map<String, Object>> articles = jdbcTemplate
 				.queryForList(
-						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 1000",
+						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.create_time > DATE_ADD(curdate(), INTERVAL -7 DAY) and a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 1000",
 						ArticleType.TEXT.name());
 		if (articles != null && articles.size() > 0) {
 			Cache.set(Cache.Key.HOT_TEXT, articles);
@@ -53,7 +53,7 @@ public class CacheSchedule {
 		}
 		List<Map<String, Object>> articles = jdbcTemplate
 				.queryForList(
-						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 100",
+						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.create_time > DATE_ADD(curdate(), INTERVAL -7 DAY) and a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 100",
 						ArticleType.PIC.name());
 		if (articles != null && articles.size() > 0) {
 			Cache.set(Cache.Key.HOT_PIC, articles);
