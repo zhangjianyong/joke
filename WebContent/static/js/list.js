@@ -62,4 +62,4 @@ $(function(){
 		}
 	});
 });
-$(".i_main_right").scroolFloat($(".i_main_left"), 40);
+$(".i_main_right").scrollFloat($(".i_main_left"), 40);

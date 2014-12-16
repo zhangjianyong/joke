@@ -142,7 +142,7 @@ function fly_blank(){
 	$("#"+_award.id).removeClass("boder_bg");
 	$("#"+award.id).addClass("boder_bg");
 }
-$(".i_main_right").scroolFloat($(".i_main_left"), 40);
+$(".i_main_right").scrollFloat($(".i_main_left"), 40);
 function checkScore(){
 	$.ajax({
 		url : J_utils.Config.website+"/uc/i/score",
@@ -166,3 +166,4 @@ function checkScore(){
 if(_user){
 	checkScore();
 }
+var myscroll = new Scroll(document.getElementById("draw_list"), 64); 

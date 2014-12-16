@@ -247,7 +247,7 @@ img{border:0;}
 .luck_botton a{ width:192px; height:59px; display:block; cursor:pointer; background:#ffc80c; color:#e45133; font-size:30px;  line-height:59px; text-align:center; border-radius:30px; -moz-border-radius:30px; -webkit-border-radius:30px; -o-border-radius:30px;}
 .luck_botton a:hover{background:#ffc80c; color:#e45133;}
 .layer_luck_list li.li_bottom{ width:409px; height:91px; margin:0 0 0 3px; background:#ebeded; }
-.draw_bg{ width:638px; height:130px; background:#fff; border:1px solid #e5e5e5; margin:25px 0 0;}
+.draw_bg{ width:638px; height:125px; background:#fff; border:1px solid #e5e5e5; margin:25px 0 0;overflow: hidden;}
 .draw_bg .draw_name{ height:30px; padding:10px 0 0 20px; line-height:30px;}
 .draw_bg .draw_list li{ width:290px; height:26px; line-height:26px; margin:0 0 0 20px; display:inline; float:left; color:#666}
 .draw_bg .draw_list li span{ float:left; display:block; overflow:hidden;}

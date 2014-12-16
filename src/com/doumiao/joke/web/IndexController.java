@@ -46,7 +46,7 @@ public class IndexController {
 		} catch (Exception e) {
 			return "/404";
 		}
-		
+
 		Calendar c = Calendar.getInstance();
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
@@ -101,7 +101,7 @@ public class IndexController {
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
 				.get(Cache.Key.HOT_PIC);
-		if (l.size() > 2) {
+		if (l != null && l.size() > 2) {
 			Random rand = new Random();
 			int seed = rand.nextInt(l.size() - 2);
 			for (int i = 0; i < 2; i++) {

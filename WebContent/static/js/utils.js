@@ -652,11 +652,11 @@ $.fn.extend({pagination:function(option,pageInfo){
 		$(ele).on("click",l_o,load);
 	});
 }});
-$.fn.scroolFloat = function (ele,t) {
+$.fn.scrollFloat = function (ele,t) {
 	var div = $(this), div_height=div.outerHeight(true), div_top = div.offset().top, window_height = $(window).height();
+	var fixed_pos = 0;
 	$(window).scroll(function(){
 		var scoll_height = $(document).scrollTop(), ele_height = ele.outerHeight(true) + ele.offset().top;
-		
 		if(div_height > window_height){
 			if(div_height + div_top < window_height + scoll_height){
 				if(ele_height < window_height + scoll_height){
@@ -671,10 +671,64 @@ $.fn.scroolFloat = function (ele,t) {
 			if(scoll_height + t< div_top){
 				div.removeAttr("style");
 			}else{
-				div.css({'position' : 'fixed', top: t});
+				if(fixed_pos ==0 && ele_height <= div_height + div.offset().top){
+					fixed_pos = scoll_height;
+				}
+				if(fixed_pos > 0 && fixed_pos <= scoll_height){
+					div.css({'position' : 'fixed', bottom: scoll_height + window_height - ele_height});
+				}else{
+					div.css({'position' : 'fixed', bottom: window_height - t - div_height});
+				}
 			}
 		}
 	});
+};
+var Class = {
+	create : function() {
+		return function() {
+			this.initialize.apply(this, arguments);
+		};
+	}
+};
+Function.prototype.bind = function(object) {
+	var method = this;
+	return function() {
+		method.apply(object, arguments);
+	};
+};
+var Scroll = Class.create();
+Scroll.prototype = {
+	initialize : function(element, height) {
+		this.element = element;
+		this.element.innerHTML += this.element.innerHTML;
+		this.height = height;
+		this.maxHeight = this.element.scrollHeight / 2;
+		this.counter = 0;
+		this.scroll();
+		this.timer = "";
+		this.element.onmouseover = this.stop.bind(this);
+		this.element.onmouseout = function() {
+			this.timer = setTimeout(this.scroll.bind(this), 1000);
+		}.bind(this);
+	},
+	scroll : function() {
+		if (this.element.scrollTop < this.maxHeight) {
+			this.element.scrollTop++;
+			this.counter++;
+		} else {
+			this.element.scrollTop = 0;
+			this.counter = 0;
+		}
+		if (this.counter < this.height) {
+			this.timer = setTimeout(this.scroll.bind(this), 1);
+		} else {
+			this.counter = 0;
+			this.timer = setTimeout(this.scroll.bind(this), 3000);
+		}
+	},
+	stop : function() {
+		clearTimeout(this.timer);
+	}
 };
 function getParam(name) {
     var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));

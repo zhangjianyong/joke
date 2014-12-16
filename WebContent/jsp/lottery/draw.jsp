@@ -52,10 +52,10 @@
                </div>
                <!-- 结束 抽奖  -->
                <div class="draw_bg">
-               	<div class="draw_name fontbold font14">今日签到排行</div>
-                   <c:forEach var="o" items="${draws }" end="5" varStatus="s"><ul class="draw_list">
+               	<div class="draw_name fontbold font14">今日签到排行</div><ul class="draw_list" id="draw_list">
+                   <c:forEach var="o" items="${draws }" varStatus="s">
                    	<li><span class="word">${o.nick }</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
-                   </ul></c:forEach>
+                   </c:forEach></ul>
                </div>
                ${ads.ad16.content }
            </div>
@@ -91,7 +91,7 @@
         <div class="clear"></div>
     </div>
 </div>
-<script src="/static/js/draw.js" type="text/javascript"></script>
+<script src="${config.system_resource_url }/static/js/draw.js" type="text/javascript"></script>
 <%@ include file="../foot.jsp" %>
 </body>
 </html>
