@@ -166,4 +166,4 @@ function checkScore(){
 if(_user){
 	checkScore();
 }
-var myscroll = new Scroll(document.getElementById("draw_list"), 64); 
+var myscroll = new Scroll(document.getElementById("draw_list"), 26); 

@@ -52,7 +52,7 @@
                </div>
                <!-- 结束 抽奖  -->
                <div class="draw_bg">
-               	<div class="draw_name fontbold font14">今日签到排行</div><ul class="draw_list" id="draw_list">
+               	<div class="draw_name fontbold font14">今日签到排行</div><ul class="draw_list" style="overflow: hidden;width: 620px;height: 78px;" id="draw_list">
                    <c:forEach var="o" items="${draws }" varStatus="s">
                    	<li><span class="word">${o.nick }</span><span class="word1">${o.wealth }个${config.score_unit }</span><span class="word2">${o.time }</span></li>
                    </c:forEach></ul>
