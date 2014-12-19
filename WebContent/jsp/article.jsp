@@ -42,6 +42,17 @@
 	                <div id="content" class="two_info"><br><img id="article_pic" src="${config.pic_domain }/article/0${article.pic }" style="max-width: 559px;"/></div></c:if>
 	            <c:if test="${article.type=='TEXT' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
 	            <c:if test="${article.type=='ASHAMED' }"><div id="content" class="two_info">${article.content }<br></div></c:if>
+                <div class="info_recom_name margin_top30">一笑爆笑推荐</div>
+                <div class="info_recom_list">
+                	<ul><c:forEach var="a" items="${upText }" varStatus="s" begin="0" end="7">
+                    	<li><em <c:if test="${s.count le 2}">class='first'</c:if>>${s.count }</em><a href="/article/${a.id }">${a.title }</a></li>
+                    </c:forEach></ul>
+                    <div class="list_right">
+                    	<a href="javascript:void(0);" class="botton" id="sign">点评笑话<br>赚签到机会</a>
+                        <p class="word">每点评10条笑话，即可获得1次签到机会。</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
                 <div class="zhichi_bg">
                     <div class="bshare_bg">
                         <div class="bshare_info">

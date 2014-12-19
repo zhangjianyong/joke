@@ -35,8 +35,8 @@ public class ArticleListController {
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "p", required = false, defaultValue = "1") int page,
 			@RequestParam(value = "o", required = false, defaultValue = "new") String order,
-			@RequestParam(value = "pos" ,required = false, defaultValue="") String pos,
-			@RequestParam(value = "adv" ,required = false, defaultValue="") String adv)
+			@RequestParam(value = "pos", required = false, defaultValue = "") String pos,
+			@RequestParam(value = "adv", required = false, defaultValue = "") String adv)
 			throws Exception {
 		ArticleType typeE = null;
 		OrderType orderE = null;
@@ -74,7 +74,7 @@ public class ArticleListController {
 			countParams.add(today.getTime() / 1000);
 			listParams.add(end.getTime() / 1000);
 			listParams.add(today.getTime() / 1000);
-			
+
 		}
 
 		if (OrderType.NEW == orderE) {
@@ -101,14 +101,14 @@ public class ArticleListController {
 		request.setAttribute("articles", articles);
 
 		@SuppressWarnings("unchecked")
-		Map<String, Map<String,Map<String, Object>>> adMap = (Map<String, Map<String,Map<String, Object>>>) Cache
+		Map<String, Map<String, Map<String, Object>>> adMap = (Map<String, Map<String, Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
 		request.setAttribute("ads", adMap.get("list"));
 		List<Map<String, Object>> hots = new ArrayList<Map<String, Object>>();
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
 				.get(Cache.Key.HOT_PIC);
-		if (l.size() > 2) {
+		if (l != null && l.size() > 2) {
 			Random rand = new Random();
 			int seed = rand.nextInt(l.size() - 2);
 			for (int i = 0; i < 2; i++) {
@@ -116,7 +116,7 @@ public class ArticleListController {
 			}
 		}
 		request.setAttribute("hots", hots);
-		if (StringUtils.equals(pos, "index")&&StringUtils.equals(adv, "0")) {
+		if (StringUtils.equals(pos, "index") && StringUtils.equals(adv, "0")) {
 			request.setAttribute("ads", adMap.get("index"));
 			return "/index";
 		}

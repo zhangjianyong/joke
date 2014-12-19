@@ -17,7 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.tuckey.web.filters.urlrewrite.utils.StringUtils;
 
 import com.doumiao.joke.annotation.LoginMember;
 import com.doumiao.joke.lang.CookieUtils;
@@ -114,6 +113,7 @@ public class ArticleController {
 		request.setAttribute("hots_text", hots);
 		request.setAttribute("nextId", nextId);
 		request.setAttribute("preId", preId);
+		request.setAttribute("upText", Cache.get(Cache.Key.HOT_TEXT));
 		return "/article";
 	}
 }

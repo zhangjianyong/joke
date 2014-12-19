@@ -47,6 +47,20 @@ public class CacheSchedule {
 	}
 	
 	@Scheduled(fixedDelay = 600000)
+	protected void refreshUpText() {
+		if (log.isDebugEnabled()) {
+			log.debug("refresh up text");
+		}
+		List<Map<String, Object>> articles = jdbcTemplate
+				.queryForList(
+						"select a.* from joke_article a where a.create_time > DATE_ADD(curdate(), INTERVAL -7 DAY) and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 20",
+						ArticleType.TEXT.name());
+		if (articles != null && articles.size() > 0) {
+			Cache.set(Cache.Key.UP_TEXT, articles);
+		}
+	}
+	
+	@Scheduled(fixedDelay = 600000)
 	protected void refreshHotPic() {
 		if (log.isDebugEnabled()) {
 			log.debug("refresh hot pic");

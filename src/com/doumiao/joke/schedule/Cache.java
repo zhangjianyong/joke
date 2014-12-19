@@ -6,7 +6,7 @@ public class Cache {
 	private static HashMap<Key, Object> data = new HashMap<Key, Object>();
 
 	public enum Key {
-		HOT_TEXT,HOT_PIC,AD,LOTTERY_LOG;
+		HOT_TEXT,HOT_PIC,AD,LOTTERY_LOG,UP_TEXT;
 	}
 	public static void set(Key key, Object value) {
 		data.put(key, value);

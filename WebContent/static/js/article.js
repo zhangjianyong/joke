@@ -154,6 +154,9 @@ if(posV){
 		},1000);
 	}
 }
+$("#sign").on('click',function(){
+	$("html,body").animate({scrollTop:$(".info_advert_list").offset().top-40},1000);
+});
 //$(".jiantou.info_top20").scrollFloatTop($("#content"));
 $(".i_main_right").scrollFloat($(".i_main_left"), 40);
 $(".share_button").each(function(i,e){
