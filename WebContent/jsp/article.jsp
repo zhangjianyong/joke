@@ -19,10 +19,10 @@
 <%@ include file="top.jsp" %>
 <%@ include file="head.jsp" %>
 <div class="i_main_bg">
+	<div class="info_top_banner">${ads.ad9.content }</div>
 	<div class="i_main">
     	<!--  左侧-->
     	<div class="i_main_left">
-    		<div class="right_advert_bg" style="text-align:center;">${ads.ad9.content }</div>
             <div class="left_two bg_radius margin_top0">
                  <div class="two_title">
 						<%--<div class="jiantou info_top20">
@@ -45,7 +45,7 @@
                 <div class="info_recom_name margin_top30">一笑爆笑推荐</div>
                 <div class="info_recom_list">
                 	<ul><c:forEach var="a" items="${upText }" varStatus="s" begin="0" end="7">
-                    	<li><em <c:if test="${s.count le 2}">class='first'</c:if>>${s.count }</em><a href="/article/${a.id }">${a.title }</a></li>
+                    	<li><em <c:if test="${s.count le 2}">class='first'</c:if>>${s.count }</em><a href="/article/${a.id }">${fn:substring(a.content, 0, 10)}</a></li>
                     </c:forEach></ul>
                     <div class="list_right">
                     	<a href="javascript:void(0);" class="botton" id="sign">点评笑话<br>赚签到机会</a>

@@ -337,3 +337,4 @@ a:hover.jfb_botton{color:#fff; }
 .info_recom_list .list_right .word{ line-height:20px; font-size:12px; padding:10px 0 0;}
 .info_recom_info{ line-height:26px; padding:10px 0 20px; font-size:14px;}
 .info_recom_info a{ margin-right:5px;}
+.info_top_banner{ width:960px; height:90px; overflow:hidden; text-align:center;  background:#fff; margin:0 auto 20px;}
