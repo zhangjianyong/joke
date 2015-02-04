@@ -91,6 +91,8 @@ public class HttpClientHelper {
 		} catch (Exception e) {
 			log.error(e,e);
 			return new Result(false, "faild", "系统错误", null);
+		} finally{
+			post.releaseConnection();
 		}
 	}
 }

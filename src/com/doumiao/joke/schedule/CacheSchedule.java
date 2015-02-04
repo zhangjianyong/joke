@@ -74,7 +74,7 @@ public class CacheSchedule {
 		}
 	}
 
-	@Scheduled(fixedDelay = 600000)
+	@Scheduled(fixedDelay = 60000)
 	protected void refreshAd() {
 		if (log.isDebugEnabled()) {
 			log.debug("refresh ad");
