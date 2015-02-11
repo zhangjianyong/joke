@@ -24,7 +24,7 @@ if(_user){
 }
 $(".updown.up").mouseover(function(){$(this).find("span").attr("class","one3");$(this).attr("class","color_2");}).mouseout(function(){$(this).find("span").attr("class","one1");$(this).attr("class","color_1");});
 $(".updown.down").mouseover(function(){$(this).find("span").attr("class","one4");$(this).attr("class","color_3");}).mouseout(function(){$(this).find("span").attr("class","one2");$(this).attr("class","color_1");});
-$(".updown").on("click",function(){
+/*$(".updown").on("click",function(){
 	var t = $(this);
 	var article = t.attr("data");
 	var data = {};
@@ -35,7 +35,7 @@ $(".updown").on("click",function(){
 	}else{
 		window.open(data.to);
 	}
-});
+});*/
 $(function(){
 	var page = 2;
 	$(window).scroll(function() {

@@ -51,8 +51,8 @@
 	            <c:if test="${a.type=='ASHAMED' }">
 	                <div class="two_info"><a href="/ashamed">【糗事大全】</a>${a.content }<br></div></c:if>
                 <div class="zhichi_bg">
-                	<div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=up" class="color_1 updown up"><span class="one1"></span>${a.up }</a></div>
-                    <div class="chizhi_left"><a href="javascript:void(0);" data="${a.id }?pos=down" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>
+                	<div class="chizhi_left"><a href="/article/${a.id }" target="_blank" class="color_1 updown up"><span class="one1"></span>${a.up }</a></div>
+                    <div class="chizhi_left"><a href="/article/${a.id }" target="_blank" class="color_1 updown down"><span class="one2"></span>${a.down }</a></div>
                     <em style="color:red;">（点评笑话：点击左侧图标即可；每点评10条笑话，可获得1次签到机会。每天可签到3次）</em>
                 </div>
             </div>
