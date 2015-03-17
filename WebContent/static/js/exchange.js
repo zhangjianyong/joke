@@ -1,7 +1,7 @@
 $("#exchange").on("click",function(){
 	var data = {};
 	preparePostData(data,".post_data");
-	if(!window.confirm("请再次确认支付定账号是否有误:"+data.act)){
+	if(!window.confirm("请确认支付定账号:"+data.act)){
 		return;
 	}
 	
@@ -15,7 +15,7 @@ $("#exchange").on("click",function(){
 		success : function(result) {
 			if(result.success){
 				//checkScore();
-				alert("对换成功");
+				alert("兑换成功");
 				//load({data:load_option});
 				window.location.reload();
 			}else{
