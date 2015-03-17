@@ -99,7 +99,7 @@
         <div class="clear"></div>
     </div>
 </div>
-<script src="http://www.yixiaoqianjin.com/static/js/list.js" type="text/javascript"></script>
+<script src="${config.system_resource_url }static/js/list.js" type="text/javascript"></script>
 <%@ include file="foot.jsp" %>
 </body>
 </html>
