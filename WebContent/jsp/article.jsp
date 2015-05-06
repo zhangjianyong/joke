@@ -19,7 +19,6 @@
 <%@ include file="top.jsp" %>
 <%@ include file="head.jsp" %>
 <div class="i_main_bg">
-	<div class="info_top_banner">${ads.ad9.content }</div>
 	<div class="i_main">
     	<!--  左侧-->
     	<div class="i_main_left">
