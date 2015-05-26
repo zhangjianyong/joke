@@ -196,6 +196,7 @@ public class Draw {
 				_l.put("o", "system");
 				accountLog.add(_l);
 			}
+			
 			params.put("accountLog",
 					objectMapper.writeValueAsString(accountLog));
 			// 调取后台接口发放奖品

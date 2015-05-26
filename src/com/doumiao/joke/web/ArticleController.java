@@ -103,12 +103,28 @@ public class ArticleController {
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> l = (List<Map<String, Object>>) Cache
 				.get(Cache.Key.HOT_TEXT);
-		if (l.size() > 10) {
+		if (l != null && l.size() > 10) {
 			Random rand = new Random();
 			int seed = rand.nextInt(l.size() - 10);
 			for (int i = 0; i < 10; i++) {
 				hots.add(l.get(i + seed));
 			}
+		}
+
+		/* 取出签到总次数 */
+		int qCount = 0;
+		try {
+			qCount = jdbcTemplate.queryForInt(
+					"select s3 from uc_account where member_id = ?", m.getId());
+		} catch (EmptyResultDataAccessException e) {
+			qCount = 0;
+		} catch (Exception e) {
+			log.error(e, e);
+		}
+
+		if (m.getId() > 0 && qCount >= Config.getInt("updown_times", 100)) {
+			request.setAttribute("interval",
+					Config.getInt("ad_updownbutton_interval", 20));
 		}
 		request.setAttribute("hots_text", hots);
 		request.setAttribute("nextId", nextId);

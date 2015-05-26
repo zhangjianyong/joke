@@ -85,7 +85,7 @@
 	            	<div style="float:left;" id="ad2">${ads.ad13.content }</div>
 	            	<div class="clear"></div>
 	            </div>
-	            <div class="zhichi_bg" style="background-color: #fff;padding:20px;">
+	            <div class="zhichi_bg" style="background-color: #fff;padding:${(empty interval)? 20 : interval}px;">
                 	<div class="chizhi_left"><a id="up" data-id="${article.id }" href="javascript:void(0);" class="color_1 updown up"><span class="one1"></span><b>${article.up }</b></a></div>
                     <div class="chizhi_left"><a id="down" data-id="${article.id }"  href="javascript:void(0);" class="color_1 updown down"><span class="one2"></span><b>${article.down }</b></a></div>
                     <div class="jiantou info_top20">
