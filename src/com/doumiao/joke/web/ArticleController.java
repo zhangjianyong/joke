@@ -122,7 +122,9 @@ public class ArticleController {
 			log.error(e, e);
 		}
 
-		if (m.getId() > 0 && qCount >= Config.getInt("updown_times", 100)) {
+		float ratio = Config.getInt("ad_change_ratio", 10);
+		int rand = new Random().nextInt(100);
+		if (m.getId() > 0 && qCount >= Config.getInt("updown_times", 100) && ratio >= rand) {
 			request.setAttribute("interval",
 					Config.getInt("ad_updownbutton_interval", 20));
 		}
