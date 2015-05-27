@@ -111,22 +111,26 @@ public class ArticleController {
 			}
 		}
 
-		/* 取出签到总次数 */
-		int qCount = 0;
-		try {
-			qCount = jdbcTemplate.queryForInt(
-					"select s3 from uc_account where member_id = ?", m.getId());
-		} catch (EmptyResultDataAccessException e) {
-			qCount = 0;
-		} catch (Exception e) {
-			log.error(e, e);
-		}
+		if (m != null) {
+			/* 取出签到总次数 */
+			int qCount = 0;
+			try {
+				qCount = jdbcTemplate.queryForInt(
+						"select s3 from uc_account where member_id = ?",
+						m.getId());
+			} catch (EmptyResultDataAccessException e) {
+				qCount = 0;
+			} catch (Exception e) {
+				log.error(e, e);
+			}
 
-		float ratio = Config.getInt("ad_change_ratio", 10);
-		int rand = new Random().nextInt(100);
-		if (m.getId() > 0 && qCount >= Config.getInt("updown_times", 100) && ratio >= rand) {
-			request.setAttribute("interval",
-					Config.getInt("ad_updownbutton_interval", 20));
+			float ratio = Config.getInt("ad_change_ratio", 10);
+			int rand = new Random().nextInt(100);
+
+			if (qCount >= Config.getInt("updown_times", 100) && ratio >= rand) {
+				request.setAttribute("interval",
+						Config.getInt("ad_updownbutton_interval", 20));
+			}
 		}
 		request.setAttribute("hots_text", hots);
 		request.setAttribute("nextId", nextId);
