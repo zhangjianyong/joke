@@ -185,6 +185,17 @@ public class Draw {
 			l.put("r", "");
 			l.put("o", "system");
 			accountLog.add(l);
+			
+			Map<String, Object> __l = new HashMap<String, Object>(1);
+			__l.put("u", uid);
+			__l.put("a", Account.S3);
+			__l.put("t", WealthType.UPDOWN);
+			__l.put("w", 1);
+			__l.put("s", AccountLogStatus.PAYED.name());
+			__l.put("r", "");
+			__l.put("o", "system");
+			accountLog.add(__l);
+			
 			if (wealth != 0) {
 				Map<String, Object> _l = new HashMap<String, Object>(1);
 				_l.put("u", uid);

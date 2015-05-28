@@ -101,16 +101,6 @@ public class UpdownController {
 			List<Map<String, Object>> logs = new ArrayList<Map<String, Object>>(
 					2);
 			
-			Map<String, Object> __l = new HashMap<String, Object>(1);
-			__l.put("u", uid);
-			__l.put("a", Account.S3);
-			__l.put("t", WealthType.UPDOWN);
-			__l.put("w", 1);
-			__l.put("s", AccountLogStatus.PAYED.name());
-			__l.put("r", "");
-			__l.put("o", "system");
-			logs.add(__l);
-			
 			// 5如果不满额,发放积分
 			if (scoreUpDownToday <= scoreUpDownMaxPerDay) {
 				// 生成中奖流水
