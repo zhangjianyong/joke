@@ -1,6 +1,7 @@
 package com.doumiao.joke.web;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -86,16 +87,18 @@ public class ArticleController {
 		}
 
 		// 广告
-		Random r = new Random();
 		@SuppressWarnings("unchecked")
 		Map<String, Map<String, Map<String, Object>>> adMap = (Map<String, Map<String, Map<String, Object>>>) Cache
 				.get(Cache.Key.AD);
 		Map<String, Map<String, Object>> articleAd = adMap.get("article");
-		if (r.nextBoolean()) {
-			Map<String, Object> o = articleAd.get("ad13");
-			articleAd.put("ad13", articleAd.get("ad12"));
-			articleAd.put("ad12", o);
-		}
+		List<Map<String, Object>> ads = new ArrayList<Map<String, Object>>(3);
+		ads.add(articleAd.get("ad13"));
+		ads.add(articleAd.get("ad12"));
+		ads.add(articleAd.get("ad8"));
+		Collections.shuffle(ads);
+		articleAd.put("ad13", ads.get(0));
+		articleAd.put("ad12", ads.get(1));
+		articleAd.put("ad8", ads.get(2));
 		request.setAttribute("article", article);
 		request.setAttribute("ads", articleAd);
 
