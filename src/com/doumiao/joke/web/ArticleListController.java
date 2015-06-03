@@ -55,19 +55,19 @@ public class ArticleListController {
 		Date today = c.getTime();
 		List<Object> countParams = new ArrayList<Object>();
 		List<Object> listParams = new ArrayList<Object>();
-		String countSql = "select count(1) from joke_article a where a.`status` = ? ";
-		String listSql = "select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.member_id=m.id and a.`status` = ? ";
+		String countSql = "SELECT count(1) FROM `joke_article` WHERE `status` = ? ";
+		String listSql = "SELECT `id` FROM `joke_article` WHERE `status` = ? ";
 		countParams.add(2);
 		listParams.add(2);
 		if (ArticleType.ALL != typeE) {
-			countSql += " and a.`type` = ? ";
-			listSql += " and a.`type` = ? ";
+			countSql += " AND `type` = ? ";
+			listSql += " AND `type` = ? ";
 			countParams.add(typeE.name());
 			listParams.add(typeE.name());
 		}
 		if (OrderType.NEW != orderE) {
-			countSql += " and unix_timestamp(a.create_time) >= ? and unix_timestamp(a.create_time) < ? ";
-			listSql += " and unix_timestamp(a.create_time) >= ? and unix_timestamp(a.create_time) < ? ";
+			countSql += " AND unix_timestamp(`create_time`) >= ? AND unix_timestamp(`create_time`) < ? ";
+			listSql += " AND unix_timestamp(`create_time`) >= ? AND unix_timestamp(`create_time`) < ? ";
 			c.add(Calendar.DAY_OF_MONTH, -orderE.getValue());
 			Date end = c.getTime();
 			countParams.add(end.getTime() / 1000);
@@ -78,11 +78,12 @@ public class ArticleListController {
 		}
 
 		if (OrderType.NEW == orderE) {
-			listSql += " order by a.id desc limit ?,?";
+			listSql += " ORDER BY `id` DESC LIMIT ?,?";
 		} else {
-			listSql += " order by a.up desc limit ?,?";
+			listSql += " ORDER BY `up` DESC LIMIT ?,?";
 		}
 
+		listSql = "SELECT j.* FROM `joke_article` j, `uc_member` u, ("+listSql+") c WHERE j.`id` = c.`id` AND j.`member_id` = u.`id`";
 		int rows = Config.getInt("row_count_per_page", 30);
 
 		int count = jdbcTemplate.queryForInt(countSql, countParams.toArray());

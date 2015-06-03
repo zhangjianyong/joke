@@ -32,21 +32,21 @@ public class CacheSchedule {
 		}
 	}
 
-	@Scheduled(fixedDelay = 600000)
+	@Scheduled(fixedDelay = 3600000)
 	protected void refreshHotText() {
 		if (log.isDebugEnabled()) {
 			log.debug("refresh hot text");
 		}
 		List<Map<String, Object>> articles = jdbcTemplate
 				.queryForList(
-						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.create_time > DATE_ADD(curdate(), INTERVAL -7 DAY) and a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 1000",
+						"select a.*,m.nick,m.avatar from joke_article a,uc_member m where a.create_time > DATE_ADD(curdate(), INTERVAL -7 DAY) and a.member_id=m.id and a.`status` = 2 and type = ? order by up desc,id desc limit 0, 300",
 						ArticleType.TEXT.name());
 		if (articles != null && articles.size() > 0) {
 			Cache.set(Cache.Key.HOT_TEXT, articles);
 		}
 	}
 	
-	@Scheduled(fixedDelay = 600000)
+	@Scheduled(fixedDelay = 3600000)
 	protected void refreshUpText() {
 		if (log.isDebugEnabled()) {
 			log.debug("refresh up text");
