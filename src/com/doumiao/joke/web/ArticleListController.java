@@ -83,7 +83,7 @@ public class ArticleListController {
 			listSql += " ORDER BY `up` DESC LIMIT ?,?";
 		}
 
-		listSql = "SELECT j.* FROM `joke_article` j, `uc_member` u, ("+listSql+") c WHERE j.`id` = c.`id` AND j.`member_id` = u.`id`";
+		listSql = "SELECT j.*, u.`nick`, u.`avatar` FROM `joke_article` j, `uc_member` u, ("+listSql+") c WHERE j.`id` = c.`id` AND j.`member_id` = u.`id`";
 		int rows = Config.getInt("row_count_per_page", 30);
 
 		int count = jdbcTemplate.queryForInt(countSql, countParams.toArray());
