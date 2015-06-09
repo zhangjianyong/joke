@@ -1,5 +1,6 @@
 package com.doumiao.joke.lang;
 
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -88,6 +89,9 @@ public class HttpClientHelper {
 			String content = EntityUtils.toString(res.getEntity());
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.readValue(content, Result.class);
+		}  catch (SocketTimeoutException e) {
+			log.error(e.getMessage());
+			return new Result(false, "faild", "接口读取超时", null);
 		} catch (Exception e) {
 			log.error(e,e);
 			return new Result(false, "faild", "系统错误", null);
