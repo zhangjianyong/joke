@@ -90,7 +90,7 @@ public class HttpClientHelper {
 			ObjectMapper mapper = new ObjectMapper();
 			return mapper.readValue(content, Result.class);
 		}  catch (SocketTimeoutException e) {
-			log.error(e.getMessage());
+			log.error(e.getMessage()+":"+post.getURI());
 			return new Result(false, "faild", "接口读取超时", null);
 		} catch (Exception e) {
 			log.error(e,e);
