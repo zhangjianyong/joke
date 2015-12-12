@@ -63,6 +63,6 @@ $(function(){
 	});
 });
 $('#footad').click(function(){
-	$(this).hide();
+	$(this).parent().parent().hide();
 })
 //$(".i_main_right").scrollFloat($(".i_main_left"), 40);
