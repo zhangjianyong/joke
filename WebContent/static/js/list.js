@@ -62,4 +62,7 @@ $(function(){
 		}
 	});
 });
+$('#footad').click(function(){
+	$(this).hide();
+})
 //$(".i_main_right").scrollFloat($(".i_main_left"), 40);
