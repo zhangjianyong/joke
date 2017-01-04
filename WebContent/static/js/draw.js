@@ -62,11 +62,11 @@ $("#_code a").on("click",function(){
 		return;
 	}
 	var drawtimes = parseInt($("#drawtimes").find("em").text());
-//	if(drawtimes==0){
-//		alert("你目前没有抽奖机会.");
-//		drawing = false;
-//		return;
-//	}
+	if(drawtimes==0){
+		alert("你目前没有抽奖机会.");
+		drawing = false;
+		return;
+	}
 	var t = 0;
 	$.ajax({
 		url : J_utils.Config.website+"/lottery/i/draw",

@@ -108,7 +108,7 @@
 		</table>
 	</div>
 </div>
-<script src="${config.system_resource_url }/static/js/draw.js" type="text/javascript"></script>
+<script src="${config.system_resource_url }static/js/draw.js" type="text/javascript"></script>
 <%@ include file="../foot.jsp" %>
 </body>
 </html>
