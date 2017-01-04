@@ -99,10 +99,10 @@
         <div class="clear"></div>
     </div>
 </div>
-<div class="index_advert_bg">
+<!--div class="index_advert_bg">
 	<a href="http://www.tanxiaopianyi.com/" target="_blank" class="a_advert" style="background-image:url('/static/images/footad.jpg');"></a>
     <div class="index_advert"><a id="footad" href="javascript:void(0);" class="closed"></a></div>
-</div>
+</div-->
 <script src="${config.system_resource_url }static/js/list.js" type="text/javascript"></script>
 <%@ include file="foot.jsp" %>
 </body>

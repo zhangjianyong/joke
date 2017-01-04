@@ -62,11 +62,11 @@ $("#_code a").on("click",function(){
 		return;
 	}
 	var drawtimes = parseInt($("#drawtimes").find("em").text());
-	if(drawtimes==0){
-		alert("你目前没有抽奖机会.");
-		drawing = false;
-		return;
-	}
+//	if(drawtimes==0){
+//		alert("你目前没有抽奖机会.");
+//		drawing = false;
+//		return;
+//	}
 	var t = 0;
 	$.ajax({
 		url : J_utils.Config.website+"/lottery/i/draw",
@@ -92,7 +92,7 @@ $("#_code a").on("click",function(){
 					}
 				}
 				if(t!=0 && result.content.value!=0){
-					al = "恭喜你获得"+result.content.name;
+					$("#draw_msg").html("恭喜你获得"+result.content.name);
 				}
 				setTimeout(function(){
 					clearInterval(flying);
@@ -130,7 +130,8 @@ function fly_target(i,t){
 		setTimeout(fly_blank,interval);
 	}
 	setTimeout(function(){
-		alert(al);
+		$("#bg").show();
+		$("#draw_success").show();
 	},interval);
 }
 function fly_blank(){
@@ -167,3 +168,7 @@ if(_user){
 	checkScore();
 }
 var myscroll = new Scroll(document.getElementById("draw_list"), 26); 
+$("#draw_success a").on("click", function(){
+	$("#bg").hide();
+	$("#draw_success").hide();
+})

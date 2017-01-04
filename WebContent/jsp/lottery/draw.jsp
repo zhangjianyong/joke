@@ -91,6 +91,23 @@
         <div class="clear"></div>
     </div>
 </div>
+<style type="text/css">
+   #bg{ display:none; position: fixed;  top: 0px;  left: 0px;  right:0px; bottom:0px;  background-color: black;  z-index:1001;  -moz-opacity: 0.7;  opacity:.70;  filter: alpha(opacity=70);}  
+   #draw_success{ display:none; position: absolute;  top: 25%;  left: 35%;  z-index:1002;  }  
+</style>
+<div id="bg"></div>
+<div id="draw_success"  class="layer_bshare_bg" style="width:400px; height:auto;">
+	<div class="layer_bshare_name font14 color_white">恭喜中奖<div class="bshare_close"><a href="javascript:void();"></a></div></div>
+    <div id="draw_msg" class="layer_bshare_main" style="width:400px; font-size:14px; font-weight:bold; text-align:center;"></div>
+    <div class="layer_bshare_main" style="width:400px; padding-bottom:30px;">
+		<table width="100%" border="0">
+			<tbody><tr>
+			<td align="center">${ads.ad104.content }</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 <script src="${config.system_resource_url }/static/js/draw.js" type="text/javascript"></script>
 <%@ include file="../foot.jsp" %>
 </body>
