@@ -1,5 +1,7 @@
 package com.doumiao.joke.web;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +41,12 @@ public class UpdownController {
 	public Result up(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "a") String aid, @LoginMember Member u) {
+		Calendar c = Calendar.getInstance();
+		c.set(2017, 2-1, 6, 0, 0, 0);
+		if(c.after(Calendar.getInstance())){
+			return new Result(false, "faild", "提示：春节期间暂停签到,2月6日恢复.祝新年快乐!", "");
+		}
+		
 		String _type = type.toLowerCase();
 		if (!_type.equals("down") && !_type.equals("up")) {
 			log.error("opertion is not up or donw");
