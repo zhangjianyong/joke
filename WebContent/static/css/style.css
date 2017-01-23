@@ -94,7 +94,7 @@ img{border:0;}
 .two_info .gaoxiao span{ padding:0 10px 0 7px;}
 .zhichi_bg{ height:28px;}
 .zhichi_bg .chizhi_left{ height:26px; border:1px solid #e8e8e8; border-radius:3px; float:left; margin-right:15px; position:relative;}
-.zhichi_bg .chizhi_left .zhichi_tishi{ width:260px; position:absolute; top:-36px; left:0; border:1px solid #e8e8e8; background:#fff; text-align:center;display:block;  height:30px; line-height:30px;}
+.zhichi_bg .chizhi_left .zhichi_tishi{ width:270px; position:absolute; top:-36px; left:0; border:1px solid #e8e8e8; background:#fff; text-align:center;display:block;  height:30px; line-height:30px;}
 .chizhi_left a{ height:26px; line-height:26px; padding:0 10px; font-family:Arial;}
 .chizhi_left a.color_1{ color:#a6e0c3;}
 .chizhi_left a.color_4{ color:#fbb9b0;}

@@ -41,9 +41,12 @@ public class UpdownController {
 	public Result up(HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "t") String type,
 			@RequestParam(value = "a") String aid, @LoginMember Member u) {
-		Calendar c = Calendar.getInstance();
-		c.set(2017, 2-1, 6, 0, 0, 0);
-		if(c.after(Calendar.getInstance())){
+		Calendar e = Calendar.getInstance();
+		e.set(2017, 2-1, 6, 0, 0, 0);
+		Calendar s = Calendar.getInstance();
+		s.set(2017, 1-1, 24, 0, 0, 0);
+		Calendar n = Calendar.getInstance();
+		if(e.after(n) && s.before(n)){
 			return new Result(false, "faild", "提示：春节期间暂停签到,2月6日恢复.祝新年快乐!", "");
 		}
 		
