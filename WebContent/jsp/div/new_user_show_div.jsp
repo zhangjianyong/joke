@@ -23,8 +23,8 @@
         <div class="padding_top5"><span class="layer_pic"></span>（找到每条笑话下面的大拇指图标，随便点一下就可以了）<div class="clear"></div></div>
         <p class="font14 fontbold margin_top10">2.进入签到页面，即可签到</p>
         <p>点击页面右上角的“签到”，即可进去签到页面。签到100%可以获得金币（集分宝）。</p>
-        <p class="font14 fontbold padding_top20">3.每日多次签到</p>
-        <p>每人每天可以有3次签到机会。</p>
+        <p class="font14 fontbold padding_top20">3.每日${config.draw_count_per_day }次签到</p>
+        <p>每人每天可以有${config.draw_count_per_day }次签到机会。</p>
         <p class="layer_botton_news"><a href="/shortcut"></a></p>
     </div>
 </div>
